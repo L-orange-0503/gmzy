@@ -1,0 +1,77 @@
+{
+  "results": {
+    "desktop": {
+      "scrollOverflowX": 0,
+      "bodyOverflowX": 0,
+      "heroHeight": 800,
+      "heroInnerCenterRatio": 0.45,
+      "heroForbiddenCount": 0,
+      "initialNavBg": "rgba(255, 255, 255, 0.82)",
+      "initialPastHero": false,
+      "pastHero": true,
+      "pastHeroBg": "linear-gradient(90deg, color(srgb 0.0901961 0.419608 0.858824 / 0.78), color(srgb 0.0901961 0.419608 0.858823 / 0.58)), none",
+      "navItemCount": 8,
+      "submenuCount": 7,
+      "homeHasSubmenu": false,
+      "mobileOpenSubmenuDisplay": "n/a",
+      "virtualNatural": [
+        1440,
+        678
+      ],
+      "virtualRadius": "30px",
+      "screenNatural": [
+        1440,
+        837
+      ],
+      "screenRadius": "30px",
+      "sectionHeadParagraphs": 0,
+      "moreLinks": 6,
+      "moreSvgLinks": 6,
+      "cardImageCount": 16,
+      "cardImagesLoaded": true,
+      "uniqueCardSrcs": 16,
+      "courseH3MarginTop": "0px",
+      "simulationH3MarginTop": "0px",
+      "navDisplay": "flex",
+      "heroTitle": "未来学习中心",
+      "heroSubtitle": "成都工贸职业技术学院"
+    },
+    "mobile": {
+      "scrollOverflowX": 0,
+      "bodyOverflowX": 0,
+      "heroHeight": 560,
+      "heroInnerCenterRatio": 0.45,
+      "heroForbiddenCount": 0,
+      "initialNavBg": "rgba(255, 255, 255, 0.82)",
+      "initialPastHero": false,
+      "pastHero": true,
+      "pastHeroBg": "linear-gradient(90deg, color(srgb 0.0901961 0.419608 0.858824 / 0.78), color(srgb 0.0901961 0.419608 0.858823 / 0.58)), none",
+      "navItemCount": 8,
+      "submenuCount": 7,
+      "homeHasSubmenu": false,
+      "mobileOpenSubmenuDisplay": "grid",
+      "virtualNatural": [
+        1440,
+        678
+      ],
+      "virtualRadius": "30px",
+      "screenNatural": [
+        1440,
+        837
+      ],
+      "screenRadius": "30px",
+      "sectionHeadParagraphs": 0,
+      "moreLinks": 6,
+      "moreSvgLinks": 6,
+      "cardImageCount": 16,
+      "cardImagesLoaded": true,
+      "uniqueCardSrcs": 16,
+      "courseH3MarginTop": "0px",
+      "simulationH3MarginTop": "0px",
+      "navDisplay": "grid",
+      "heroTitle": "未来学习中心",
+      "heroSubtitle": "成都工贸职业技术学院"
+    }
+  },
+  "errors": []
+}

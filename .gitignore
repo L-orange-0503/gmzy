@@ -1,0 +1,12 @@
+.DS_Store
+Thumbs.db
+
+# Local tooling and dependency caches
+node_modules/
+.cache/
+.npm/
+
+# Generated build folders when experimenting locally
+dist/
+build/
+
