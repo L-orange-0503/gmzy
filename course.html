@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="成都工贸职业技术学院未来学习中心课程建设，展示在线精品课程与课程思政示范课。">
+  <title>课程建设 | 成都工贸职业技术学院未来学习中心</title>
+  <style>
+    :root {
+      --theme: #176bdb;
+      --theme-2: #19a7e8;
+      --theme-3: #0c4ca3;
+      --accent: #ffd766;
+      --accent-2: #44d7c4;
+      --surface: #f3f8ff;
+      --surface-2: #eaf4ff;
+      --surface-3: #f8fbff;
+      --ink: #172033;
+      --muted: #65738a;
+      --line: rgb(23 107 219 / 14%);
+      --white: #fff;
+      --radius-sm: 10px;
+      --radius-md: 14px;
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 8px 24px rgb(31 64 115 / 8%);
+      --shadow-card: 0 14px 40px rgb(25 85 170 / 10%);
+      --shadow-float: 0 20px 60px rgb(21 92 180 / 16%);
+      --font-body: "SF Pro Display", "Helvetica Neue", Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      --font-display: "Alibaba PuHuiTi 3.0", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: linear-gradient(180deg, var(--surface) 0, #fff 34rem, #fff 100%);
+    }
+    body.nav-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    img { max-width: 100%; }
+
+    .skip-link {
+      position: fixed; left: 16px; top: -80px; z-index: 100;
+      padding: 10px 14px; border-radius: var(--radius-pill);
+      background: #fff; color: var(--theme); box-shadow: var(--shadow-soft); transition: top .2s ease;
+    }
+    .skip-link:focus { top: 16px; }
+    :focus-visible { outline: 3px solid #0b5cb6; outline-offset: 3px; box-shadow: 0 0 0 2px #fff; }
+
+    /* Shared site shell: matches the homepage navigation and footer. */
+    .nav {
+      position: fixed; z-index: 40; top: 24px; left: 50%; transform: translateX(-50%);
+      width: min(1440px, calc(100% - 48px)); min-height: 84px;
+      display: flex; align-items: center; gap: 18px; padding: 12px 22px 12px 24px;
+      border: 1px solid rgb(255 255 255 / 76%); border-radius: var(--radius-pill);
+      color: var(--ink); background: rgb(255 255 255 / 82%);
+      box-shadow: 0 18px 48px rgb(7 54 125 / 18%);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      transition: background .24s ease, color .24s ease, border-color .24s ease, box-shadow .24s ease;
+    }
+    .nav.is-past-hero {
+      color: #fff;
+      background: linear-gradient(90deg, color-mix(in srgb, var(--theme) 78%, transparent), color-mix(in srgb, var(--theme) 58%, transparent)), rgb(4 34 88 / 22%);
+      border-color: rgb(255 255 255 / 30%);
+    }
+    .brand { display: flex; align-items: center; min-width: 520px; flex: 0 0 auto; white-space: nowrap; overflow: hidden; }
+    .brand-logo { display: block; width: auto; height: 52px; object-fit: contain; }
+    .brand-logo-inverse { display: none; }
+    .nav.is-past-hero .brand-logo-default { display: none; }
+    .nav.is-past-hero .brand-logo-inverse { display: block; }
+    .nav-links { display: flex; align-items: center; justify-content: flex-end; gap: 4px; min-width: 0; margin-left: auto; }
+    .nav-item { position: relative; }
+    .nav-link {
+      min-height: 40px; display: inline-flex; align-items: center; padding: 0 14px;
+      border-radius: var(--radius-pill); color: color-mix(in srgb, var(--ink) 78%, transparent);
+      font-size: 16px; white-space: nowrap; transition: background .2s ease, color .2s ease, transform .2s ease;
+    }
+    .nav-link:hover, .nav-link.active { background: color-mix(in srgb, var(--theme) 12%, transparent); color: var(--theme); transform: translateY(-1px); }
+    .nav.is-past-hero .nav-link { color: rgb(255 255 255 / 88%); }
+    .nav.is-past-hero .nav-link:hover, .nav.is-past-hero .nav-link.active { background: rgb(255 255 255 / 18%); color: #fff; }
+    .submenu {
+      position: absolute; top: calc(100% + 12px); left: 50%; z-index: 20; min-width: 172px; padding: 10px;
+      border: 1px solid rgb(255 255 255 / 78%); border-radius: var(--radius-lg); color: var(--ink);
+      background: rgb(255 255 255 / 96%); box-shadow: var(--shadow-card); opacity: 0; visibility: hidden;
+      pointer-events: none; transform: translateX(-50%) translateY(8px); transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+    }
+    .nav-item.has-submenu:hover .submenu, .nav-item.has-submenu:focus-within .submenu { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+    .submenu a { display: block; padding: 10px 12px; border-radius: var(--radius-sm); white-space: nowrap; }
+    .submenu a:hover, .submenu a:focus { color: var(--theme); background: color-mix(in srgb, var(--theme) 9%, #fff); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; flex: 0 0 auto; }
+    .login { min-height: 42px; display: inline-flex; align-items: center; justify-content: center; padding: 0 20px; border: 1px solid color-mix(in srgb, var(--theme) 18%, transparent); border-radius: var(--radius-pill); color: var(--theme); background: color-mix(in srgb, var(--theme) 9%, #fff); box-shadow: 0 8px 24px rgb(6 45 102 / 16%); font-weight: 800; }
+    .nav.is-past-hero .login { border-color: rgb(255 255 255 / 32%); color: #fff; background: rgb(255 255 255 / 18%); }
+    .menu-toggle { display: none; width: 42px; height: 42px; align-items: center; justify-content: center; flex-direction: column; gap: 5px; border: 1px solid rgb(255 255 255 / 32%); border-radius: 50%; color: var(--theme); background: color-mix(in srgb, var(--theme) 9%, #fff); }
+    .nav.is-past-hero .menu-toggle { color: #fff; background: rgb(255 255 255 / 14%); }
+    .menu-toggle span { width: 18px; height: 2px; border-radius: 2px; background: currentColor; transition: transform .22s ease, opacity .22s ease; }
+    body.nav-open .menu-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    body.nav-open .menu-toggle span:nth-child(2) { opacity: 0; }
+    body.nav-open .menu-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .course-hero {
+      min-height: 480px; position: relative; isolation: isolate; overflow: hidden; display: flex; align-items: center;
+      background: #d9e9fb url("./assets/hero/course-construction-hero-final.jpg") center / cover no-repeat;
+    }
+    .course-hero::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(100deg, rgb(255 255 255 / 21.5%) 0%, rgb(250 253 255 / 15%) 48%, rgb(255 255 255 / 9.5%) 100%), radial-gradient(ellipse at 12% 78%, rgb(37 158 236 / 5%), transparent 34%), radial-gradient(ellipse at 46% 8%, rgb(255 255 255 / 14%), transparent 26%); }
+    .course-hero::after { content: ""; position: absolute; inset: auto 0 0; z-index: 0; height: 94px; pointer-events: none; background: linear-gradient(180deg, transparent, rgb(200 226 251 / 12%)); }
+    .hero-inner { position: relative; z-index: 1; width: min(1440px, calc(100% - 48px)); margin: 0 auto; padding: 140px 0 66px; }
+    .hero-copy { width: min(540px, 48%); }
+    .hero-kicker { display: block; margin-bottom: 12px; color: color-mix(in srgb, var(--theme) 57%, #9db9dc); font-size: 15px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    h1 { margin: 0; color: transparent; background: linear-gradient(135deg, #0b4fab 4%, #176bdb 47%, #20a7ea 100%); -webkit-background-clip: text; background-clip: text; font: 900 clamp(48px, 4.5vw, 64px) / 1.06 var(--font-display); filter: drop-shadow(0 8px 18px rgb(255 255 255 / 62%)); }
+    .search-form { display: flex; align-items: stretch; width: min(500px, 100%); min-height: 54px; margin-top: 34px; padding: 5px; border: 1px solid rgb(255 255 255 / 82%); border-radius: var(--radius-pill); background: rgb(255 255 255 / 88%); box-shadow: 0 6px 8px rgb(22 81 164 / 10%); transition: border-color .2s ease, box-shadow .2s ease; }
+    .search-form:focus-within { border-color: rgb(23 107 219 / 64%); box-shadow: 0 6px 8px rgb(22 81 164 / 14%); }
+    .search-form input { min-width: 0; flex: 1; padding: 0 16px; border: 0; outline: 0; box-shadow: none; color: var(--ink); background: transparent; font-size: 16px; }
+    .search-form input:focus, .search-form input:focus-visible { outline: 0; box-shadow: none; }
+    .search-form input::placeholder { color: #7285a1; }
+    .search-button { min-width: 96px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; flex: 0 0 auto; padding: 0 16px; border: 0; border-radius: var(--radius-pill); color: #fff; background: linear-gradient(135deg, var(--theme), var(--theme-2)); box-shadow: 0 5px 8px rgb(23 107 219 / 22%); font-size: 15px; font-weight: 800; transition: transform .2s ease, box-shadow .2s ease; }
+    .search-button:hover { transform: translateY(-1px); box-shadow: 0 7px 8px rgb(23 107 219 / 28%); }
+    .search-button svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+
+    main { position: relative; isolation: isolate; padding: 50px 0 60px; background: radial-gradient(ellipse 42rem 30rem at 10% 78%, rgb(34 163 238 / 38%) 0, rgb(34 163 238 / 22%) 37%, transparent 72%), radial-gradient(ellipse 38rem 28rem at 91% 67%, rgb(69 151 255 / 29%) 0, rgb(69 151 255 / 16%) 38%, transparent 72%), radial-gradient(ellipse 45rem 32rem at 48% 104%, rgb(137 208 255 / 35%) 0, rgb(137 208 255 / 18%) 39%, transparent 72%), linear-gradient(180deg, #fff 0 40%, #fbfdff 100%); }
+    main::before { display: none; }
+    .content-shell { position: relative; z-index: 1; width: min(1440px, calc(100% - 48px)); margin: 0 auto; }
+    .course-tabs { display: flex; align-items: center; gap: 16px; padding-bottom: 18px; }
+    .course-tab { min-height: 48px; padding: 0 20px; border: 1px solid var(--line); border-radius: var(--radius-pill); color: var(--ink); background: rgb(255 255 255 / 74%); font-size: 16px; font-weight: 800; transition: color .2s ease, transform .2s ease, box-shadow .2s ease, background .2s ease; }
+    .course-tab:hover { color: var(--theme); transform: translateY(-1px); }
+    .course-tab[aria-selected="true"] { border-color: transparent; color: #fff; background: linear-gradient(135deg, var(--theme), var(--theme-2)); box-shadow: 0 7px 12px rgb(23 107 219 / 18%); }
+    .course-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; padding: 30px 0 42px; }
+    .course-card { min-height: 292px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-lg); background: linear-gradient(135deg, rgb(255 255 255 / 98%), rgb(246 250 255 / 96%)); box-shadow: 0 6px 16px rgb(31 64 115 / 6%); transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease; }
+    .course-card:hover { transform: translateY(-3px); border-color: rgb(23 107 219 / 28%); box-shadow: 0 13px 26px rgb(31 64 115 / 11%); }
+    .course-cover-wrap { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--surface-2); }
+    .course-cover { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .28s ease; }
+    .course-card:hover .course-cover { transform: scale(1.02); }
+    .course-tag { position: absolute; top: 12px; left: 12px; min-height: 28px; display: inline-flex; align-items: center; padding: 0 10px; border: 1px solid rgb(255 255 255 / 38%); border-radius: var(--radius-pill); color: #fff; box-shadow: 0 6px 14px rgb(5 45 109 / 22%); font-size: 12px; font-weight: 800; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+    .course-tag { text-shadow: 0 1px 1px rgb(0 44 95 / 28%); }
+    .course-tag.tag-blue { background: linear-gradient(135deg, rgb(5 132 239 / 90%), rgb(12 92 210 / 90%)); }
+    .course-tag.tag-green { background: linear-gradient(135deg, rgb(0 174 128 / 90%), rgb(0 133 106 / 90%)); }
+    .course-tag.tag-yellow { background: linear-gradient(135deg, rgb(242 182 0 / 90%), rgb(204 124 0 / 90%)); }
+    .course-body { flex: 1; display: flex; flex-direction: column; padding: 18px 20px 24px; }
+    .course-title { margin: 0 0 13px; color: var(--ink); font-size: 18px; font-weight: 900; line-height: 1.3; transition: color .22s ease; }
+    .course-card:hover .course-title { color: var(--theme); }
+    .course-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; color: var(--muted); font-size: 15px; font-weight: 400; line-height: 1.4; }
+    .course-meta span:last-child { white-space: nowrap; }
+    .course-card-link { display: flex; flex: 1; flex-direction: column; color: inherit; }
+    .empty-state { grid-column: 1 / -1; display: none; padding: 64px 24px; border: 1px dashed rgb(23 107 219 / 24%); border-radius: var(--radius-xl); color: var(--muted); text-align: center; background: rgb(255 255 255 / 68%); }
+    .empty-state.visible { display: block; }
+    .pagination { display: flex; justify-content: center; align-items: center; gap: 12px; }
+    .page-number, .page-arrow { width: 44px; min-width: 44px; height: 44px; display: inline-grid; place-items: center; padding: 0; border: 1px solid var(--line); border-radius: 50%; color: var(--muted); background: #fff; font-size: 16px; font-weight: 400; transition: transform .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease, background .2s ease; }
+    .page-number.current { border-color: transparent; color: #fff; background: linear-gradient(135deg, var(--theme), var(--theme-2)); box-shadow: 0 8px 18px rgb(23 107 219 / 22%); }
+    .page-number:not(.current):hover, .page-arrow:not(:disabled):hover { transform: translateY(-2px); border-color: rgb(23 107 219 / 34%); color: var(--theme); background: #f6faff; box-shadow: 0 9px 19px rgb(23 107 219 / 13%); }
+    .page-arrow { color: #8ea8c5; background: #f7faff; }
+    .page-arrow:disabled { cursor: not-allowed; opacity: .43; box-shadow: none; }
+    .page-arrow svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .page-ellipsis { min-width: 24px; color: var(--muted); text-align: center; font-weight: 400; }
+    .result-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+
+    .footer { position: relative; isolation: isolate; overflow: hidden; color: rgb(255 255 255 / 82%); background: radial-gradient(circle at 10% 0%, rgb(68 215 196 / 18%), transparent 28rem), linear-gradient(135deg, #06285f, #0a4b9f 48%, #09346c); }
+    .footer::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .12; background: url("./assets/generated-backgrounds/footer-campus-overlay.png") center / cover no-repeat; }
+    .footer-inner { position: relative; z-index: 1; width: min(1440px, calc(100% - 48px)); display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); column-gap: 80px; row-gap: 34px; margin: 0 auto; padding: 54px 0 42px; }
+    .footer-inner > :nth-child(2) { transform: translateX(160px); }
+    .footer-inner > :nth-child(3) { transform: translateX(80px); }
+    .footer h3 { margin: 0 0 16px; color: #fff; font-size: 16px; line-height: 1.35; }
+    .footer-logo { display: block; width: auto; height: 52px; margin: 0 0 18px; object-fit: contain; }
+    .footer p, .footer a { margin: 0; color: rgb(255 255 255 / 74%); font-size: 14px; line-height: 1.8; }
+    .footer-links { display: grid; gap: 8px; }
+    .footer-bottom { position: relative; z-index: 1; border-top: 1px solid rgb(255 255 255 / 16%); }
+    .footer-bottom-inner { width: min(1440px, calc(100% - 48px)); display: flex; justify-content: space-between; gap: 18px; margin: 0 auto; padding: 18px 0; color: rgb(255 255 255 / 66%); font-size: 13px; }
+
+    @media (max-width: 1260px) { .nav { width: calc(100% - 32px); } .brand { min-width: 410px; } .nav-link { padding: 0 9px; } }
+    @media (max-width: 1120px) {
+      .nav { border-radius: 24px; }
+      .nav-links { position: fixed; top: 108px; right: 16px; left: 16px; display: none; max-height: calc(100vh - 138px); grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; overflow-y: auto; padding: 14px; border: 1px solid rgb(255 255 255 / 24%); border-radius: 22px; background: rgb(8 42 105 / 92%); box-shadow: var(--shadow-float); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+      body.nav-open .nav-links { display: grid; }
+      .nav-link { min-height: 44px; justify-content: center; color: #fff; background: rgb(255 255 255 / 8%); }
+      .nav-item { width: 100%; }
+      .submenu { position: static; display: none; min-width: 0; margin-top: 8px; padding: 8px; border-color: rgb(255 255 255 / 14%); border-radius: 16px; opacity: 1; visibility: visible; transform: none; color: #fff; background: rgb(255 255 255 / 8%); box-shadow: none; pointer-events: auto; }
+      .nav-item.has-submenu:hover .submenu, .nav-item.has-submenu:focus-within .submenu, body.nav-open .submenu { display: grid; transform: none; }
+      .submenu a { color: rgb(255 255 255 / 84%); text-align: center; }
+      .submenu a:hover, .submenu a:focus { color: #fff; background: rgb(255 255 255 / 12%); }
+      .menu-toggle { display: inline-flex; }
+      .course-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .footer-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .footer-inner > :nth-child(2), .footer-inner > :nth-child(3) { transform: none; }
+    }
+    @media (max-width: 760px) {
+      .nav { top: 12px; width: calc(100% - 24px); min-height: 66px; padding: 10px 12px; border-radius: 22px; }
+      .brand { min-width: 0; flex: 1 1 auto; white-space: normal; }
+      .brand-logo { height: 52px; }
+      .login { min-width: 54px; padding: 0 12px; font-size: 14px; }
+      .nav-links { top: 76px; right: 12px; left: 12px; grid-template-columns: 1fr; }
+      .course-hero { min-height: 456px; background-size: auto 88%; background-position: 18% 58%; }
+      .course-hero::before { background: radial-gradient(ellipse at 8% 78%, rgb(25 167 232 / 18%), transparent 36%), linear-gradient(90deg, rgb(223 240 255 / 87%), rgb(222 239 255 / 57%) 76%, rgb(215 235 255 / 24%)); }
+      .hero-inner { width: calc(100% - 32px); padding: 124px 0 46px; }
+      .hero-copy { width: min(100%, 440px); }
+      .hero-kicker { font-size: 12px; }
+      h1 { font-size: clamp(38px, 13vw, 50px); }
+      .search-form { min-height: 52px; margin-top: 26px; }
+      .content-shell { width: calc(100% - 32px); }
+      .result-status { position: static; width: auto; height: auto; min-height: 20px; margin: 0 0 2px; overflow: visible; clip: auto; clip-path: none; white-space: normal; color: color-mix(in srgb, var(--ink) 72%, var(--muted)); font-size: 14px; line-height: 1.45; }
+      main { padding: 56px 0 58px; }
+      .course-tabs { gap: 16px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; padding: 0 48px 16px 0; scrollbar-width: none; }
+      .course-tabs::-webkit-scrollbar { display: none; }
+      .course-tab { flex: 0 0 auto; min-height: 44px; padding: 0 15px; font-size: 14px; scroll-snap-align: start; }
+      .content-shell.has-tab-overflow::after { content: "›"; position: absolute; z-index: 2; top: 0; right: 0; width: 48px; height: 48px; display: grid; place-items: center; color: var(--theme-3); background: linear-gradient(90deg, transparent, var(--surface-3) 46%); font-size: 28px; font-weight: 700; pointer-events: none; opacity: 1; transition: opacity .2s ease, transform .2s ease; }
+      .content-shell.has-tab-overflow.tabs-at-end::after { opacity: 0; transform: translateX(6px); }
+      .course-grid { grid-template-columns: 1fr; gap: 18px; padding: 24px 0 34px; }
+      .course-card { min-height: 0; }
+      .footer-inner { width: calc(100% - 32px); grid-template-columns: 1fr; padding: 44px 0 32px; }
+      .footer-bottom-inner { width: calc(100% - 32px); display: block; }
+      .footer-bottom-inner span { display: block; margin-top: 6px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳至主要内容</a>
+
+  <nav class="nav" aria-label="主导航">
+    <a class="brand" href="index.html#home" aria-label="成都工贸职业技术学院未来学习中心首页">
+      <img class="brand-logo brand-logo-default" src="./assets/logos/future-learning-logo-default.png" alt="成都工贸职业技术学院 | 未来学习中心">
+      <img class="brand-logo brand-logo-inverse" src="./assets/logos/future-learning-logo-inverse.png" alt="" aria-hidden="true">
+    </a>
+    <div class="nav-links" id="site-nav">
+      <div class="nav-item"><a class="nav-link" href="index.html#home">首页</a></div>
+      <div class="nav-item has-submenu"><a class="nav-link" href="index.html#about">中心概况</a><div class="submenu" aria-label="中心概况二级菜单"><a href="index.html#about">中心简介</a><a href="index.html#about">建设目标</a><a href="index.html#about">空间导览</a></div></div>
+      <div class="nav-item has-submenu"><a class="nav-link" href="index.html#major">专业建设</a><div class="submenu" aria-label="专业建设二级菜单"><a href="index.html#major">专业群建设</a><a href="index.html#major">产业学院</a><a href="index.html#major">师资团队</a></div></div>
+      <div class="nav-item has-submenu"><a class="nav-link active" href="course.html" aria-current="page">课程建设</a><div class="submenu" aria-label="课程建设二级菜单"><a href="#course-list">精品课程</a><a href="#course-list">课程思政</a><a href="#course-list">教学资源</a></div></div>
+      <div class="nav-item has-submenu"><a class="nav-link" href="index.html#simulation">虚拟仿真</a><div class="submenu" aria-label="虚拟仿真二级菜单"><a href="index.html#simulation">仿真项目</a><a href="index.html#simulation">实训场景</a><a href="index.html#simulation">运行数据</a></div></div>
+      <div class="nav-item has-submenu"><a class="nav-link" href="index.html#resource">资源库</a><div class="submenu" aria-label="资源库二级菜单"><a href="index.html#resource">省级资源库</a><a href="index.html#resource">校级资源库</a><a href="index.html#resource">题库资源</a></div></div>
+      <div class="nav-item has-submenu"><a class="nav-link" href="index.html#news">教务新闻</a><div class="submenu" aria-label="教务新闻二级菜单"><a href="index.html#news">新闻动态</a><a href="index.html#news">教学成果</a><a href="index.html#news">活动纪要</a></div></div>
+      <div class="nav-item has-submenu"><a class="nav-link" href="index.html#notice">教务通知</a><div class="submenu" aria-label="教务通知二级菜单"><a href="index.html#notice">通知公告</a><a href="index.html#notice">项目申报</a><a href="index.html#notice">平台服务</a></div></div>
+    </div>
+    <div class="nav-actions"><a class="login" href="#login">登录</a><button class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button></div>
+  </nav>
+
+  <header class="course-hero" id="home">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <span class="hero-kicker">Course Construction</span>
+        <h1>课程建设</h1>
+        <form class="search-form" id="course-search" role="search">
+          <label class="sr-only" for="course-keyword">课程关键词检索</label>
+          <input id="course-keyword" type="search" placeholder="请输入关键词" autocomplete="off">
+          <button class="search-button" type="submit" aria-label="搜索课程"><span>搜索</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.2 4.2"></path></svg></button>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="content-shell" id="course-list" aria-label="课程列表">
+      <div class="course-tabs" role="tablist" aria-label="课程分类">
+        <button class="course-tab" id="course-tab-chaoxing" type="button" role="tab" aria-selected="false" aria-controls="course-grid" data-category="chaoxing">超星尔雅</button>
+        <button class="course-tab" id="course-tab-quality" type="button" role="tab" aria-selected="true" aria-controls="course-grid" data-category="quality">在线精品课程</button>
+        <button class="course-tab" id="course-tab-ideological" type="button" role="tab" aria-selected="false" aria-controls="course-grid" data-category="ideological">课程思政示范课</button>
+      </div>
+      <p class="result-status" id="result-status" role="status" aria-live="polite"></p>
+      <div class="course-grid" id="course-grid" role="tabpanel" tabindex="0" aria-labelledby="course-tab-quality" aria-label="在线精品课程列表"></div>
+      <div class="pagination" aria-label="课程分页，第 1 页，共 30 页">
+        <button class="page-arrow" type="button" aria-label="上一页" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"></path></svg></button><button class="page-number current" type="button" aria-current="page">1</button><button class="page-number" type="button" aria-label="第 2 页">2</button><button class="page-number" type="button" aria-label="第 3 页">3</button><span class="page-ellipsis" aria-hidden="true">…</span><button class="page-number" type="button" aria-label="第 30 页">30</button><button class="page-arrow" type="button" aria-label="下一页"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 5.5 6.5 6.5-6.5 6.5"></path></svg></button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div><img class="footer-logo" src="./assets/logos/future-learning-logo-inverse.png" alt="成都工贸职业技术学院 | 未来学习中心"><p>服务专业建设、课程建设、资源建设和智慧教学运行，支撑高素质技术技能人才培养。</p></div>
+      <div><h3>平台应用</h3><div class="footer-links"><a href="index.html#quick">快捷入口</a><a href="course.html">课程建设</a><a href="index.html#resource">专业资源库</a></div></div>
+      <div><h3>建设中心</h3><div class="footer-links"><a href="index.html#major">专业建设</a><a href="index.html#simulation">虚拟仿真</a><a href="index.html#screen">数据大屏</a></div></div>
+      <div><h3>服务支持</h3><p>教务处与未来学习中心联合维护</p><p>工作日 09:00-17:00</p></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-bottom-inner"><span>© 2026 成都工贸职业技术学院 未来学习中心</span><span>智慧教学 · 数字资源 · 技能成长</span></div></div>
+  </footer>
+
+  <script>
+    const nav = document.querySelector('.nav');
+    const hero = document.querySelector('.course-hero');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const tabButtons = document.querySelectorAll('.course-tab');
+    const contentShell = document.querySelector('.content-shell');
+    const tabList = document.querySelector('.course-tabs');
+    const grid = document.querySelector('#course-grid');
+    const searchForm = document.querySelector('#course-search');
+    const searchInput = document.querySelector('#course-keyword');
+    const resultStatus = document.querySelector('#result-status');
+    let currentCategory = 'quality';
+
+    const cover = (number) => number <= 8
+      ? `./assets/inline-covers/course-${String(number).padStart(2, '0')}.jpg`
+      : `./assets/inline-covers/stock/course-stock-${String(number - 8).padStart(2, '0')}.jpg`;
+    const courseData = {
+      quality: [
+        ['工业机器人编程与调试', '王明远', '48 学时', 1, '国家级'], ['新能源汽车电池管理', '李若晨', '56 学时', 2, '省级'], ['城轨信号基础与联锁控制', '周航', '64 学时', 3, '市级'], ['工业数据采集与可视化', '陈思源', '48 学时', 4, '国家级'],
+        ['工匠精神与职业素养', '赵晓岚', '32 学时', 5, '省级'], ['BIM 建模与施工协同', '刘启峰', '48 学时', 6, '市级'], ['智慧物流运营实务', '郑雨晴', '40 学时', 7, '国家级'], ['AI 辅助创意设计', '何悦', '36 学时', 8, '省级'],
+        ['智能产线集成与运维', '郭承安', '52 学时', 9, '市级'], ['动力电池检测技术', '沈清禾', '48 学时', 10, '国家级'], ['轨道交通设备检修', '许铭川', '56 学时', 11, '省级'], ['工业互联网平台应用', '林嘉言', '48 学时', 12, '市级'],
+        ['职业沟通与团队协作', '苏婉宁', '32 学时', 13, '国家级'], ['装配式建筑施工技术', '陆景行', '48 学时', 14, '省级'], ['供应链数字化运营', '唐思远', '40 学时', 15, '市级'], ['生成式 AI 设计实践', '夏知行', '36 学时', 16, '国家级']
+      ],
+      chaoxing: [
+        ['法律与社会', '刘明哲', '32 学时', 1, '超星尔雅'], ['星海求知：天文学的奥秘', '梁星澜', '36 学时', 2, '超星尔雅'], ['戏剧鉴赏', '方文澜', '32 学时', 3, '美育课程'], ['计算与人工智能概论', '周启明', '40 学时', 4, '超星尔雅'],
+        ['古典诗词鉴赏', '陈诗涵', '32 学时', 5, '人文素养'], ['美术鉴赏', '吴青禾', '32 学时', 6, '美育课程'], ['聆听心声：音乐审美心理分析', '赵雅音', '36 学时', 7, '超星尔雅'], ['中国古建筑欣赏与设计', '林致远', '32 学时', 8, '人文素养'],
+        ['创新思维与方法', '贺向阳', '32 学时', 9, '通识课程'], ['创业基础', '冯书睿', '32 学时', 10, '超星尔雅'], ['大学生心理健康', '韩之宁', '32 学时', 11, '成长支持'], ['劳动教育', '蒋芸舒', '24 学时', 12, '通识课程'],
+        ['信息素养与检索', '宋知微', '24 学时', 13, '学习方法'], ['中华优秀传统文化', '顾思齐', '32 学时', 14, '人文素养'], ['生态文明与绿色发展', '罗昕然', '24 学时', 15, '通识课程'], ['职业生涯规划', '郑心怡', '24 学时', 16, '成长支持']
+      ],
+      ideological: [
+        ['工业机器人中的工匠精神', '王明远', '32 学时', 1, '思政示范'], ['新能源汽车绿色使命', '李若晨', '32 学时', 2, '课程思政'], ['城轨安全与责任担当', '周航', '36 学时', 3, '思政示范'], ['数据伦理与职业规范', '陈思源', '32 学时', 4, '课程思政'],
+        ['技能报国：工匠精神实践', '赵晓岚', '32 学时', 5, '思政示范'], ['建筑匠心与质量意识', '刘启峰', '32 学时', 6, '课程思政'], ['诚信运营与服务意识', '郑雨晴', '28 学时', 7, '思政示范'], ['创意设计中的文化自信', '何悦', '28 学时', 8, '课程思政'],
+        ['智能制造强国战略', '郭承安', '32 学时', 9, '课程思政'], ['动力电池安全与环保', '沈清禾', '28 学时', 10, '思政示范'], ['轨道交通人民至上理念', '许铭川', '32 学时', 11, '课程思政'], ['工业互联网数据安全', '林嘉言', '28 学时', 12, '思政示范'],
+        ['职业礼仪与服务育人', '苏婉宁', '24 学时', 13, '课程思政'], ['城乡建设中的责任意识', '陆景行', '28 学时', 14, '思政示范'], ['物流供应链的家国担当', '唐思远', '28 学时', 15, '课程思政'], ['人工智能时代的创新伦理', '夏知行', '28 学时', 16, '思政示范']
+      ]
+    };
+    const categoryNames = { chaoxing: '超星尔雅', quality: '在线精品课程', ideological: '课程思政示范课' };
+    const tagTone = (tag) => {
+      if (['市级', '在线精品', '课程思政', '思政示范', '人文素养', '通识课程', '成长支持', '学习方法', '素养提升'].includes(tag)) return 'tag-yellow';
+      if (['省级', '美育课程', '虚实结合', '项目化', '工作过程', '双元开发', '岗位任务'].includes(tag)) return 'tag-green';
+      return 'tag-blue';
+    };
+
+    function renderCourses() {
+      const keyword = searchInput.value.trim().toLowerCase();
+      const items = courseData[currentCategory].filter(([title, teacher, hours, , tag]) => `${title}${teacher}${hours}${tag}`.toLowerCase().includes(keyword));
+      grid.innerHTML = items.length ? items.map(([title, teacher, hours, image, tag]) => `
+        <article class="course-card">
+          <a class="course-card-link" href="course-detail.html?course=${encodeURIComponent(title)}" aria-label="查看${title}详情">
+            <div class="course-cover-wrap"><img class="course-cover" src="${cover(image)}" alt="${title}课程封面" loading="lazy"><span class="course-tag ${tagTone(tag)}">${tag}</span></div>
+            <div class="course-body"><h2 class="course-title">${title}</h2><div class="course-meta"><span>${teacher}</span><span>${hours}</span></div></div>
+          </a>
+        </article>`).join('') : '<div class="empty-state visible">未找到相关课程，请尝试其他关键词。</div>';
+      resultStatus.textContent = keyword ? `${categoryNames[currentCategory]}中找到 ${items.length} 门与“${searchInput.value.trim()}”相关的课程。` : `当前显示 ${categoryNames[currentCategory]}的 ${items.length} 门课程。`;
+    }
+
+    function syncNavState() { nav.classList.toggle('is-past-hero', hero.getBoundingClientRect().bottom <= nav.getBoundingClientRect().bottom); }
+    function syncTabOverflow() {
+      const hasOverflow = tabList.scrollWidth > tabList.clientWidth + 1;
+      const isAtEnd = tabList.scrollLeft + tabList.clientWidth >= tabList.scrollWidth - 2;
+      contentShell.classList.toggle('has-tab-overflow', hasOverflow);
+      contentShell.classList.toggle('tabs-at-end', isAtEnd);
+    }
+    syncNavState(); window.addEventListener('scroll', syncNavState, { passive: true }); window.addEventListener('resize', syncNavState);
+    syncTabOverflow(); tabList.addEventListener('scroll', syncTabOverflow, { passive: true }); window.addEventListener('resize', syncTabOverflow);
+    menuToggle.addEventListener('click', () => { const isOpen = document.body.classList.toggle('nav-open'); menuToggle.setAttribute('aria-expanded', String(isOpen)); menuToggle.setAttribute('aria-label', isOpen ? '关闭导航菜单' : '打开导航菜单'); });
+    navLinks.forEach((link) => link.addEventListener('click', () => { document.body.classList.remove('nav-open'); menuToggle.setAttribute('aria-expanded', 'false'); }));
+    function activateTab(button) {
+      currentCategory = button.dataset.category;
+      tabButtons.forEach((item) => item.setAttribute('aria-selected', String(item === button)));
+      grid.setAttribute('aria-label', `${categoryNames[currentCategory]}列表`);
+      grid.setAttribute('aria-labelledby', button.id);
+      renderCourses();
+      if (window.matchMedia('(max-width: 760px)').matches) {
+        button.scrollIntoView({ block: 'nearest', inline: 'center', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+        window.requestAnimationFrame(syncTabOverflow);
+      }
+    }
+    tabButtons.forEach((button, index) => {
+      button.addEventListener('click', () => activateTab(button));
+      button.addEventListener('keydown', (event) => {
+        const keyMap = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1, Home: -index, End: tabButtons.length - index - 1 };
+        if (!(event.key in keyMap)) return;
+        event.preventDefault();
+        const nextIndex = (index + keyMap[event.key] + tabButtons.length) % tabButtons.length;
+        tabButtons[nextIndex].focus();
+        activateTab(tabButtons[nextIndex]);
+      });
+    });
+    searchForm.addEventListener('submit', (event) => { event.preventDefault(); renderCourses(); });
+    searchInput.addEventListener('input', renderCourses);
+    searchInput.addEventListener('search', renderCourses);
+    renderCourses();
+  </script>
+</body>
+</html>
