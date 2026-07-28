@@ -1,0 +1,62 @@
+{
+  "sourceFrameId": "26179:2",
+  "sourceFrameName": "1920w default",
+  "newFrameName": "1920w default · 规范化变量版",
+  "scope": "Document-wide removal of legacy local variables; source and other existing artboards retain resolved literals; only the normalized duplicate is rebound.",
+  "legacyCollectionsToRemove": [
+    "VariableCollectionId:26182:2",
+    "VariableCollectionId:26182:3",
+    "VariableCollectionId:26182:4"
+  ],
+  "normalizedCollection": "未来学习中心 / 规范化",
+  "normalizedCollectionId": "VariableCollectionId:26206:2",
+  "normalizedFrameId": "26206:730",
+  "naming": {
+    "variableNames": "Chinese hierarchical names",
+    "examples": ["间距/16", "圆角/全圆", "基础色/品牌/蓝色/500", "语义色/文字/主色"],
+    "unchangedWebCodeSyntax": true
+  },
+  "spacingValues": [0, 4, 8, 12, 16, 24, 28, 32, 40],
+  "radiusValues": [0, 4, 8, 16, 24, 30, 999],
+  "spacingFields": [
+    "itemSpacing",
+    "counterAxisSpacing",
+    "paddingTop",
+    "paddingRight",
+    "paddingBottom",
+    "paddingLeft"
+  ],
+  "mapping": {
+    "zero": 0,
+    "positive_0_to_6": 4,
+    "positive_6_to_10": 8,
+    "positive_10_to_14": 12,
+    "positive_14_to_20": 16,
+    "positive_20_to_26": 24,
+    "positive_26_to_30": 28,
+    "positive_30_to_36": 32,
+    "positive_36_to_under_50": 40,
+    "at_or_over_50": "Preserve the source value and remove the spacing-variable binding.",
+    "spaceBetween_under_50": "Keep automatic distribution; its non-rendered itemSpacing remains bound to spacing/0.",
+    "spaceBetween_at_or_over_50": "Preserve the source itemSpacing value and leave it unbound."
+  },
+  "verification": {
+    "collectionCount": 1,
+    "variableCount": 138,
+    "foundationColorVariables": 60,
+    "semanticColorVariables": 62,
+    "sourceVariableBindings": 0,
+    "duplicateAutoLayoutFieldsBound": 2220,
+    "duplicateRadiusFieldsBound": 1880,
+    "duplicateTextColorBindings": 205,
+    "duplicateSolidFillBindings": 264,
+    "duplicateStrokeBindings": 82,
+    "duplicateEffectColorBindings": 77,
+    "duplicateColorVisualMismatches": 0,
+    "largeSpacingValuesRestoredUnbound": 36,
+    "midSpacingValuesBoundTo40": 4,
+    "duplicateUnexpectedBindings": 0,
+    "duplicateOutOfScaleRadiusValues": 0
+  },
+  "connectorLimitation": "The current Figma connector exposes no setter for Variable.scopes, so these variables retain Figma's default ALL_SCOPES. Values, code syntax, bindings, and collection cleanup are complete."
+}

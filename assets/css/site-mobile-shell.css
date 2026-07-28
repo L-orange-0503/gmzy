@@ -1,0 +1,29 @@
+/* 全站共享：移动端二级页 Hero 与页脚壳层。 */
+@media (max-width: 760px) {
+  .secondary-hero {
+    min-height: 340px;
+  }
+  .secondary-hero .hero-inner {
+    width: calc(100% - 32px);
+    padding: 94px 0 34px;
+  }
+  .secondary-hero .hero-copy { width: min(100%, 440px); }
+  .secondary-hero .hero-kicker { margin-bottom: 8px; font-size: 12px; letter-spacing: .08em; }
+  .secondary-hero h1 { font-size: clamp(38px, 10.7vw, 44px); }
+  .secondary-hero .search-form { min-height: 52px; margin-top: 18px; }
+
+  .footer-inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+    row-gap: 28px;
+    width: calc(100% - 32px);
+    padding: 44px 0 32px;
+  }
+  .footer-inner > :first-child,
+  .footer-inner > :nth-child(4) { grid-column: 1 / -1; }
+  .footer-inner > :nth-child(2),
+  .footer-inner > :nth-child(3) { grid-column: auto; transform: none; }
+  .footer-bottom-inner { display: block; width: calc(100% - 32px); }
+  .footer-bottom-inner span { display: block; }
+  .footer-bottom-inner span + span { margin-top: 6px; }
+}

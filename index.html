@@ -107,7 +107,7 @@
     .brand {
       display: flex;
       align-items: center;
-      min-width: 520px;
+      min-width: 410px;
       flex: 0 0 auto;
       white-space: nowrap;
       overflow: hidden;
@@ -147,11 +147,21 @@
       position: relative;
     }
 
+    /* Keep the parent hovered while the pointer crosses the dropdown offset. */
+    .nav-item.has-submenu::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 12px;
+    }
+
     .nav-link {
       min-height: 40px;
       display: inline-flex;
       align-items: center;
-      padding: 0 14px;
+      padding: 0 8px;
       border-radius: var(--radius-pill);
       color: color-mix(in srgb, var(--ink) 78%, transparent);
       font-size: 16px;
@@ -175,6 +185,9 @@
       background: rgba(255, 255, 255, 0.18);
       color: #fff;
     }
+
+    .nav-link--static { cursor: default; }
+    .nav-link--static:hover { transform: none; }
 
     .submenu {
       position: absolute;
@@ -211,10 +224,31 @@
       white-space: nowrap;
     }
 
-    .submenu a:hover,
-    .submenu a:focus {
+    .submenu-static {
+      display: block;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      color: var(--ink);
+      cursor: default;
+      white-space: nowrap;
+    }
+
+    .submenu-static:hover {
       color: var(--theme);
       background: color-mix(in srgb, var(--theme) 9%, #fff);
+    }
+
+    .submenu a:hover,
+    .submenu a:focus,
+    .submenu a.active {
+      color: var(--theme);
+      background: color-mix(in srgb, var(--theme) 9%, #fff);
+    }
+
+    .nav-links a[href^="index.html#"],
+    .nav-links a[href^="#"]:not([href="#home"]) {
+      pointer-events: none;
+      cursor: default;
     }
 
     .nav-actions {
@@ -570,6 +604,12 @@
       background: #fff;
       border: 1px solid var(--line);
       box-shadow: var(--shadow-card);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .virtual-exhibition-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-float);
     }
 
     .virtual-exhibition-cover {
@@ -1221,7 +1261,38 @@
       }
 
       .brand { min-width: 410px; }
-      .nav-link { padding: 0 9px; font-size: 16px; }
+      .nav-link { padding: 0 8px; font-size: 16px; }
+    }
+
+    @media (max-width: 1400px) {
+      .nav { border-radius: 24px; }
+      .nav-links {
+        position: fixed;
+        left: 16px;
+        right: 16px;
+        top: 108px;
+        display: none;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        padding: 14px;
+        border-radius: 22px;
+        max-height: calc(100vh - 138px);
+        overflow-y: auto;
+        background: rgba(8, 42, 105, 0.92);
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        box-shadow: var(--shadow-float);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+
+      body.nav-open .nav-links { display: grid; }
+      .nav-link { min-height: 44px; justify-content: center; background: rgba(255, 255, 255, 0.08); color: #fff; }
+      .nav-item { width: 100%; }
+      .submenu { position: static; display: none; min-width: 0; margin-top: 8px; padding: 8px; border-radius: 16px; background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.14); box-shadow: none; opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
+      .nav-item.has-submenu:hover .submenu, .nav-item.has-submenu:focus-within .submenu, body.nav-open .submenu { display: grid; transform: none; }
+      .submenu a { color: rgba(255, 255, 255, 0.84); text-align: center; }
+      .submenu a:hover, .submenu a:focus, .submenu a.active { color: #fff; background: rgba(255, 255, 255, 0.12); }
+      .menu-toggle { display: inline-flex; }
     }
 
     @media (max-width: 1120px) {
@@ -1281,13 +1352,20 @@
         transform: none;
       }
 
-      .submenu a {
+      .submenu a,
+      .submenu-static {
         color: rgba(255, 255, 255, 0.84);
         text-align: center;
       }
 
       .submenu a:hover,
-      .submenu a:focus {
+      .submenu a:focus,
+      .submenu a.active {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .submenu-static:hover {
         color: #fff;
         background: rgba(255, 255, 255, 0.12);
       }
@@ -1468,25 +1546,18 @@
       }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-      }
-
-      .section-more::after {
-        background-image: url("./assets/generated-icons/more-gear-blue-static.png");
-      }
-
-    }
-  </style>
+    /* 首页模块的 GSAP 动画仅使用合成层友好的透明度与 transform 属性。 */
+    .home-motion-target { will-change: transform, opacity; }
+</style>
+  <link rel="stylesheet" href="./assets/css/site-navigation.css">
+  <link rel="stylesheet" href="./assets/css/site-mobile-shell.css">
+  <!-- Temporary Figma capture bridge; removed immediately after capture. -->
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳至主要内容</a>
 
-  <nav class="nav" aria-label="主导航">
+  <nav class="nav" aria-label="主导航" data-site-page="home">
     <a class="brand" href="#home" aria-label="成都工贸职业技术学院未来学习中心首页">
       <img class="brand-logo brand-logo-default" src="./assets/logos/future-learning-logo-default.png" alt="成都工贸职业技术学院 | 未来学习中心">
       <img class="brand-logo brand-logo-inverse" src="./assets/logos/future-learning-logo-inverse.png" alt="" aria-hidden="true">
@@ -1494,59 +1565,47 @@
     <div class="nav-links" id="site-nav">
       <div class="nav-item"><a class="nav-link active" href="#home">首页</a></div>
       <div class="nav-item has-submenu">
-        <a class="nav-link" href="#about">中心概况</a>
-        <div class="submenu" aria-label="中心概况二级菜单">
-          <a href="#about">中心简介</a>
-          <a href="#about">建设目标</a>
-          <a href="#about">空间导览</a>
-        </div>
-      </div>
-      <div class="nav-item has-submenu">
         <a class="nav-link" href="#major">专业建设</a>
-        <div class="submenu" aria-label="专业建设二级菜单">
+        <div class="submenu" aria-label="专业建设中心二级菜单">
+          <a href="#major">专业设置</a>
           <a href="#major">专业群建设</a>
-          <a href="#major">产业学院</a>
-          <a href="#major">师资团队</a>
+          <a href="#resource">专业资源库</a>
+          <a href="talent-training.html">人才培养方案</a>
+          <a href="#major">微专业</a>
+          <a href="#major">校企协同育人项目</a>
         </div>
       </div>
       <div class="nav-item has-submenu">
-        <a class="nav-link" href="course.html">课程建设</a>
-        <div class="submenu" aria-label="课程建设二级菜单">
-          <a href="#course">精品课程</a>
-          <a href="#course">课程思政</a>
-          <a href="#course">教学资源</a>
+        <a class="nav-link" href="#course">课程教学</a>
+        <div class="submenu" aria-label="课程教学中心二级菜单">
+          <a href="#course">思政门户</a>
+          <a href="course.html">课程中心</a>
         </div>
       </div>
       <div class="nav-item has-submenu">
-        <a class="nav-link" href="#simulation">虚拟仿真</a>
-        <div class="submenu" aria-label="虚拟仿真二级菜单">
-          <a href="#simulation">仿真项目</a>
-          <a href="#simulation">实训场景</a>
-          <a href="#simulation">运行数据</a>
+        <a class="nav-link" href="#resource">教材资源</a>
+        <div class="submenu" aria-label="教材资源中心二级菜单">
+          <a href="#resource">智能教学资源制作中心</a>
+          <a href="textbook-resources.html">教材资源库</a>
+          <a href="textbook-achievements.html">教材成果库</a>
         </div>
       </div>
+      <div class="nav-item"><a class="nav-link" href="teacher-development.html">教师发展</a></div>
       <div class="nav-item has-submenu">
-        <a class="nav-link" href="#resource">资源库</a>
-        <div class="submenu" aria-label="资源库二级菜单">
-          <a href="#resource">省级资源库</a>
-          <a href="#resource">校级资源库</a>
-          <a href="#resource">题库资源</a>
+        <a class="nav-link" href="#simulation">实践教学</a>
+        <div class="submenu" aria-label="实践教学中心二级菜单">
+          <a href="#simulation">毕业设计</a>
+          <a href="#simulation">实习实训</a>
+          <a href="#simulation">技能大赛</a>
+          <a href="#simulation">虚拟仿真</a>
         </div>
       </div>
+      <div class="nav-item"><a class="nav-link" href="#screen">教学大数据</a></div>
       <div class="nav-item has-submenu">
-        <a class="nav-link" href="#news">教务新闻</a>
-        <div class="submenu" aria-label="教务新闻二级菜单">
-          <a href="#news">新闻动态</a>
-          <a href="#news">教学成果</a>
-          <a href="#news">活动纪要</a>
-        </div>
-      </div>
-      <div class="nav-item has-submenu">
-        <a class="nav-link" href="#notice">教务通知</a>
-        <div class="submenu" aria-label="教务通知二级菜单">
-          <a href="#notice">通知公告</a>
-          <a href="#notice">项目申报</a>
-          <a href="#notice">平台服务</a>
+        <a class="nav-link" href="#quick">AI能力</a>
+        <div class="submenu" aria-label="AI能力中心二级菜单">
+          <a href="#quick">AI工具</a>
+          <a href="#quick">教师智能体成果</a>
         </div>
       </div>
     </div>
@@ -1600,7 +1659,7 @@
             <h2 class="section-title">专业建设</h2>
             <div class="section-kicker">Major Construction</div>
           </div>
-          <a class="section-more" href="#">查看更多</a>
+          <a class="section-more" href="textbook-resources.html">查看更多</a>
         </div>
         <div class="grid-4">
           <article class="major-card">
@@ -1967,6 +2026,9 @@
     </div>
   </footer>
 
+  <script src="./assets/js/site-navigation.js"></script>
+  <script src="./assets/vendor/gsap.min.js"></script>
+  <script src="./assets/vendor/ScrollTrigger.min.js"></script>
   <script>
     const nav = document.querySelector(".nav");
     const hero = document.querySelector(".hero");
@@ -1993,7 +2055,11 @@
     });
 
     navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
+      link.addEventListener("click", (event) => {
+        if ((link.getAttribute("href") || "").startsWith("#")) {
+          event.preventDefault();
+          return;
+        }
         document.body.classList.remove("nav-open");
         menuToggle.setAttribute("aria-expanded", "false");
       });
@@ -2009,6 +2075,74 @@
         tabPanels.forEach((panel) => panel.classList.toggle("active", panel === nextPanel));
       });
     });
+  </script>
+  <script>
+    (() => {
+      if (!window.gsap || !window.ScrollTrigger) return;
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const moduleSelectors = [
+        "#quick",
+        "#about",
+        "#major",
+        "#course",
+        "#simulation",
+        "#resource",
+        "#news",
+        "#screen",
+        ".footer"
+      ];
+
+      const heroContent = document.querySelector(".hero-inner");
+      if (heroContent) {
+        heroContent.classList.add("home-motion-target");
+        gsap.from(heroContent.children, {
+          autoAlpha: 0,
+          y: 20,
+          duration: 0.72,
+          ease: "power2.out",
+          stagger: 0.12,
+          clearProps: "transform,visibility,opacity"
+        });
+
+        gsap.to(heroContent, {
+          autoAlpha: 0,
+          y: -18,
+          duration: 0.45,
+          ease: "power1.out",
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: ".hero",
+            start: "bottom 62%",
+            end: "bottom top",
+            toggleActions: "play none none reverse"
+          }
+        });
+      }
+
+      moduleSelectors.forEach((selector) => {
+        document.querySelectorAll(selector).forEach((module) => {
+          module.classList.add("home-motion-target");
+          gsap.fromTo(module,
+            { autoAlpha: 0, y: 28 },
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.62,
+              ease: "power2.out",
+              overwrite: "auto",
+              scrollTrigger: {
+                trigger: module,
+                start: "top 85%",
+                end: "bottom 15%",
+                toggleActions: "play reverse play reverse"
+              }
+            }
+          );
+        });
+      });
+    })();
   </script>
 </body>
 </html>

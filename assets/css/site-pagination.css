@@ -1,0 +1,45 @@
+/* 全站共享：二级页静态分页组件。 */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.page-number,
+.page-arrow {
+  display: inline-grid;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--muted);
+  background: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  transition: transform .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.page-number.current {
+  border-color: transparent;
+  color: #fff;
+  background: linear-gradient(135deg, var(--theme), var(--theme-2));
+  box-shadow: 0 8px 18px rgb(23 107 219 / 22%);
+}
+
+.page-number:not(.current):hover,
+.page-arrow:not(:disabled):hover {
+  border-color: rgb(23 107 219 / 34%);
+  color: var(--theme);
+  background: #f6faff;
+  box-shadow: 0 9px 19px rgb(23 107 219 / 13%);
+  transform: translateY(-2px);
+}
+
+.page-arrow { color: #8ea8c5; background: #f7faff; }
+.page-arrow:disabled { cursor: not-allowed; opacity: .43; box-shadow: none; }
+.page-arrow svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.page-ellipsis { min-width: 24px; color: var(--muted); text-align: center; font-weight: 400; }

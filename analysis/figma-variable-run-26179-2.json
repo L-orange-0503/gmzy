@@ -1,0 +1,37 @@
+{
+  "runId": "flc-variables-26179-2",
+  "fileKey": "25bKsIYhvyljTi4fTpXhDj",
+  "pageId": "26113:355",
+  "targetNodeId": "26179:2",
+  "phase": "phase4",
+  "entities": {
+    "collections": {
+      "primitives": "VariableCollectionId:26182:2",
+      "color": "VariableCollectionId:26182:3",
+      "layout": "VariableCollectionId:26182:4"
+    },
+    "variables": {
+      "primitiveCount": 118,
+      "semanticColorCount": 38,
+      "layoutCount": 81
+    },
+    "effectStyles": {
+      "cardSoft": "S:b8607d449be2a7eb2086bd59558e9c2b2808c634,",
+      "brandEmphasis": "S:0ae8ffcdcc85c35cf1d0f061523befd68f5f66e8,",
+      "brandLight": "S:5087b829152180fd889a103669c9e19cb762a98c,",
+      "decorationOffset": "S:161966177d71c50d4d8987b280ec8c4c9959ed27,",
+      "glassLink": "S:37a8d330c1c40f8ca7b82b92af7063a89c337143,",
+      "mediaCard": "S:6f511d18c9b18f66c40cf865652db18a2edb09ec,"
+    }
+  },
+  "completedSteps": ["P0.a", "P0.b", "P0.c", "P0.d", "P0.e", "P0.f", "P1.a", "P1.b", "P1.c", "P1.d", "P1.e", "P1.f", "P1.g", "P1.h", "P4.a", "P4.b", "P4.c", "P4.d", "P4.e"],
+  "validation": {
+    "textSolidPaints": "205/205 bound",
+    "nonTextSolidFills": "59/59 bound",
+    "solidStrokes": "82/82 bound",
+    "layoutProperties": "2220/2220 bound",
+    "radii": "97/97 bound",
+    "effectStyles": "68/68 bound",
+    "visualVerification": "passed"
+  }
+}
