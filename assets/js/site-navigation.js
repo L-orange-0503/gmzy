@@ -1,4 +1,8 @@
 (() => {
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) window.location.reload();
+  });
+
   const siteNav = document.querySelector('#site-nav');
   const nav = document.querySelector('.nav');
   if (!siteNav || !nav) return;
@@ -24,13 +28,13 @@
 
   const navigation = [
     { key: 'home', label: '首页', href: toHomeSection('home'), hasPage: true },
-    { key: 'major', label: '专业建设', submenuLabel: '专业建设中心二级菜单', children: [['专业设置'], ['专业群建设'], ['专业资源库'], ['人才培养方案', 'talent-training.html', 'talent-training'], ['微专业'], ['校企协同育人项目']] },
-    { key: 'course', label: '课程教学', submenuLabel: '课程教学中心二级菜单', children: [['思政门户'], ['课程中心', 'course.html', 'course']] },
-    { key: 'resource', label: '教材资源', submenuLabel: '教材资源中心二级菜单', children: [['智能教学资源制作中心'], ['教材资源库', 'textbook-resources.html', 'textbook-resources'], ['教材成果库', 'textbook-achievements.html', 'textbook']] },
-    { key: 'teacher', label: '教师发展', href: 'teacher-development.html', hasPage: true },
-    { key: 'practice', label: '实践教学', submenuLabel: '实践教学中心二级菜单', children: [['毕业设计'], ['实习实训'], ['技能大赛'], ['虚拟仿真']] },
-    { key: 'data', label: '教学大数据' },
-    { key: 'ai', label: 'AI能力', submenuLabel: 'AI能力中心二级菜单', children: [['AI工具'], ['教师智能体成果']] }
+    { key: 'major', label: '专业建设中心', submenuLabel: '专业建设中心二级菜单', children: [['专业设置'], ['专业群建设'], ['专业资源库'], ['人才培养方案', 'talent-training.html', 'talent-training'], ['微专业'], ['校企协同育人项目']] },
+    { key: 'course', label: '课程教学中心', submenuLabel: '课程教学中心二级菜单', children: [['思政门户'], ['课程中心', 'course.html', 'course']] },
+    { key: 'resource', label: '教材资源中心', submenuLabel: '教材资源中心二级菜单', children: [['智能教学资源制作中心'], ['教材资源库', 'textbook-resources.html', 'textbook-resources'], ['教材成果库', 'textbook-achievements.html', 'textbook']] },
+    { key: 'teacher', label: '教师发展中心', href: 'teacher-development.html', hasPage: true },
+    { key: 'practice', label: '实践教学中心', submenuLabel: '实践教学中心二级菜单', children: [['毕业设计'], ['实习实训'], ['技能大赛'], ['虚拟仿真']] },
+    { key: 'data', label: '教学大数据中心' },
+    { key: 'ai', label: 'AI能力中心', submenuLabel: 'AI能力中心二级菜单', children: [['AI工具'], ['教师智能体成果']] }
   ];
 
   const activeGroup = page === 'textbook' || page === 'textbook-resources'

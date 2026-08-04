@@ -119,7 +119,7 @@
     .course-hero::after { content: ""; position: absolute; inset: auto 0 0; z-index: 0; height: 94px; pointer-events: none; background: linear-gradient(180deg, transparent, rgb(200 226 251 / 12%)); }
     .hero-inner { position: relative; z-index: 1; width: min(1440px, calc(100% - 48px)); margin: 0 auto; padding: 140px 0 66px; }
     .hero-copy { width: min(540px, 48%); }
-    .hero-kicker { display: block; margin-bottom: 12px; color: color-mix(in srgb, var(--theme) 57%, #9db9dc); font-size: 15px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .hero-kicker { display: block; margin: 12px 0 0; color: color-mix(in srgb, var(--theme) 57%, #9db9dc); font-size: 15px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
     h1 { margin: 0; color: transparent; background: linear-gradient(135deg, #0b4fab 4%, #176bdb 47%, #20a7ea 100%); -webkit-background-clip: text; background-clip: text; font: 900 clamp(48px, 4.5vw, 64px) / 1.06 var(--font-display); filter: drop-shadow(0 8px 18px rgb(255 255 255 / 62%)); }
     .search-form { display: flex; align-items: stretch; width: min(500px, 100%); min-height: 54px; margin-top: 34px; padding: 5px; border: 1px solid rgb(255 255 255 / 82%); border-radius: var(--radius-pill); background: rgb(255 255 255 / 88%); box-shadow: 0 6px 8px rgb(22 81 164 / 10%); transition: border-color .2s ease, box-shadow .2s ease; }
     .search-form:focus-within { border-color: rgb(23 107 219 / 64%); box-shadow: 0 6px 8px rgb(22 81 164 / 14%); }
@@ -235,7 +235,7 @@
     }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
 </style>
-  <link rel="stylesheet" href="./assets/css/site-navigation.css">
+  <link rel="stylesheet" href="./assets/css/site-navigation.css?v=20260804-1249">
   <link rel="stylesheet" href="./assets/css/site-mobile-shell.css">
   <link rel="stylesheet" href="./assets/css/site-pagination.css">
 </head>
@@ -263,8 +263,8 @@
   <header class="course-hero secondary-hero" id="home">
     <div class="hero-inner">
       <div class="hero-copy">
-        <span class="hero-kicker">Course Teaching Center</span>
         <h1>课程教学中心</h1>
+        <span class="hero-kicker">Course Teaching Center</span>
         <form class="search-form" id="course-search" role="search">
           <label class="sr-only" for="course-keyword">课程关键词检索</label>
           <input id="course-keyword" type="search" placeholder="请输入关键词" autocomplete="off">
@@ -299,7 +299,7 @@
     <div class="footer-bottom"><div class="footer-bottom-inner"><span>© 2026 成都工贸职业技术学院 未来学习中心</span><span>智慧教学 · 数字资源 · 技能成长</span></div></div>
   </footer>
 
-  <script src="./assets/js/site-navigation.js"></script>
+  <script src="./assets/js/site-navigation.js?v=20260804-1249"></script>
   <script>
     const nav = document.querySelector('.nav');
     const hero = document.querySelector('.course-hero');

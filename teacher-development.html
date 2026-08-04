@@ -42,6 +42,7 @@
 
     .skip-link { position: fixed; z-index: 100; top: -80px; left: 16px; padding: 10px 14px; border-radius: var(--radius-pill); color: var(--theme); background: #fff; box-shadow: var(--shadow-soft); transition: top .2s ease; }
     .skip-link:focus { top: 16px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
 
     /* 与首页一致的共享导航外观；菜单内容由 site-navigation.js 单一生成。 */
     .nav { position: fixed; z-index: 40; top: 24px; left: 50%; display: flex; width: min(1440px, calc(100% - 48px)); min-height: 84px; align-items: center; gap: 18px; padding: 12px 22px 12px 24px; transform: translateX(-50%); border: 1px solid rgb(255 255 255 / 76%); border-radius: var(--radius-pill); color: var(--ink); background: rgb(255 255 255 / 82%); box-shadow: 0 18px 48px rgb(7 54 125 / 18%); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); transition: background .24s ease, color .24s ease, border-color .24s ease, box-shadow .24s ease; }
@@ -81,8 +82,16 @@
     .teacher-hero::after { position: absolute; z-index: 0; right: 0; bottom: 0; left: 0; height: 94px; content: ""; pointer-events: none; background: linear-gradient(180deg, transparent, rgb(200 226 251 / 13%)); }
     .hero-inner { position: relative; z-index: 1; width: min(1440px, calc(100% - 48px)); margin: 0 auto; padding: 152px 0 70px; }
     .hero-copy { width: min(520px, 46%); }
-    .hero-kicker { display: block; margin-bottom: 12px; color: color-mix(in srgb, var(--theme) 58%, #8daecc); font-size: 15px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .hero-kicker { display: block; margin: 12px 0 0; color: color-mix(in srgb, var(--theme) 58%, #8daecc); font-size: 15px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
     h1 { margin: 0; color: transparent; background: linear-gradient(135deg, #0b4fab 4%, #176bdb 47%, #20a7ea 100%); -webkit-background-clip: text; background-clip: text; font: 900 clamp(48px, 4.5vw, 64px) / 1.06 var(--font-display); filter: drop-shadow(0 8px 18px rgb(255 255 255 / 62%)); }
+    .search-form { display: flex; align-items: stretch; width: min(500px, 100%); min-height: 54px; margin-top: 26px; padding: 5px; border: 1px solid rgb(255 255 255 / 82%); border-radius: var(--radius-pill); background: rgb(255 255 255 / 88%); box-shadow: 0 6px 8px rgb(22 81 164 / 10%); transition: border-color .2s ease, box-shadow .2s ease; }
+    .search-form:focus-within { border-color: rgb(23 107 219 / 64%); box-shadow: 0 6px 8px rgb(22 81 164 / 14%); }
+    .search-form input { min-width: 0; flex: 1; padding: 0 16px; border: 0; outline: 0; box-shadow: none; color: var(--ink); background: transparent; font-size: 16px; }
+    .search-form input:focus, .search-form input:focus-visible { outline: 0; box-shadow: none; }
+    .search-form input::placeholder { color: #7285a1; }
+    .search-button { min-width: 96px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; flex: 0 0 auto; padding: 0 16px; border: 0; border-radius: var(--radius-pill); color: #fff; background: linear-gradient(135deg, var(--theme), var(--theme-2)); box-shadow: 0 5px 8px rgb(23 107 219 / 22%); font-size: 15px; font-weight: 800; transition: transform .2s ease, box-shadow .2s ease; }
+    .search-button:hover { transform: translateY(-1px); box-shadow: 0 7px 8px rgb(23 107 219 / 28%); }
+    .search-button svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
 
     main { position: relative; padding: 62px 0 60px; isolation: isolate; background: radial-gradient(ellipse 42rem 30rem at 10% 78%, rgb(34 163 238 / 28%), transparent 72%), radial-gradient(ellipse 38rem 28rem at 91% 67%, rgb(69 151 255 / 22%), transparent 72%), linear-gradient(180deg, #fff, #fbfdff); }
     .content-shell { width: min(1440px, calc(100% - 48px)); margin: 0 auto; }
@@ -123,6 +132,8 @@
       .hero-copy { width: min(100%, 440px); }
       .hero-kicker { font-size: 12px; letter-spacing: .08em; }
       h1 { font-size: clamp(38px, 10.7vw, 44px); }
+      .search-form { min-height: 52px; margin-top: 20px; }
+      .search-button { min-width: 86px; padding: 0 13px; }
       main { padding: 38px 0 52px; }
       .content-shell { width: calc(100% - 32px); }
       .resource-layout { grid-template-columns: 1fr; gap: 18px; }
@@ -145,7 +156,7 @@
     }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
   </style>
-  <link rel="stylesheet" href="./assets/css/site-navigation.css">
+  <link rel="stylesheet" href="./assets/css/site-navigation.css?v=20260804-1249">
   <link rel="stylesheet" href="./assets/css/site-mobile-shell.css">
   <link rel="stylesheet" href="./assets/css/site-pagination.css">
 </head>
@@ -161,7 +172,7 @@
   </nav>
 
   <header class="teacher-hero secondary-hero" id="home">
-    <div class="hero-inner"><div class="hero-copy"><span class="hero-kicker">Teacher Development Center</span><h1>教师发展中心</h1></div></div>
+    <div class="hero-inner"><div class="hero-copy"><h1>教师发展中心</h1><span class="hero-kicker">Teacher Development Center</span><form class="search-form" id="teacher-search" role="search"><label class="sr-only" for="teacher-keyword">教师发展课程关键词检索</label><input id="teacher-keyword" type="search" placeholder="请输入关键词" autocomplete="off"><button class="search-button" type="submit" aria-label="搜索教师发展课程"><span>搜索</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.2 4.2"></path></svg></button></form></div></div>
   </header>
 
   <main id="main">
@@ -194,16 +205,26 @@
     <div class="footer-inner"><div><img class="footer-logo" src="./assets/logos/future-learning-logo-inverse.png" alt="成都工贸职业技术学院 | 未来学习中心"><p>服务专业建设、课程建设、资源建设和智慧教学运行，支撑高素质技术技能人才培养。</p></div><div><h3>平台应用</h3><div class="footer-links"><a href="index.html#quick">快捷入口</a><a href="course.html">课程中心</a><a href="index.html#resource">专业资源库</a></div></div><div><h3>建设中心</h3><div class="footer-links"><a href="index.html#major">专业建设</a><a href="index.html#simulation">虚拟仿真</a><a href="index.html#screen">数据大屏</a></div></div><div><h3>服务支持</h3><p>教务处与未来学习中心联合维护</p><p>工作日 09:00-17:00</p></div></div>
     <div class="footer-bottom"><div class="footer-bottom-inner"><span>© 2026 成都工贸职业技术学院 未来学习中心</span><span>智慧教学 · 数字资源 · 技能成长</span></div></div>
   </footer>
-  <script src="./assets/js/site-navigation.js"></script>
+  <script src="./assets/js/site-navigation.js?v=20260804-1249"></script>
   <script>
     (() => {
       const nav = document.querySelector('.nav');
       const hero = document.querySelector('.teacher-hero');
       const toggle = document.querySelector('.menu-toggle');
+      const searchForm = document.querySelector('#teacher-search');
+      const searchInput = document.querySelector('#teacher-keyword');
+      const courseCards = [...document.querySelectorAll('.course-card')];
       const syncNavState = () => nav.classList.toggle('is-past-hero', hero.getBoundingClientRect().bottom <= nav.getBoundingClientRect().bottom);
       syncNavState();
       addEventListener('scroll', syncNavState, { passive: true });
       toggle.addEventListener('click', () => { const opened = document.body.classList.toggle('nav-open'); toggle.setAttribute('aria-expanded', String(opened)); });
+      const filterCourses = () => {
+        const keyword = searchInput.value.trim().toLowerCase();
+        courseCards.forEach((card) => { card.hidden = Boolean(keyword) && !card.textContent.toLowerCase().includes(keyword); });
+      };
+      searchForm.addEventListener('submit', (event) => { event.preventDefault(); filterCourses(); });
+      searchInput.addEventListener('input', filterCourses);
+      searchInput.addEventListener('search', filterCourses);
     })();
   </script>
 </body>
