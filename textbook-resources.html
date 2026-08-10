@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="成都工贸职业技术学院未来学习中心教材资源库。">
+  <title>教材资源库 | 成都工贸职业技术学院未来学习中心</title>
+  <style>
+    :root { --theme:#176bdb; --theme-2:#19a7e8; --theme-3:#0c4ca3; --surface:#f3f8ff; --surface-2:#eaf4ff; --ink:#172033; --muted:#65738a; --line:rgb(23 107 219 / 14%); --white:#fff; --radius-md:14px; --radius-lg:18px; --radius-xl:24px; --radius-pill:999px; --shadow-soft:0 8px 24px rgb(31 64 115 / 8%); --shadow-card:0 14px 40px rgb(25 85 170 / 10%); --font-body:"SF Pro Display", "Helvetica Neue", Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; --font-display:"Alibaba PuHuiTi 3.0", "PingFang SC", "Microsoft YaHei", sans-serif; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; overflow-x:hidden; color:var(--ink); background:linear-gradient(180deg, var(--surface), #fff 38rem); font-family:var(--font-body); }
+    body.nav-open { overflow:hidden; }
+    a { color:inherit; text-decoration:none; }
+    img { max-width:100%; }
+    :focus-visible { outline:3px solid rgb(255 215 102 / 82%); outline-offset:3px; }
+    .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; }
+    .skip-link { position:fixed; z-index:100; top:-80px; left:16px; padding:10px 14px; border-radius:var(--radius-pill); color:var(--theme); background:#fff; box-shadow:var(--shadow-soft); transition:top .2s ease; }
+    .skip-link:focus { top:16px; }
+
+    .nav { position:fixed; z-index:40; top:24px; left:50%; display:flex; width:min(1440px, calc(100% - 48px)); min-height:84px; align-items:center; gap:18px; padding:12px 22px 12px 24px; transform:translateX(-50%); border:1px solid rgb(255 255 255 / 76%); border-radius:var(--radius-pill); color:var(--ink); background:rgb(255 255 255 / 82%); box-shadow:0 18px 48px rgb(7 54 125 / 18%); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); transition:background .24s ease, color .24s ease, border-color .24s ease; }
+    .nav.is-past-hero { border-color:rgb(255 255 255 / 30%); color:#fff; background:linear-gradient(90deg, color-mix(in srgb, var(--theme) 78%, transparent), color-mix(in srgb, var(--theme) 58%, transparent)), rgb(4 34 88 / 22%); }
+    .brand { display:flex; min-width:410px; align-items:center; flex:0 0 auto; overflow:hidden; white-space:nowrap; }
+    .brand-logo { display:block; width:auto; height:42px; object-fit:contain; }
+    .brand-logo-inverse { display:none; }
+    .nav.is-past-hero .brand-logo-default { display:none; }
+    .nav.is-past-hero .brand-logo-inverse { display:block; }
+    .nav-links { display:flex; min-width:0; align-items:center; justify-content:flex-end; gap:4px; margin-left:auto; }
+    .nav-item { position:relative; }
+    .nav-item.has-submenu::after { position:absolute; top:100%; left:0; width:100%; height:12px; content:""; }
+    .nav-link { display:inline-flex; min-height:40px; align-items:center; padding:0 8px; border-radius:var(--radius-pill); color:color-mix(in srgb, var(--ink) 78%, transparent); font-size:16px; white-space:nowrap; transition:background .2s ease, color .2s ease, transform .2s ease; }
+    .nav-link:hover, .nav-link.active { color:var(--theme); background:color-mix(in srgb, var(--theme) 12%, transparent); transform:translateY(-1px); }
+    .nav.is-past-hero .nav-link { color:rgb(255 255 255 / 88%); }
+    .nav.is-past-hero .nav-link:hover, .nav.is-past-hero .nav-link.active { color:#fff; background:rgb(255 255 255 / 18%); }
+    .nav-link--static { cursor:default; }
+    .nav-link--static:hover { transform:none; }
+    .submenu { position:absolute; z-index:20; top:calc(100% + 12px); left:50%; min-width:172px; padding:10px; transform:translateX(-50%) translateY(8px); border:1px solid rgb(255 255 255 / 78%); border-radius:var(--radius-lg); color:var(--ink); visibility:hidden; pointer-events:none; opacity:0; background:rgb(255 255 255 / 96%); box-shadow:var(--shadow-card); transition:opacity .18s ease, transform .18s ease, visibility .18s ease; }
+    .nav-item.has-submenu:hover .submenu, .nav-item.has-submenu:focus-within .submenu { visibility:visible; pointer-events:auto; opacity:1; transform:translateX(-50%) translateY(0); }
+    .submenu a, .submenu-static { display:block; padding:10px 12px; border-radius:10px; white-space:nowrap; }
+    .submenu-static { cursor:default; }
+    .submenu a:hover, .submenu a:focus, .submenu a.active, .submenu-static:hover { color:var(--theme); background:color-mix(in srgb, var(--theme) 9%, #fff); }
+    .nav-actions { display:flex; align-items:center; gap:10px; flex:0 0 auto; }
+    .login { display:inline-flex; min-height:42px; align-items:center; justify-content:center; padding:0 20px; border:1px solid color-mix(in srgb, var(--theme) 18%, transparent); border-radius:var(--radius-pill); color:var(--theme); background:color-mix(in srgb, var(--theme) 9%, #fff); box-shadow:0 8px 24px rgb(6 45 102 / 16%); font-weight:800; }
+    .nav.is-past-hero .login { border-color:rgb(255 255 255 / 32%); color:#fff; background:rgb(255 255 255 / 18%); }
+    .menu-toggle { display:none; width:42px; height:42px; align-items:center; justify-content:center; flex-direction:column; gap:5px; border:1px solid rgb(255 255 255 / 32%); border-radius:50%; color:var(--theme); background:color-mix(in srgb, var(--theme) 9%, #fff); cursor:pointer; }
+    .nav.is-past-hero .menu-toggle { color:#fff; background:rgb(255 255 255 / 14%); }
+    .menu-toggle span { width:18px; height:2px; border-radius:2px; background:currentColor; transition:transform .22s ease, opacity .22s ease; }
+    body.nav-open .menu-toggle span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    body.nav-open .menu-toggle span:nth-child(2) { opacity:0; }
+    body.nav-open .menu-toggle span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+    .resource-hero { position:relative; display:flex; min-height:500px; align-items:center; isolation:isolate; overflow:hidden; background:#e7f1ff url("./assets/hero/textbook-achievements-hero-v2.jpg") center / cover no-repeat; }
+    .resource-hero::before { position:absolute; z-index:0; inset:0; content:""; pointer-events:none; background:radial-gradient(ellipse 34rem 28rem at -12% 18%, rgb(12 76 163 / 22%), transparent 64%), linear-gradient(90deg, rgb(23 107 219 / 22%) 0%, rgb(25 167 232 / 10%) 27%, rgb(238 247 255 / 10%) 48%, transparent 68%); }
+    .hero-inner { position:relative; z-index:1; width:min(1440px, calc(100% - 48px)); margin:0 auto; padding:152px 0 70px; }
+    .hero-copy { width:min(560px, 46%); }
+    h1 { margin:0; color:transparent; background:linear-gradient(135deg, #0b4fab 4%, #176bdb 47%, #20a7ea 100%); -webkit-background-clip:text; background-clip:text; font:900 clamp(48px, 4.5vw, 64px) / 1.06 var(--font-display); filter:drop-shadow(0 8px 18px rgb(255 255 255 / 62%)); }
+    .hero-translation { margin:14px 0 0; color:color-mix(in srgb, var(--theme) 64%, #6d91b7); font-size:15px; font-weight:800; letter-spacing:.11em; line-height:1.3; text-transform:uppercase; }
+    .search-form { display:flex; align-items:stretch; width:min(500px, 100%); min-height:54px; margin-top:28px; padding:5px; border:1px solid rgb(255 255 255 / 82%); border-radius:var(--radius-pill); background:rgb(255 255 255 / 88%); box-shadow:0 6px 8px rgb(22 81 164 / 10%); transition:border-color .2s ease, box-shadow .2s ease; }
+    .search-form:focus-within { border-color:rgb(23 107 219 / 64%); box-shadow:0 8px 18px rgb(22 81 164 / 14%); }
+    .search-form input { min-width:0; flex:1; padding:0 16px; border:0; outline:0; color:var(--ink); background:transparent; font:inherit; font-size:16px; }
+    .search-form input::placeholder { color:#7285a1; }
+    .search-button { display:inline-flex; min-width:96px; align-items:center; justify-content:center; gap:6px; padding:0 16px; border:0; border-radius:var(--radius-pill); color:#fff; background:linear-gradient(135deg, var(--theme), var(--theme-2)); box-shadow:0 5px 8px rgb(23 107 219 / 22%); font-size:15px; font-weight:800; cursor:pointer; transition:transform .2s ease, box-shadow .2s ease; }
+    .search-button:hover { box-shadow:0 7px 14px rgb(23 107 219 / 28%); transform:translateY(-1px); }
+
+    main { position:relative; isolation:isolate; padding:64px 0 78px; overflow:hidden; background:radial-gradient(ellipse 42rem 30rem at 10% 70%, rgb(34 163 238 / 26%), transparent 72%), radial-gradient(ellipse 38rem 28rem at 91% 67%, rgb(69 151 255 / 18%), transparent 72%), linear-gradient(180deg, #fff 0, #fbfdff 100%); }
+    .content-shell { width:min(1440px, calc(100% - 48px)); margin:0 auto; }
+    .resource-section + .resource-section { margin-top:78px; }
+    .section-heading { display:flex; min-height:48px; align-items:center; justify-content:space-between; gap:24px; margin-bottom:28px; }
+    .section-heading h2 { position:relative; margin:0; padding-left:36px; color:var(--ink); font:900 clamp(28px, 2.6vw, 38px) / 1.2 var(--font-display); }
+    .section-heading h2::before { position:absolute; top:50%; left:0; width:18px; height:18px; content:""; border-radius:4px; background:linear-gradient(135deg, var(--theme), var(--theme-2)); box-shadow:8px 8px 0 rgb(25 167 232 / 18%); transform:translateY(-50%); }
+    .more-button { display:inline-flex; min-height:48px; align-items:center; justify-content:center; gap:8px; padding:0 18px; border:1px solid rgb(23 107 219 / 15%); border-radius:var(--radius-pill); color:var(--theme-3); background:rgb(255 255 255 / 70%); box-shadow:var(--shadow-soft); font-size:15px; font-weight:800; white-space:nowrap; transition:color .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease, transform .2s ease; }
+    .more-button::after, .detail-link::after { width:8px; height:8px; content:""; border-top:2px solid currentColor; border-right:2px solid currentColor; transform:rotate(45deg); }
+    .more-button:hover { border-color:rgb(23 107 219 / 34%); color:var(--theme); background:#f6faff; box-shadow:0 9px 19px rgb(23 107 219 / 13%); transform:translateY(-2px); }
+    .planned-grid { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:24px; }
+    .planned-card { display:flex; overflow:hidden; border:1px solid var(--line); border-radius:var(--radius-lg); background:linear-gradient(135deg, rgb(255 255 255 / 98%), rgb(246 250 255 / 96%)); box-shadow:0 6px 16px rgb(31 64 115 / 6%); transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease; }
+    .planned-card:hover { border-color:rgb(23 107 219 / 28%); box-shadow:var(--shadow-card); transform:translateY(-4px); }
+    .planned-card-inner { display:flex; flex:1; gap:20px; padding:20px; }
+    .book-cover { position:relative; align-self:flex-start; flex:0 0 142px; aspect-ratio:3 / 4; overflow:hidden; border-radius:var(--radius-md); background:var(--surface-2); }
+    .book-cover::after { position:absolute; inset:0; content:""; pointer-events:none; background:linear-gradient(180deg, transparent 55%, rgb(6 40 91 / 28%)); }
+    .book-cover img { display:block; width:100%; height:100%; object-fit:cover; transition:transform .28s ease; }
+    .planned-card:hover .book-cover img { transform:scale(1.04); }
+    .planned-body { display:flex; min-width:0; flex:1; flex-direction:column; padding:3px 0; }
+    .planned-body h3 { margin:0 0 12px; color:var(--ink); font-size:18px; font-weight:900; line-height:1.38; transition:color .22s ease; }
+    .planned-card:hover h3 { color:var(--theme); }
+    .planned-body p { display:-webkit-box; margin:0; overflow:hidden; color:var(--muted); font-size:14px; line-height:1.75; -webkit-box-orient:vertical; -webkit-line-clamp:3; }
+    .detail-link { display:inline-flex; min-height:44px; align-items:center; gap:8px; margin-top:auto; padding-top:16px; color:var(--theme); font-size:14px; font-weight:800; }
+    .reference-list { overflow:hidden; padding:24px 40px; border:1px solid var(--line); border-radius:var(--radius-xl); background:rgb(255 255 255 / 84%); box-shadow:var(--shadow-soft); }
+    .reference-item { display:grid; grid-template-columns:minmax(0, 1fr) auto; align-items:center; gap:20px; min-height:70px; border-bottom:1px solid rgb(23 107 219 / 10%); transition:background .2s ease, color .2s ease; }
+    .reference-item:last-child { border-bottom:0; }
+    .reference-item:hover { color:var(--theme); background:linear-gradient(90deg, transparent 0%, rgb(23 107 219 / 5%) 7%, rgb(23 107 219 / 5%) 93%, transparent 100%); }
+    .reference-title { display:flex; min-width:0; align-items:center; gap:12px; }
+    .reference-item h3 { min-width:0; margin:0; overflow:hidden; font-size:16px; font-weight:800; line-height:1.5; text-overflow:ellipsis; white-space:nowrap; }
+    .resource-tag { display:inline-flex; min-height:28px; align-items:center; justify-content:center; flex:0 0 auto; padding:0 10px; border-radius:var(--radius-pill); font-size:12px; font-weight:800; white-space:nowrap; }
+    .tag-selection { color:#086b64; background:rgb(68 215 196 / 16%); }
+    .tag-warning { color:#8a5c00; background:rgb(255 215 102 / 28%); }
+    .tag-policy { color:var(--theme-3); background:rgb(23 107 219 / 10%); }
+    .reference-date { color:var(--muted); font-size:14px; font-variant-numeric:tabular-nums; white-space:nowrap; }
+    .footer { position:relative; isolation:isolate; overflow:hidden; color:rgb(255 255 255 / 82%); background:radial-gradient(circle at 10% 0%, rgb(68 215 196 / 18%), transparent 28rem), linear-gradient(135deg, #06285f, #0a4b9f 48%, #09346c); }
+    .footer::before { position:absolute; z-index:0; inset:0; content:""; pointer-events:none; opacity:.12; background:url("./assets/generated-backgrounds/footer-campus-overlay.png") center / cover no-repeat; }
+    .footer-inner { position:relative; z-index:1; display:grid; width:min(1440px, calc(100% - 48px)); grid-template-columns:1.5fr repeat(3, 1fr); column-gap:80px; row-gap:34px; margin:0 auto; padding:54px 0 42px; }
+    .footer-inner > :nth-child(2) { transform:translateX(160px); }
+    .footer-inner > :nth-child(3) { transform:translateX(80px); }
+    .footer h3 { margin:0 0 16px; color:#fff; font-size:16px; line-height:1.35; }
+    .footer-logo { display:block; width:auto; height:40px; margin:0 0 18px; object-fit:contain; }
+    .footer p, .footer a { margin:0; color:rgb(255 255 255 / 74%); font-size:14px; line-height:1.8; }
+    .footer-links { display:grid; gap:8px; }
+    .footer-bottom { position:relative; z-index:1; border-top:1px solid rgb(255 255 255 / 16%); }
+    .footer-bottom-inner { display:flex; width:min(1440px, calc(100% - 48px)); justify-content:space-between; gap:18px; margin:0 auto; padding:18px 0; color:rgb(255 255 255 / 66%); font-size:13px; }
+    @media (prefers-reduced-motion:reduce) { *, *::before, *::after { scroll-behavior:auto !important; transition-duration:.01ms !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; } }
+  </style>
+  <link rel="stylesheet" href="./assets/css/site-navigation.css?v=20260804-1249">
+  <link rel="stylesheet" href="./assets/css/site-mobile-shell.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳至主要内容</a>
+  <nav class="nav" aria-label="主导航" data-site-page="textbook-resources">
+    <a class="brand" href="index.html" aria-label="成都工贸职业技术学院未来学习中心首页"><img class="brand-logo brand-logo-default" src="./assets/logos/future-learning-logo-default.png" alt="成都工贸职业技术学院 | 未来学习中心"><img class="brand-logo brand-logo-inverse" src="./assets/logos/future-learning-logo-inverse.png" alt="" aria-hidden="true"></a>
+    <div class="nav-links" id="site-nav"></div>
+    <div class="nav-actions"><a class="login" href="index.html#login">登录</a><button class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button></div>
+  </nav>
+
+  <header class="resource-hero secondary-hero" id="home"><div class="hero-inner"><div class="hero-copy"><h1>教材资源库</h1><p class="hero-translation">Textbook Resource Library</p><form class="search-form" id="resource-search" role="search"><label class="sr-only" for="resource-keyword">教材资源关键词检索</label><input id="resource-keyword" type="search" placeholder="请输入教材或资源关键词" autocomplete="off"><button class="search-button" type="submit">搜索</button></form></div></div></header>
+
+  <main id="main">
+    <div class="content-shell">
+      <section class="resource-section" aria-labelledby="planned-title">
+        <div class="section-heading"><h2 id="planned-title">规划教材</h2><span class="more-button" aria-disabled="true">查看更多</span></div>
+        <div class="planned-grid">
+          <article class="planned-card"><div class="planned-card-inner"><div class="book-cover"><img src="./assets/textbook-resources-covers/smart-logistics.jpg" width="900" height="600" alt="自动导引车搬运仓储配送设备"></div><div class="planned-body"><h3>仓储与配送管理</h3><p>本书以物流仓储及配送从业人员应掌握的基本理论、实践技能和管理能力为主线，以物流企业仓储与配送运作及管理的实际案例为引导，结合职业教育教学改革的基本要求，注重理论联系实践。</p><span class="detail-link" aria-disabled="true">查看详情</span></div></div></article>
+          <article class="planned-card"><div class="planned-card-inner"><div class="book-cover"><img src="./assets/textbook-resources-covers/market-research.jpg" width="900" height="1350" alt="展示数据图表的笔记本电脑"></div><div class="planned-body"><h3>市场调查实务</h3><p>本教材由四川省电子商务职业教育教师教学创新团队，联合金蓝领公司运营团队，基于工作过程、课赛融合和课程思政等理念，面向高职电子商务专业群开发的平台共享专业基础课程教材。</p><span class="detail-link" aria-disabled="true">查看详情</span></div></div></article>
+          <article class="planned-card"><div class="planned-card-inner"><div class="book-cover"><img src="./assets/textbook-resources-covers/career-guidance.jpg" width="900" height="600" alt="两位职业咨询人员进行就业指导交流"></div><div class="planned-body"><h3>职业发展与就业指导</h3><p>本教材秉持以学生为中心的理念，深度融合高职学生的多元特性与职业教育需求，充分考虑高职学生的学习特点、文化基础、心理特点及专业学习情况，致力于打造实用且具引导性的教学资源。</p><span class="detail-link" aria-disabled="true">查看详情</span></div></div></article>
+        </div>
+      </section>
+
+      <section class="resource-section" aria-labelledby="reference-title">
+        <div class="section-heading"><h2 id="reference-title">教材参考资源池</h2><span class="more-button" aria-disabled="true">查看更多</span></div>
+        <div class="reference-list" role="list">
+          <div class="reference-item" role="listitem"><div class="reference-title"><span class="resource-tag tag-policy">国家政策</span><h3>首批“十四五”职业教育国家规划教材书目(“十三五”复核教材)，教育部官网公示教材目录</h3></div><time class="reference-date" datetime="2026-04-07">2026-04-07</time></div>
+          <div class="reference-item" role="listitem"><div class="reference-title"><span class="resource-tag tag-selection">选用清单</span><h3>六安职业技术学院2024-2025学年第一学期教材选用的公示</h3></div><time class="reference-date" datetime="2026-03-18">2026-03-18</time></div>
+          <div class="reference-item" role="listitem"><div class="reference-title"><span class="resource-tag tag-selection">选用清单</span><h3>泸州职业技术学院2024一2025学年春期教材选用库公示</h3></div><time class="reference-date" datetime="2026-02-26">2026-02-26</time></div>
+          <div class="reference-item" role="listitem"><div class="reference-title"><span class="resource-tag tag-selection">选用清单</span><h3>漯河职业技术学院2024-2025学年第二学期教材选用清单公示</h3></div><time class="reference-date" datetime="2026-01-20">2026-01-20</time></div>
+          <div class="reference-item" role="listitem"><div class="reference-title"><span class="resource-tag tag-selection">选用清单</span><h3>周口职业技术学院关于2024一2025学年第二学期教材选用情况公示。</h3></div><time class="reference-date" datetime="2025-12-12">2025-12-12</time></div>
+          <div class="reference-item" role="listitem"><div class="reference-title"><span class="resource-tag tag-selection">选用清单</span><h3>莱芜职业技术学院2024-2025学年度第一学期教材选用情况公示</h3></div><time class="reference-date" datetime="2025-11-08">2025-11-08</time></div>
+          <div class="reference-item" role="listitem"><div class="reference-title"><span class="resource-tag tag-warning">警示案例</span><h3>职业教育教材选用风险警示案例汇编</h3></div><time class="reference-date" datetime="2025-10-25">2025-10-25</time></div>
+          <div class="reference-item" role="listitem"><div class="reference-title"><span class="resource-tag tag-policy">国家政策</span><h3>职业教育教材建设和管理办法参考资料</h3></div><time class="reference-date" datetime="2025-09-16">2025-09-16</time></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer"><div class="footer-inner"><div><img class="footer-logo" src="./assets/logos/future-learning-logo-inverse.png" alt="成都工贸职业技术学院 | 未来学习中心"><p>服务专业建设、课程建设、资源建设和智慧教学运行，支撑高素质技术技能人才培养。</p></div><div><h3>平台应用</h3><div class="footer-links"><a href="index.html#quick">快捷入口</a><a href="course.html">课程中心</a><a href="index.html#resource">专业资源库</a></div></div><div><h3>建设中心</h3><div class="footer-links"><a href="index.html#major">专业建设</a><a href="index.html#simulation">虚拟仿真</a><a href="index.html#screen">数据大屏</a></div></div><div><h3>服务支持</h3><p>教务处与未来学习中心联合维护</p><p>工作日 09:00-17:00</p></div></div><div class="footer-bottom"><div class="footer-bottom-inner"><span>© 2026 成都工贸职业技术学院 未来学习中心</span><span>智慧教学 · 数字资源 · 技能成长</span></div></div></footer>
+
+  <script src="./assets/js/site-navigation.js?v=20260804-1249"></script>
+  <script>
+    (() => {
+      const nav = document.querySelector('.nav');
+      const hero = document.querySelector('.resource-hero');
+      const menuToggle = document.querySelector('.menu-toggle');
+      const searchForm = document.querySelector('#resource-search');
+      const searchInput = document.querySelector('#resource-keyword');
+      const searchableItems = [...document.querySelectorAll('.planned-card, .reference-item')];
+      const syncNavState = () => nav.classList.toggle('is-past-hero', hero.getBoundingClientRect().bottom <= nav.getBoundingClientRect().bottom);
+      syncNavState();
+      window.addEventListener('scroll', syncNavState, { passive: true });
+      window.addEventListener('resize', syncNavState);
+      menuToggle.addEventListener('click', () => {
+        const isOpen = document.body.classList.toggle('nav-open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+        menuToggle.setAttribute('aria-label', isOpen ? '关闭导航菜单' : '打开导航菜单');
+      });
+      document.querySelector('#site-nav').addEventListener('click', () => {
+        document.body.classList.remove('nav-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', '打开导航菜单');
+      });
+      const filterResources = () => {
+        const keyword = searchInput.value.trim().toLowerCase();
+        searchableItems.forEach((item) => { item.hidden = keyword && !item.textContent.toLowerCase().includes(keyword); });
+      };
+      searchForm.addEventListener('submit', (event) => { event.preventDefault(); filterResources(); });
+      searchInput.addEventListener('input', filterResources);
+      searchInput.addEventListener('search', filterResources);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="成都工贸职业技术学院未来学习中心人才培养方案。">
+  <title>人才培养方案 | 成都工贸职业技术学院未来学习中心</title>
+  <style>
+    :root { --theme:#176bdb; --theme-2:#19a7e8; --theme-3:#0c4ca3; --accent:#ffd766; --surface:#f3f8ff; --surface-2:#eaf4ff; --ink:#172033; --muted:#65738a; --line:rgb(23 107 219 / 14%); --radius-sm:10px; --radius-md:14px; --radius-lg:18px; --radius-xl:24px; --radius-pill:999px; --shadow-soft:0 8px 24px rgb(31 64 115 / 8%); --shadow-card:0 14px 40px rgb(25 85 170 / 10%); --shadow-float:0 20px 60px rgb(21 92 180 / 16%); --font-body:"SF Pro Display","Helvetica Neue",Helvetica,Tahoma,Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; --font-display:"Alibaba PuHuiTi 3.0","PingFang SC","Microsoft YaHei",sans-serif; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; overflow-x:hidden; color:var(--ink); background:linear-gradient(180deg,var(--surface) 0,#fff 38rem,#fff 100%); font-family:var(--font-body); }
+    body.nav-open { overflow:hidden; }
+    a { color:inherit; text-decoration:none; }
+    button,input { font:inherit; }
+    button { cursor:pointer; }
+    .skip-link { position:fixed; z-index:100; top:-80px; left:16px; padding:10px 14px; border-radius:var(--radius-pill); color:var(--theme); background:#fff; box-shadow:var(--shadow-soft); transition:top .2s ease; }
+    .skip-link:focus { top:16px; }
+    :focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+    .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; }
+
+    /* Shared navigation shell */
+    .nav { position:fixed; z-index:40; top:24px; left:50%; display:flex; align-items:center; gap:18px; width:min(1440px,calc(100% - 48px)); min-height:84px; padding:12px 22px 12px 24px; border:1px solid rgb(255 255 255 / 76%); border-radius:var(--radius-pill); color:var(--ink); background:rgb(255 255 255 / 82%); box-shadow:0 18px 48px rgb(7 54 125 / 18%); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); transform:translateX(-50%); transition:background .24s ease,color .24s ease,border-color .24s ease; }
+    .nav.is-past-hero { color:#fff; border-color:rgb(255 255 255 / 30%); background:linear-gradient(90deg,color-mix(in srgb,var(--theme) 78%,transparent),color-mix(in srgb,var(--theme) 58%,transparent)),rgb(4 34 88 / 22%); }
+    .brand { display:flex; align-items:center; min-width:410px; flex:0 0 auto; overflow:hidden; white-space:nowrap; }
+    .brand-logo { display:block; width:auto; height:42px; object-fit:contain; }
+    .brand-logo-inverse { display:none; }
+    .nav.is-past-hero .brand-logo-default { display:none; }
+    .nav.is-past-hero .brand-logo-inverse { display:block; }
+    .nav-links { display:flex; align-items:center; justify-content:flex-end; gap:4px; min-width:0; margin-left:auto; }
+    .nav-item { position:relative; }
+    .nav-item.has-submenu::after { position:absolute; top:100%; left:0; width:100%; height:12px; content:""; }
+    .nav-link { display:inline-flex; align-items:center; min-height:40px; padding:0 8px; border-radius:var(--radius-pill); color:color-mix(in srgb,var(--ink) 78%,transparent); font-size:16px; white-space:nowrap; transition:background .2s ease,color .2s ease,transform .2s ease; }
+    .nav-link:hover,.nav-link.active { color:var(--theme); background:color-mix(in srgb,var(--theme) 12%,transparent); transform:translateY(-1px); }
+    .nav.is-past-hero .nav-link { color:rgb(255 255 255 / 88%); }
+    .nav.is-past-hero .nav-link:hover,.nav.is-past-hero .nav-link.active { color:#fff; background:rgb(255 255 255 / 18%); }
+    .nav-link--static { cursor:default; }
+    .nav-link--static:hover { transform:none; }
+    .submenu { position:absolute; z-index:20; top:calc(100% + 12px); left:50%; min-width:172px; padding:10px; border:1px solid rgb(255 255 255 / 78%); border-radius:var(--radius-lg); color:var(--ink); background:rgb(255 255 255 / 96%); box-shadow:var(--shadow-card); opacity:0; visibility:hidden; pointer-events:none; transform:translateX(-50%) translateY(8px); transition:opacity .18s ease,transform .18s ease,visibility .18s ease; }
+    .nav-item.has-submenu:hover .submenu,.nav-item.has-submenu:focus-within .submenu { opacity:1; visibility:visible; pointer-events:auto; transform:translateX(-50%) translateY(0); }
+    .submenu a,.submenu-static { display:block; padding:10px 12px; border-radius:var(--radius-sm); white-space:nowrap; }
+    .submenu-static { cursor:default; }
+    .submenu a:hover,.submenu a:focus,.submenu a.active,.submenu-static:hover { color:var(--theme); background:color-mix(in srgb,var(--theme) 9%,#fff); }
+    .nav-actions { display:flex; align-items:center; gap:10px; flex:0 0 auto; }
+    .login { display:inline-flex; align-items:center; justify-content:center; min-height:42px; padding:0 20px; border:1px solid color-mix(in srgb,var(--theme) 18%,transparent); border-radius:var(--radius-pill); color:var(--theme); background:color-mix(in srgb,var(--theme) 9%,#fff); box-shadow:0 8px 24px rgb(6 45 102 / 16%); font-weight:800; }
+    .nav.is-past-hero .login { border-color:rgb(255 255 255 / 32%); color:#fff; background:rgb(255 255 255 / 18%); }
+    .menu-toggle { display:none; width:42px; height:42px; align-items:center; justify-content:center; flex-direction:column; gap:5px; border:1px solid rgb(255 255 255 / 32%); border-radius:50%; color:var(--theme); background:color-mix(in srgb,var(--theme) 9%,#fff); }
+    .menu-toggle span { width:18px; height:2px; border-radius:2px; background:currentColor; transition:transform .22s ease,opacity .22s ease; }
+    body.nav-open .menu-toggle span:nth-child(1) { transform:translateY(7px) rotate(45deg); } body.nav-open .menu-toggle span:nth-child(2) { opacity:0; } body.nav-open .menu-toggle span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+    .training-hero { position:relative; isolation:isolate; display:flex; align-items:center; min-height:500px; overflow:hidden; background:#dcecff url("./assets/hero/talent-training-hero.jpg") center / cover no-repeat; }
+    .training-hero::before { position:absolute; z-index:0; inset:0; content:""; pointer-events:none; background:transparent; }
+    .training-hero::after { position:absolute; z-index:0; right:0; bottom:0; left:0; height:76px; content:""; pointer-events:none; background:linear-gradient(180deg,transparent,rgb(206 230 253 / 16%)); }
+    .hero-inner { position:relative; z-index:1; width:min(1440px,calc(100% - 48px)); margin:0 auto; padding:146px 0 62px; }
+    .hero-copy { width:min(530px,46%); }
+    .hero-kicker { display:block; margin:12px 0 0; color:color-mix(in srgb,var(--theme) 65%,#96b5d8); font-size:15px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+    h1 { margin:0; color:transparent; background:linear-gradient(135deg,#0b4fab 4%,var(--theme) 47%,var(--theme-2) 100%); -webkit-background-clip:text; background-clip:text; font:900 64px / 1.06 var(--font-display); filter:drop-shadow(0 8px 18px rgb(255 255 255 / 62%)); }
+    .search-form { display:flex; align-items:stretch; width:min(500px,100%); min-height:54px; margin-top:34px; padding:5px; border:1px solid rgb(255 255 255 / 82%); border-radius:var(--radius-pill); background:rgb(255 255 255 / 88%); box-shadow:0 6px 8px rgb(22 81 164 / 10%); }
+    .search-form:focus-within { border-color:rgb(23 107 219 / 64%); box-shadow:0 8px 18px rgb(22 81 164 / 14%); }
+    .search-form input { min-width:0; flex:1; padding:0 16px; border:0; outline:0; color:var(--ink); background:transparent; font-size:16px; }
+    .search-button { display:inline-flex; align-items:center; justify-content:center; gap:6px; min-width:96px; padding:0 16px; border:0; border-radius:var(--radius-pill); color:#fff; background:linear-gradient(135deg,var(--theme),var(--theme-2)); box-shadow:0 5px 8px rgb(23 107 219 / 22%); font-size:15px; font-weight:800; transition:transform .2s ease,box-shadow .2s ease; }
+    .search-button:hover { box-shadow:0 7px 14px rgb(23 107 219 / 28%); transform:translateY(-1px); }
+    .search-button svg { width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; }
+
+    main { position:relative; padding:54px 0 60px; background:radial-gradient(ellipse 40rem 28rem at 9% 76%,rgb(34 163 238 / 25%),transparent 70%),radial-gradient(ellipse 34rem 27rem at 92% 67%,rgb(69 151 255 / 15%),transparent 70%),linear-gradient(180deg,#fff,#fbfdff); }
+    .content-shell { width:min(1440px,calc(100% - 48px)); margin:0 auto; }
+    .filter-panel { display:grid; gap:16px; margin-bottom:30px; padding:8px 0; }
+    .filter-group { display:grid; grid-template-columns:64px minmax(0,1fr); align-items:start; gap:18px; }
+    .filter-label { min-height:40px; display:flex; align-items:center; color:var(--ink); font-size:16px; font-weight:900; }
+    .filter-options { display:flex; flex-wrap:wrap; gap:10px; }
+    .filter-chip { min-height:40px; padding:0 16px; border:1px solid transparent; border-radius:var(--radius-pill); color:var(--ink); background:transparent; font-size:16px; font-weight:400; transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease; }
+    .filter-chip:hover { color:var(--theme); border-color:rgb(23 107 219 / 18%); background:rgb(23 107 219 / 6%); transform:translateY(-1px); }
+    .filter-chip[aria-pressed="true"] { border-color:transparent; color:#fff; background:linear-gradient(135deg,var(--theme),var(--theme-2)); box-shadow:0 7px 14px rgb(23 107 219 / 18%); font-weight:700; }
+    .list-card { overflow:hidden; border:1px solid rgb(255 255 255 / 92%); border-radius:var(--radius-xl); background:rgb(255 255 255 / 90%); box-shadow:var(--shadow-card); }
+    .plan-list { margin:0; padding:18px 44px; list-style:none; }
+    .plan-row { display:grid; grid-template-columns:18px minmax(0,1fr) auto; align-items:center; gap:16px; min-height:72px; border-bottom:1px solid rgb(23 107 219 / 9%); }
+    .plan-row:last-child { border-bottom:0; }
+    .plan-dot { width:6px; height:6px; border-radius:50%; background:linear-gradient(135deg,var(--theme),var(--theme-2)); box-shadow:0 0 0 4px rgb(23 107 219 / 8%); }
+    .plan-main { display:flex; align-items:center; min-width:0; gap:14px; }
+    .academy-tag { display:inline-flex; align-items:center; flex:0 0 auto; min-height:30px; padding:0 13px; border-radius:var(--radius-pill); color:var(--theme-3); background:rgb(23 107 219 / 10%); box-shadow:none; font-size:13px; font-weight:800; white-space:nowrap; }
+    .plan-title { overflow:hidden; color:var(--ink); font-size:16px; font-weight:800; line-height:1.45; text-overflow:ellipsis; white-space:nowrap; transition:color .2s ease; }
+    .plan-row:hover .plan-title { color:var(--theme); }
+    .plan-year { min-width:4ch; color:var(--muted); font-size:16px; font-variant-numeric:tabular-nums; text-align:right; }
+    .empty-state { padding:62px 24px; color:var(--muted); text-align:center; }
+    .pagination { margin-top:38px; }
+    .result-status { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; }
+
+    .footer { position:relative; isolation:isolate; overflow:hidden; color:rgb(255 255 255 / 82%); background:radial-gradient(circle at 10% 0%,rgb(68 215 196 / 18%),transparent 28rem),linear-gradient(135deg,#06285f,#0a4b9f 48%,#09346c); }
+    .footer::before { position:absolute; z-index:0; inset:0; content:""; pointer-events:none; opacity:.12; background:url("./assets/generated-backgrounds/footer-campus-overlay.png") center / cover no-repeat; }
+    .footer-inner { position:relative; z-index:1; display:grid; grid-template-columns:1.5fr repeat(3,1fr); column-gap:80px; row-gap:34px; width:min(1440px,calc(100% - 48px)); margin:0 auto; padding:54px 0 42px; }
+    .footer-inner > :nth-child(2) { transform:translateX(160px); } .footer-inner > :nth-child(3) { transform:translateX(80px); }
+    .footer h3 { margin:0 0 16px; color:#fff; font-size:16px; line-height:1.35; } .footer-logo { display:block; width:auto; height:40px; margin:0 0 18px; object-fit:contain; } .footer p,.footer a { margin:0; color:rgb(255 255 255 / 74%); font-size:14px; line-height:1.8; } .footer-links { display:grid; gap:8px; }
+    .footer-bottom { position:relative; z-index:1; border-top:1px solid rgb(255 255 255 / 16%); } .footer-bottom-inner { display:flex; justify-content:space-between; gap:18px; width:min(1440px,calc(100% - 48px)); margin:0 auto; padding:18px 0; color:rgb(255 255 255 / 66%); font-size:13px; }
+
+    @media (max-width:1400px) { .nav { width:calc(100% - 32px); border-radius:24px; } .nav-links { position:fixed; top:108px; right:16px; left:16px; display:none; max-height:calc(100dvh - 138px); grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; overflow-y:auto; padding:14px; border:1px solid rgb(255 255 255 / 24%); border-radius:22px; color:#fff; background:rgb(8 42 105 / 92%); box-shadow:var(--shadow-float); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); } body.nav-open .nav-links { display:grid; } .nav-item { width:100%; } .nav-link,.nav-link--static { justify-content:center; min-height:44px; color:#fff; background:rgb(255 255 255 / 8%); } .nav-link:hover,.nav-link.active,.nav-link--static:hover,.nav-link--static.active { color:#fff; background:rgb(255 255 255 / 18%); transform:none; } .submenu { position:static; display:none; min-width:0; margin-top:8px; padding:8px; border-color:rgb(255 255 255 / 14%); border-radius:16px; color:#fff; visibility:visible; opacity:1; background:rgb(255 255 255 / 8%); box-shadow:none; transform:none; } .nav-item.has-submenu:hover .submenu,.nav-item.has-submenu:focus-within .submenu,body.nav-open .submenu { display:grid; transform:none; } .submenu a,.submenu-static { color:rgb(255 255 255 / 84%); text-align:center; } .submenu a:hover,.submenu a:focus,.submenu a.active,.submenu-static:hover { color:#fff; background:rgb(255 255 255 / 12%); } .menu-toggle { display:inline-flex; } }
+    @media (max-width:760px) { .nav { top:12px; width:calc(100% - 24px); min-height:66px; gap:8px; padding:10px 12px; border-radius:22px; } .brand { min-width:0; flex:1 1 auto; } .brand-logo { height:28px; } .login { min-width:54px; padding:0 12px; font-size:14px; } .nav-links { top:76px; right:12px; left:12px; grid-template-columns:1fr; } .training-hero { min-height:340px; background-size:auto 100%; background-position:62% center; } .training-hero::before { background:linear-gradient(90deg,rgb(237 247 255 / 94%) 0%,rgb(234 246 255 / 80%) 66%,rgb(229 242 255 / 34%) 100%); } .hero-inner { width:calc(100% - 32px); padding:104px 0 34px; } .hero-copy { width:min(100%,440px); } .hero-kicker { margin:8px 0 0; font-size:12px; } h1 { font-size:clamp(38px,10.7vw,44px); } .search-form { min-height:52px; margin-top:18px; } .search-button { min-width:86px; padding:0 13px; } main { padding:34px 0 52px; } .content-shell { width:calc(100% - 32px); } .filter-panel { gap:20px; margin-bottom:22px; padding:20px 18px; } .filter-group { grid-template-columns:1fr; gap:8px; } .filter-label { min-height:28px; } .filter-options { gap:8px; } .filter-chip { min-height:44px; padding:0 14px; font-size:14px; } .plan-list { padding:10px 16px; } .plan-row { grid-template-columns:10px minmax(0,1fr) auto; align-items:start; gap:10px; min-height:0; padding:16px 0; } .plan-dot { margin-top:9px; } .plan-main { align-items:flex-start; flex-wrap:wrap; gap:8px; } .academy-tag { min-height:28px; padding:0 10px; font-size:12px; } .plan-title { flex:1 0 100%; overflow:visible; font-size:16px; white-space:normal; } .plan-year { padding-top:4px; font-size:15px; } .pagination { margin-top:28px; } .footer-inner { grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:20px; row-gap:28px; width:calc(100% - 32px); padding:44px 0 32px; } .footer-inner > :first-child,.footer-inner > :nth-child(4) { grid-column:1 / -1; } .footer-inner > :nth-child(2),.footer-inner > :nth-child(3) { transform:none; } .footer-bottom-inner { display:block; width:calc(100% - 32px); } .footer-bottom-inner span { display:block; } .footer-bottom-inner span + span { margin-top:6px; } }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto !important; transition-duration:.01ms !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; } }
+  </style>
+  <link rel="stylesheet" href="./assets/css/site-navigation.css?v=20260804-1249">
+  <link rel="stylesheet" href="./assets/css/site-mobile-shell.css">
+  <link rel="stylesheet" href="./assets/css/site-pagination.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳至主要内容</a>
+  <nav class="nav" aria-label="主导航" data-site-page="talent-training">
+    <a class="brand" href="index.html" aria-label="成都工贸职业技术学院未来学习中心首页"><img class="brand-logo brand-logo-default" src="./assets/logos/future-learning-logo-default.png" alt="成都工贸职业技术学院 | 未来学习中心"><img class="brand-logo brand-logo-inverse" src="./assets/logos/future-learning-logo-inverse.png" alt="" aria-hidden="true"></a>
+    <div class="nav-links" id="site-nav"></div>
+    <div class="nav-actions"><a class="login" href="index.html#login">登录</a><button class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button></div>
+  </nav>
+  <header class="training-hero secondary-hero" id="home">
+    <div class="hero-inner"><div class="hero-copy"><h1>人才培养方案</h1><span class="hero-kicker">Talent Training Programs</span><form class="search-form" role="search"><label class="sr-only" for="training-keyword">方案关键词检索</label><input id="training-keyword" type="search" placeholder="请输入关键词" autocomplete="off"><button class="search-button" type="submit" aria-label="搜索方案"><span>搜索</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.2 4.2"></path></svg></button></form></div></div>
+  </header>
+  <main id="main">
+    <section class="content-shell" aria-label="人才培养方案列表">
+      <div class="filter-panel" aria-label="人才培养方案筛选">
+        <div class="filter-group"><div class="filter-label" id="year-label">年份</div><div class="filter-options" role="group" aria-labelledby="year-label" id="year-filters"></div></div>
+        <div class="filter-group"><div class="filter-label" id="academy-label">学院</div><div class="filter-options" role="group" aria-labelledby="academy-label" id="academy-filters"></div></div>
+      </div>
+      <p class="result-status" id="result-status" role="status" aria-live="polite"></p>
+      <div class="list-card"><ul class="plan-list" id="plan-list"></ul></div>
+      <div class="pagination" aria-label="人才培养方案分页，第 1 页，共 8 页"><button class="page-arrow" type="button" aria-label="上一页" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"></path></svg></button><button class="page-number current" type="button" aria-current="page">1</button><button class="page-number" type="button" aria-label="第 2 页">2</button><button class="page-number" type="button" aria-label="第 3 页">3</button><span class="page-ellipsis" aria-hidden="true">…</span><button class="page-number" type="button" aria-label="第 8 页">8</button><button class="page-arrow" type="button" aria-label="下一页"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 5.5 6.5 6.5-6.5 6.5"></path></svg></button></div>
+    </section>
+  </main>
+  <footer class="footer"><div class="footer-inner"><div><img class="footer-logo" src="./assets/logos/future-learning-logo-inverse.png" alt="成都工贸职业技术学院 | 未来学习中心"><p>服务专业建设、课程建设、资源建设和智慧教学运行，支撑高素质技术技能人才培养。</p></div><div><h3>平台应用</h3><div class="footer-links"><a href="index.html#quick">快捷入口</a><a href="course.html">课程建设</a><a href="index.html#resource">专业资源库</a></div></div><div><h3>建设中心</h3><div class="footer-links"><a href="index.html#major">专业建设</a><a href="index.html#simulation">虚拟仿真</a><a href="index.html#screen">数据大屏</a></div></div><div><h3>服务支持</h3><p>教务处与未来学习中心联合维护</p><p>工作日 09:00-17:00</p></div></div><div class="footer-bottom"><div class="footer-bottom-inner"><span>© 2026 成都工贸职业技术学院 未来学习中心</span><span>智慧教学 · 数字资源 · 技能成长</span></div></div></footer>
+  <script src="./assets/js/site-navigation.js?v=20260804-1249"></script>
+  <script>
+    const records = [
+      { year:'2026', academy:'智能制造学院', title:'智能制造装备技术专业人才培养方案' },
+      { year:'2025', academy:'机械工程学院', title:'数控技术专业人才培养方案' },
+      { year:'2025', academy:'电气工程学院', title:'工业机器人技术专业人才培养方案' },
+      { year:'2024', academy:'信息工程学院', title:'软件技术专业人才培养方案' },
+      { year:'2026', academy:'汽车工程学院', title:'新能源汽车技术专业人才培养方案' },
+      { year:'2024', academy:'轨道交通学院', title:'城市轨道交通机电技术专业人才培养方案' },
+      { year:'2025', academy:'铁道工程学院', title:'铁道工程技术专业人才培养方案' },
+      { year:'2026', academy:'民航运输学院', title:'民航安全技术管理专业人才培养方案' },
+      { year:'2023', academy:'财经商贸学院', title:'大数据与会计专业人才培养方案' },
+      { year:'2024', academy:'交通物流学院', title:'现代物流管理专业人才培养方案' }
+    ];
+    const years = ['全部','2020','2021','2022','2023','2024','2025','2026','2027','2028'];
+    const academies = ['全部','马克思主义学院','通识教育学院','信息工程学院','机械工程学院','电气工程学院','汽车工程学院','铁道工程学院','轨道交通学院','民航运输学院','财经商贸学院','智能制造学院','现代服务学院','交通物流学院','数字创意学院'];
+    const nav = document.querySelector('.nav'); const hero = document.querySelector('.training-hero'); const menuToggle = document.querySelector('.menu-toggle'); const navLinks = document.querySelectorAll('.nav-links a'); const yearFilters = document.querySelector('#year-filters'); const academyFilters = document.querySelector('#academy-filters'); const planList = document.querySelector('#plan-list'); const resultStatus = document.querySelector('#result-status');
+    let selectedYear = '全部'; let selectedAcademy = '全部';
+    const createChip = (value, kind) => { const button = document.createElement('button'); button.type = 'button'; button.className = 'filter-chip'; button.textContent = value; button.dataset.kind = kind; button.dataset.value = value; button.setAttribute('aria-pressed', String(value === '全部')); return button; };
+    years.forEach((year) => yearFilters.append(createChip(year,'year'))); academies.forEach((academy) => academyFilters.append(createChip(academy,'academy')));
+    function renderPlans() { const visible = records.filter((record) => (selectedYear === '全部' || record.year === selectedYear) && (selectedAcademy === '全部' || record.academy === selectedAcademy)); planList.innerHTML = visible.length ? visible.map((record) => `<li class="plan-row"><span class="plan-dot" aria-hidden="true"></span><div class="plan-main"><span class="academy-tag">${record.academy}</span><span class="plan-title">${record.title}</span></div><time class="plan-year" datetime="${record.year}">${record.year}</time></li>`).join('') : '<li class="empty-state">未找到符合当前筛选条件的人才培养方案。</li>'; resultStatus.textContent = `当前显示 ${visible.length} 条人才培养方案。`; }
+    function syncChipState(group, selected) { group.querySelectorAll('.filter-chip').forEach((chip) => chip.setAttribute('aria-pressed', String(chip.dataset.value === selected))); }
+    yearFilters.addEventListener('click',(event) => { const chip = event.target.closest('.filter-chip'); if (!chip) return; selectedYear = chip.dataset.value; syncChipState(yearFilters, selectedYear); renderPlans(); }); academyFilters.addEventListener('click',(event) => { const chip = event.target.closest('.filter-chip'); if (!chip) return; selectedAcademy = chip.dataset.value; syncChipState(academyFilters, selectedAcademy); renderPlans(); });
+    document.querySelector('.search-form').addEventListener('submit',(event) => event.preventDefault());
+    function syncNavState() { nav.classList.toggle('is-past-hero', hero.getBoundingClientRect().bottom <= nav.getBoundingClientRect().bottom); }
+    syncNavState(); window.addEventListener('scroll',syncNavState,{passive:true}); window.addEventListener('resize',syncNavState);
+    menuToggle.addEventListener('click',() => { const open = document.body.classList.toggle('nav-open'); menuToggle.setAttribute('aria-expanded',String(open)); menuToggle.setAttribute('aria-label',open ? '关闭导航菜单' : '打开导航菜单'); });
+    navLinks.forEach((link) => link.addEventListener('click',() => { document.body.classList.remove('nav-open'); menuToggle.setAttribute('aria-expanded','false'); }));
+    renderPlans();
+  </script>
+</body>
+</html>

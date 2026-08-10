@@ -31,7 +31,7 @@
       --inner-glow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
       --font-body: "SF Pro Display", "Helvetica Neue", Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
       --font-display: "Alibaba PuHuiTi 3.0", "PingFang SC", "Microsoft YaHei", sans-serif;
-      --hero-image: url("./assets/hero/hero-11.jpg");
+      --hero-image: url("./assets/hero/smart-manufacturing-hero-v2.jpg");
     }
 
     * { box-sizing: border-box; }
@@ -49,6 +49,57 @@
     }
 
     body.nav-open { overflow: hidden; }
+
+    .panda-assistant {
+      position: absolute;
+      right: 80px;
+      bottom: 108px;
+      z-index: 45;
+      display: inline-block;
+      pointer-events: none;
+    }
+
+    .panda-float {
+      height: 180px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .panda-message {
+      position: absolute;
+      right: calc(100% - 6px);
+      bottom: 104px;
+      width: 258px;
+      padding: 12px 18px;
+      border-radius: 18px 18px 0 18px;
+      border: 1px solid transparent;
+      background: linear-gradient(145deg, rgb(255 255 255 / 18%) 0%, rgb(255 255 255 / 3%) 100%) padding-box;
+      color: #fff;
+      box-shadow: 0 6px 14px rgba(9, 27, 69, 0.22);
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.55;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+
+    .panda-message::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      padding: 1px;
+      border-radius: inherit;
+      background: linear-gradient(145deg, rgb(255 255 255 / 78%) 0%, rgb(255 255 255 / 22%) 100%);
+      pointer-events: none;
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
 
     a { color: inherit; text-decoration: none; }
     button, input { font: inherit; }
@@ -77,37 +128,32 @@
     .nav {
       position: fixed;
       z-index: 40;
-      top: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(1440px, calc(100% - 48px));
-      min-height: 84px;
+      top: 0;
+      left: 0;
+      box-sizing: border-box;
+      width: 100vw;
+      min-height: 80px;
       display: flex;
       align-items: center;
       gap: 18px;
-      padding: 12px 22px 12px 24px;
-      border-radius: var(--radius-pill);
-      color: var(--ink);
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(255, 255, 255, 0.76);
-      box-shadow: 0 18px 48px rgba(7, 54, 125, 0.18);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      padding: 12px 60px 16px;
+      color: #fff;
+      background: linear-gradient(180deg, rgba(14, 92, 196, 0.42) 0%, rgba(14, 92, 196, 0.20) 58%, rgba(14, 92, 196, 0) 100%);
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
       transition: background 0.24s ease, color 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
     }
 
     .nav.is-past-hero {
       color: #fff;
-      background:
-        linear-gradient(90deg, color-mix(in srgb, var(--theme) 78%, transparent), color-mix(in srgb, var(--theme) 58%, transparent)),
-        rgba(4, 34, 88, 0.22);
-      border-color: rgba(255, 255, 255, 0.30);
+      background: rgba(31, 112, 220, 0.96);
     }
 
     .brand {
       display: flex;
       align-items: center;
-      min-width: 520px;
+      min-width: 410px;
       flex: 0 0 auto;
       white-space: nowrap;
       overflow: hidden;
@@ -121,18 +167,18 @@
       display: block;
     }
 
+    .quick-icon--chaoxing svg {
+      transform: scale(0.85);
+      transform-origin: center;
+    }
+
     .brand-logo {
       flex: 0 0 auto;
       display: block;
       width: auto;
-      height: 52px;
+      height: 42px;
       object-fit: contain;
     }
-
-    .brand-logo-inverse { display: none; }
-
-    .nav.is-past-hero .brand-logo-default { display: none; }
-    .nav.is-past-hero .brand-logo-inverse { display: block; }
 
     .nav-links {
       display: flex;
@@ -147,24 +193,51 @@
       position: relative;
     }
 
+    /* Keep the parent hovered while the pointer crosses the dropdown offset. */
+    .nav-item.has-submenu::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 12px;
+    }
+
     .nav-link {
       min-height: 40px;
       display: inline-flex;
       align-items: center;
-      padding: 0 14px;
-      border-radius: var(--radius-pill);
-      color: color-mix(in srgb, var(--ink) 78%, transparent);
+      position: relative;
+      padding: 0 8px;
+      border-radius: 0;
+      color: rgba(255, 255, 255, 0.88);
       font-size: 16px;
       white-space: nowrap;
       transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
     }
 
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      right: 8px;
+      bottom: -2px;
+      left: 8px;
+      height: 2px;
+      background: #fff;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.2s ease;
+    }
+
     .nav-link:hover,
     .nav-link.active {
-      background: color-mix(in srgb, var(--theme) 12%, transparent);
-      color: var(--theme);
-      transform: translateY(-1px);
+      background: transparent;
+      color: #fff;
+      transform: none;
     }
+
+    .nav-link:hover::after,
+    .nav-link.active::after { transform: scaleX(1); }
 
     .nav.is-past-hero .nav-link {
       color: rgba(255, 255, 255, 0.88);
@@ -172,9 +245,12 @@
 
     .nav.is-past-hero .nav-link:hover,
     .nav.is-past-hero .nav-link.active {
-      background: rgba(255, 255, 255, 0.18);
+      background: transparent;
       color: #fff;
     }
+
+    .nav-link--static { cursor: default; }
+    .nav-link--static:hover { transform: none; }
 
     .submenu {
       position: absolute;
@@ -211,10 +287,31 @@
       white-space: nowrap;
     }
 
-    .submenu a:hover,
-    .submenu a:focus {
+    .submenu-static {
+      display: block;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      color: var(--ink);
+      cursor: default;
+      white-space: nowrap;
+    }
+
+    .submenu-static:hover {
       color: var(--theme);
       background: color-mix(in srgb, var(--theme) 9%, #fff);
+    }
+
+    .submenu a:hover,
+    .submenu a:focus,
+    .submenu a.active {
+      color: var(--theme);
+      background: color-mix(in srgb, var(--theme) 9%, #fff);
+    }
+
+    .nav-links a[href^="index.html#"],
+    .nav-links a[href^="#"]:not([href="#home"]) {
+      pointer-events: none;
+      cursor: default;
     }
 
     .nav-actions {
@@ -225,24 +322,22 @@
     }
 
     .login {
-      min-height: 42px;
+      min-height: 34px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0 20px;
-      border-radius: var(--radius-pill);
-      color: var(--theme);
-      background: color-mix(in srgb, var(--theme) 9%, #fff);
-      border: 1px solid color-mix(in srgb, var(--theme) 18%, transparent);
+      padding: 0 18px;
+      border-radius: 4px;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.52);
       font-weight: 800;
-      box-shadow: 0 8px 24px rgba(6, 45, 102, 0.16);
+      box-shadow: none;
+      transition: background 0.2s ease, border-color 0.2s ease;
     }
 
-    .nav.is-past-hero .login {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.18);
-      border-color: rgba(255, 255, 255, 0.32);
-    }
+    .login:hover,
+    .login:focus-visible { background: rgba(255, 255, 255, 0.20); border-color: #fff; }
 
     .menu-toggle {
       display: none;
@@ -291,8 +386,8 @@
       inset: 0;
       z-index: -2;
       background:
-        linear-gradient(90deg, rgba(4, 48, 122, 0.38) 0%, rgba(23, 107, 219, 0.26) 38%, rgba(2, 18, 48, 0.04) 74%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.005) 46%, rgba(0, 38, 94, 0.12));
+        radial-gradient(ellipse 68% 86% at 0% 100%, rgba(0, 88, 255, 0.45) 0%, rgba(0, 107, 255, 0.30) 43%, rgba(0, 120, 255, 0.12) 64%, transparent 80%),
+        linear-gradient(rgba(3, 30, 100, 0.10), rgba(3, 30, 100, 0.10));
     }
 
     .hero::after {
@@ -314,6 +409,7 @@
       width: min(1440px, calc(100% - 48px));
       margin: 0 auto;
       z-index: 1;
+      text-align: left;
     }
 
     .eyebrow {
@@ -362,6 +458,7 @@
       color: rgba(255, 255, 255, 0.88);
       font-size: clamp(16px, 1.22vw, 20px);
       line-height: 1.8;
+      text-shadow: 0 2px 8px rgba(0, 39, 112, 0.23);
     }
 
     .quick-panel {
@@ -570,6 +667,12 @@
       background: #fff;
       border: 1px solid var(--line);
       box-shadow: var(--shadow-card);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .virtual-exhibition-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-float);
     }
 
     .virtual-exhibition-cover {
@@ -1176,7 +1279,7 @@
     .footer-logo {
       display: block;
       width: auto;
-      height: 52px;
+      height: 40px;
       margin: 0 0 18px;
       object-fit: contain;
     }
@@ -1217,11 +1320,43 @@
 
     @media (max-width: 1260px) {
       .nav {
-        width: calc(100% - 32px);
+        width: 100vw;
       }
 
       .brand { min-width: 410px; }
-      .nav-link { padding: 0 9px; font-size: 16px; }
+      .nav-link { padding: 0 8px; font-size: 16px; }
+    }
+
+    @media (max-width: 1400px) {
+      .nav { border-radius: 0; }
+      .nav-links {
+        position: fixed;
+        left: 16px;
+        right: 16px;
+        top: 108px;
+        display: none;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        padding: 14px;
+        border-radius: 22px;
+        max-height: calc(100vh - 138px);
+        overflow-y: auto;
+        background: rgba(8, 42, 105, 0.92);
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        box-shadow: var(--shadow-float);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+
+      body.nav-open .nav-links { display: grid; }
+      .nav-actions { margin-left: auto; }
+      .nav-link { min-height: 44px; justify-content: center; background: rgba(255, 255, 255, 0.08); color: #fff; }
+      .nav-item { width: 100%; }
+      .submenu { position: static; display: none; min-width: 0; margin-top: 8px; padding: 8px; border-radius: 16px; background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.14); box-shadow: none; opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
+      .nav-item.has-submenu:hover .submenu, .nav-item.has-submenu:focus-within .submenu, body.nav-open .submenu { display: grid; transform: none; }
+      .submenu a { color: rgba(255, 255, 255, 0.84); text-align: center; }
+      .submenu a:hover, .submenu a:focus, .submenu a.active { color: #fff; background: rgba(255, 255, 255, 0.12); }
+      .menu-toggle { display: inline-flex; }
     }
 
     @media (max-width: 1120px) {
@@ -1281,13 +1416,20 @@
         transform: none;
       }
 
-      .submenu a {
+      .submenu a,
+      .submenu-static {
         color: rgba(255, 255, 255, 0.84);
         text-align: center;
       }
 
       .submenu a:hover,
-      .submenu a:focus {
+      .submenu a:focus,
+      .submenu a.active {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .submenu-static:hover {
         color: #fff;
         background: rgba(255, 255, 255, 0.12);
       }
@@ -1305,12 +1447,14 @@
     }
 
     @media (max-width: 760px) {
+      .panda-assistant { display: none; }
+
       .nav {
         top: 12px;
-        width: calc(100% - 24px);
+        width: 100vw;
         min-height: 66px;
         padding: 10px 12px;
-        border-radius: 22px;
+        border-radius: 0;
       }
 
       .brand {
@@ -1319,7 +1463,7 @@
         white-space: normal;
       }
 
-      .brand-logo { height: 52px; }
+      .brand-logo { height: 42px; }
 
       .login {
         min-width: 54px;
@@ -1468,85 +1612,65 @@
       }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-      }
-
-      .section-more::after {
-        background-image: url("./assets/generated-icons/more-gear-blue-static.png");
-      }
-
-    }
-  </style>
+    /* 首页模块的 GSAP 动画仅使用合成层友好的透明度与 transform 属性。 */
+    .home-motion-target { will-change: transform, opacity; }
+</style>
+  <link rel="stylesheet" href="./assets/css/site-navigation.css?v=20260804-1249">
+  <link rel="stylesheet" href="./assets/css/site-mobile-shell.css">
+  <!-- Temporary Figma capture bridge; removed immediately after capture. -->
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳至主要内容</a>
 
-  <nav class="nav" aria-label="主导航">
+  <nav class="nav" aria-label="主导航" data-site-page="home">
     <a class="brand" href="#home" aria-label="成都工贸职业技术学院未来学习中心首页">
-      <img class="brand-logo brand-logo-default" src="./assets/logos/future-learning-logo-default.png" alt="成都工贸职业技术学院 | 未来学习中心">
-      <img class="brand-logo brand-logo-inverse" src="./assets/logos/future-learning-logo-inverse.png" alt="" aria-hidden="true">
+      <img class="brand-logo" src="./assets/logos/future-learning-logo-inverse.png" alt="成都工贸职业技术学院 | 未来学习中心">
     </a>
     <div class="nav-links" id="site-nav">
       <div class="nav-item"><a class="nav-link active" href="#home">首页</a></div>
       <div class="nav-item has-submenu">
-        <a class="nav-link" href="#about">中心概况</a>
-        <div class="submenu" aria-label="中心概况二级菜单">
-          <a href="#about">中心简介</a>
-          <a href="#about">建设目标</a>
-          <a href="#about">空间导览</a>
-        </div>
-      </div>
-      <div class="nav-item has-submenu">
-        <a class="nav-link" href="#major">专业建设</a>
-        <div class="submenu" aria-label="专业建设二级菜单">
+        <a class="nav-link" href="#major">专业建设中心</a>
+        <div class="submenu" aria-label="专业建设中心二级菜单">
+          <a href="#major">专业设置</a>
           <a href="#major">专业群建设</a>
-          <a href="#major">产业学院</a>
-          <a href="#major">师资团队</a>
+          <a href="#resource">专业资源库</a>
+          <a href="talent-training.html">人才培养方案</a>
+          <a href="#major">微专业</a>
+          <a href="#major">校企协同育人项目</a>
         </div>
       </div>
       <div class="nav-item has-submenu">
-        <a class="nav-link" href="course.html">课程建设</a>
-        <div class="submenu" aria-label="课程建设二级菜单">
-          <a href="#course">精品课程</a>
-          <a href="#course">课程思政</a>
-          <a href="#course">教学资源</a>
+        <a class="nav-link" href="#course">课程教学中心</a>
+        <div class="submenu" aria-label="课程教学中心二级菜单">
+          <a href="#course">思政门户</a>
+          <a href="course.html">课程中心</a>
         </div>
       </div>
       <div class="nav-item has-submenu">
-        <a class="nav-link" href="#simulation">虚拟仿真</a>
-        <div class="submenu" aria-label="虚拟仿真二级菜单">
-          <a href="#simulation">仿真项目</a>
-          <a href="#simulation">实训场景</a>
-          <a href="#simulation">运行数据</a>
+        <a class="nav-link" href="#resource">教材资源中心</a>
+        <div class="submenu" aria-label="教材资源中心二级菜单">
+          <a href="#resource">智能教学资源制作中心</a>
+          <a href="textbook-resources.html">教材资源库</a>
+          <a href="textbook-achievements.html">教材成果库</a>
         </div>
       </div>
+      <div class="nav-item"><a class="nav-link" href="teacher-development.html">教师发展中心</a></div>
       <div class="nav-item has-submenu">
-        <a class="nav-link" href="#resource">资源库</a>
-        <div class="submenu" aria-label="资源库二级菜单">
-          <a href="#resource">省级资源库</a>
-          <a href="#resource">校级资源库</a>
-          <a href="#resource">题库资源</a>
+        <a class="nav-link" href="#simulation">实践教学中心</a>
+        <div class="submenu" aria-label="实践教学中心二级菜单">
+          <a href="#simulation">毕业设计</a>
+          <a href="#simulation">实习实训</a>
+          <a href="#simulation">技能大赛</a>
+          <a href="#simulation">虚拟仿真</a>
         </div>
       </div>
+      <div class="nav-item"><a class="nav-link" href="#screen">教学大数据中心</a></div>
       <div class="nav-item has-submenu">
-        <a class="nav-link" href="#news">教务新闻</a>
-        <div class="submenu" aria-label="教务新闻二级菜单">
-          <a href="#news">新闻动态</a>
-          <a href="#news">教学成果</a>
-          <a href="#news">活动纪要</a>
-        </div>
-      </div>
-      <div class="nav-item has-submenu">
-        <a class="nav-link" href="#notice">教务通知</a>
-        <div class="submenu" aria-label="教务通知二级菜单">
-          <a href="#notice">通知公告</a>
-          <a href="#notice">项目申报</a>
-          <a href="#notice">平台服务</a>
+        <a class="nav-link" href="#quick">AI能力中心</a>
+        <div class="submenu" aria-label="AI能力中心二级菜单">
+          <a href="#quick">AI工具</a>
+          <a href="#quick">教师智能体成果</a>
         </div>
       </div>
     </div>
@@ -1564,13 +1688,18 @@
     <div class="hero-inner">
       <span class="eyebrow">Future Learning Center</span>
       <h1>未来学习中心</h1>
-      <p class="hero-subtitle">成都工贸职业技术学院</p>
       <p class="hero-copy">面向智能制造、现代交通、数字服务与工匠人才培养，汇聚专业建设、智慧教学、虚拟仿真和资源共享能力，打造数字化、智能化、技能型学习新空间。</p>
     </div>
+    <aside class="panda-assistant" aria-label="技能熊猫提示">
+      <div class="panda-message">你好，我是技能熊猫<br>有任何问题都可以点我提问哦</div>
+      <video class="panda-float" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+        <source src="./assets/video/panda-transparent.webm" type="video/webm">
+      </video>
+    </aside>
   </header>
 
   <section class="quick-panel" id="quick" aria-label="快捷入口">
-    <a class="quick-card" href="#"><span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3h10a4 4 0 0 1 4 4v14H8a5 5 0 0 1-5-5V5a2 2 0 0 1 2-2Zm3 4v2h7V7H8Zm0 4v2h7v-2H8Z"/></svg></span><span class="item-title">超星建设</span></a>
+    <a class="quick-card" href="#"><span class="quick-icon quick-icon--chaoxing" aria-hidden="true"><svg viewBox="0 0 66 62" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M37.642 42.804C38.1275 50.0615 43.1618 56.4502 51.1093 61.1011H65.1899C52.6936 57.2679 44.1073 49.7038 43.6217 40.6574C43.4965 36.4817 44.8953 32.4032 47.5572 29.1834L53.9458 20.367L64.5254 22.9225L58.0857 14.2339L63.8866 4.88093L53.5369 8.35636L46.535 0V10.8863L36.3131 14.975C15.1794 23.7914 0.536647 41.0918 0 61.1011H10.7074C10.4413 59.3503 10.3046 57.5822 10.2985 55.8113C10.2985 39.2519 21.9003 24.6347 39.5841 15.9972L41.884 16.7383C24.5836 25.4524 13.5951 40.0697 14.7706 55.7858C14.8978 57.5821 15.1973 59.3621 15.665 61.1011H26.8324C24.8864 57.704 23.7251 53.9145 23.4336 50.0104C22.4881 37.4631 30.87 25.6568 44.5417 17.6582L46.7905 18.3993C34.0132 26.7557 26.3468 37.872 27.5479 49.2693C28.0412 53.5685 29.6831 57.6555 32.301 61.1011H44.8484C42.1091 59.1859 39.7896 56.7316 38.0319 53.8886C36.2743 51.0456 35.1155 47.8738 34.6265 44.5673C33.7321 36.0576 38.5108 27.8034 47.0461 21.1337L47.2505 24.1747C40.8363 29.5412 37.2331 36.032 37.6931 42.804" fill="white"/></svg></span><span class="item-title">超星教务</span></a>
     <a class="quick-card" href="#major"><span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2 3 7l9 5 9-5-9-5Zm-7 8v6l7 4 7-4v-6l-7 4-7-4Z"/></svg></span><span class="item-title">专业建设</span></a>
     <a class="quick-card" href="#"><span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v11H2V6a2 2 0 0 1 2-2Zm5 15h6l1 2H8l1-2Zm-3-9h5V8H6v2Zm0 4h8v-2H6v2Zm10 0h2V8h-2v6Z"/></svg></span><span class="item-title">智慧教学</span></a>
     <a class="quick-card" href="#"><span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.6 6h-3.1a15.3 15.3 0 0 0-1.2-3 8 8 0 0 1 4.3 3ZM12 4.1c.6.9 1.1 2.2 1.4 3.9h-2.8c.3-1.7.8-3 1.4-3.9ZM4.3 14a8.4 8.4 0 0 1 0-4h3.5a17.4 17.4 0 0 0 0 4H4.3Zm1.1 2h3.1c.3 1.1.7 2.1 1.2 3a8 8 0 0 1-4.3-3Zm3.1-8H5.4a8 8 0 0 1 4.3-3c-.5.9-.9 1.9-1.2 3Zm3.5 11.9c-.6-.9-1.1-2.2-1.4-3.9h2.8c-.3 1.7-.8 3-1.4 3.9ZM13.8 14h-3.6a14.7 14.7 0 0 1 0-4h3.6a14.7 14.7 0 0 1 0 4Zm.5 5c.5-.9.9-1.9 1.2-3h3.1a8 8 0 0 1-4.3 3Zm1.9-5a17.4 17.4 0 0 0 0-4h3.5a8.4 8.4 0 0 1 0 4h-3.5Z"/></svg></span><span class="item-title">超星尔雅</span></a>
@@ -1600,7 +1729,7 @@
             <h2 class="section-title">专业建设</h2>
             <div class="section-kicker">Major Construction</div>
           </div>
-          <a class="section-more" href="#">查看更多</a>
+          <a class="section-more" href="textbook-resources.html">查看更多</a>
         </div>
         <div class="grid-4">
           <article class="major-card">
@@ -1967,6 +2096,9 @@
     </div>
   </footer>
 
+  <script src="./assets/js/site-navigation.js?v=20260804-1249"></script>
+  <script src="./assets/vendor/gsap.min.js"></script>
+  <script src="./assets/vendor/ScrollTrigger.min.js"></script>
   <script>
     const nav = document.querySelector(".nav");
     const hero = document.querySelector(".hero");
@@ -1993,7 +2125,11 @@
     });
 
     navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
+      link.addEventListener("click", (event) => {
+        if ((link.getAttribute("href") || "").startsWith("#")) {
+          event.preventDefault();
+          return;
+        }
         document.body.classList.remove("nav-open");
         menuToggle.setAttribute("aria-expanded", "false");
       });
@@ -2009,6 +2145,90 @@
         tabPanels.forEach((panel) => panel.classList.toggle("active", panel === nextPanel));
       });
     });
+  </script>
+  <script>
+    (() => {
+      if (!window.gsap || !window.ScrollTrigger) return;
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const moduleSelectors = [
+        "#about",
+        "#major",
+        "#course",
+        "#simulation",
+        "#resource",
+        "#news",
+        "#screen",
+        ".footer"
+      ];
+
+      const heroContent = document.querySelector(".hero-inner");
+      const quickPanel = document.querySelector("#quick");
+
+      if (quickPanel) {
+        quickPanel.classList.add("home-motion-target");
+        gsap.fromTo(quickPanel,
+          { autoAlpha: 0, y: 28 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.62,
+            delay: 0.38,
+            ease: "power2.out",
+            clearProps: "transform,visibility,opacity"
+          }
+        );
+      }
+
+      if (heroContent) {
+        heroContent.classList.add("home-motion-target");
+        gsap.from(heroContent.children, {
+          autoAlpha: 0,
+          y: 20,
+          duration: 0.72,
+          ease: "power2.out",
+          stagger: 0.12,
+          clearProps: "transform,visibility,opacity"
+        });
+
+        gsap.to(heroContent, {
+          autoAlpha: 0,
+          y: -18,
+          duration: 0.45,
+          ease: "power1.out",
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: ".hero",
+            start: "bottom 62%",
+            end: "bottom top",
+            toggleActions: "play none none reverse"
+          }
+        });
+      }
+
+      moduleSelectors.forEach((selector) => {
+        document.querySelectorAll(selector).forEach((module) => {
+          module.classList.add("home-motion-target");
+          gsap.fromTo(module,
+            { autoAlpha: 0, y: 28 },
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.62,
+              ease: "power2.out",
+              overwrite: "auto",
+              scrollTrigger: {
+                trigger: module,
+                start: "top 85%",
+                end: "bottom 15%",
+                toggleActions: "play reverse play reverse"
+              }
+            }
+          );
+        });
+      });
+    })();
   </script>
 </body>
 </html>
