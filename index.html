@@ -669,8 +669,10 @@
 
     .virtual-exhibition-card {
       margin: 0;
+      aspect-ratio: 1440 / 678;
       overflow: hidden;
       max-width: 1440px;
+      padding: 30px;
       border-radius: 30px;
       background: #fff;
       border: 1px solid var(--line);
@@ -683,14 +685,13 @@
       box-shadow: var(--shadow-float);
     }
 
-    .virtual-exhibition-cover {
+    .virtual-exhibition-frame {
       width: 100%;
-      max-width: 1440px;
-      aspect-ratio: 1440 / 678;
+      height: 100%;
       display: block;
-      object-fit: contain;
-      object-position: center;
-      border-radius: 30px;
+      border: 0;
+      border-radius: 12px;
+      background: var(--surface);
     }
 
     .exhibition-image {
@@ -1756,9 +1757,15 @@
           <div class="section-kicker">Virtual Exhibition</div>
         </div>
       </div>
-      <figure class="virtual-exhibition-card" role="img" aria-label="未来学习中心虚拟展厅展示图">
-        <img class="virtual-exhibition-cover" src="./assets/inline-covers/virtual-exhibition.jpg" alt="未来学习中心虚拟展厅展示图">
-      </figure>
+      <div class="virtual-exhibition-card">
+        <iframe
+          class="virtual-exhibition-frame"
+          title="成都工贸职业技术学院虚拟展厅"
+          src="https://vr.chaoxing.com/#/showCustomerSpace?id=NzI4MjI"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
       </div>
     </section>
 
