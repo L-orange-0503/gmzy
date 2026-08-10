@@ -2259,46 +2259,27 @@
           module.classList.add("home-motion-target");
           // 仅变换模块外层，卡片仍可独立响应各自的 :hover transform。
           gsap.set(module, { autoAlpha: 0, y: 56 });
-          const entranceMotion = gsap.fromTo(module,
-            { autoAlpha: 0, y: 56 },
-            {
+          const hideBelow = () => {
+            gsap.killTweensOf(module);
+            gsap.set(module, { autoAlpha: 0, y: 56 });
+          };
+          const revealModule = () => {
+            gsap.to(module, {
               autoAlpha: 1,
               y: 0,
               duration: 0.72,
               ease: "power3.out",
-              paused: true,
-              immediateRender: false,
-              overwrite: "auto"
-            }
-          );
-          const exitMotion = gsap.fromTo(module,
-            { autoAlpha: 1, y: 0 },
-            {
+              overwrite: true
+            });
+          };
+          const hideAbove = () => {
+            gsap.to(module, {
               autoAlpha: 0,
               y: -36,
               duration: 0.42,
               ease: "power2.in",
-              paused: true,
-              immediateRender: false,
-              overwrite: "auto"
-            }
-          );
-          const hideBelow = () => {
-            entranceMotion.pause(0);
-            exitMotion.pause(0);
-            gsap.set(module, { autoAlpha: 0, y: 56 });
-          };
-          const showModule = () => {
-            exitMotion.pause(0);
-            entranceMotion.restart();
-          };
-          const hideAbove = () => {
-            entranceMotion.pause(entranceMotion.duration());
-            exitMotion.restart();
-          };
-          const restoreModule = () => {
-            entranceMotion.pause(entranceMotion.duration());
-            exitMotion.reverse();
+              overwrite: true
+            });
           };
 
           let entranceTrigger;
@@ -2310,12 +2291,10 @@
             if (scrollPosition < entranceTrigger.start) {
               hideBelow();
             } else if (scrollPosition >= exitTrigger.start) {
-              entranceMotion.pause(entranceMotion.duration());
-              exitMotion.pause(exitMotion.duration());
+              gsap.killTweensOf(module);
               gsap.set(module, { autoAlpha: 0, y: -36 });
             } else {
-              entranceMotion.pause(entranceMotion.duration());
-              exitMotion.pause(0);
+              gsap.killTweensOf(module);
               gsap.set(module, { autoAlpha: 1, y: 0 });
             }
           };
@@ -2325,7 +2304,8 @@
             start: "clamp(top 85%)",
             end: "clamp(bottom top+=8)",
             invalidateOnRefresh: true,
-            onEnter: showModule,
+            onEnter: revealModule,
+            onEnterBack: revealModule,
             onLeaveBack: hideBelow,
             onRefresh: syncModuleState
           });
@@ -2335,7 +2315,7 @@
             end: "max",
             invalidateOnRefresh: true,
             onEnter: hideAbove,
-            onLeaveBack: restoreModule,
+            onLeaveBack: revealModule,
             onRefresh: syncModuleState
           });
           syncModuleState();
