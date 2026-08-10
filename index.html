@@ -2246,23 +2246,35 @@
 
         moduleElements.forEach((module) => {
           module.classList.add("home-motion-target");
-          gsap.fromTo(module,
-            { autoAlpha: 0, y: 28 },
-            {
-              autoAlpha: 1,
-              y: 0,
-              duration: 0.62,
+          const setModuleMotion = (visible, y) => {
+            gsap.to(module, {
+              autoAlpha: visible ? 1 : 0,
+              y: visible ? 0 : y,
+              duration: 0.45,
               ease: "power2.out",
-              overwrite: "auto",
-              scrollTrigger: {
-                trigger: module,
-                start: "top 85%",
-                end: "bottom top+=8",
-                invalidateOnRefresh: true,
-                toggleActions: "play reverse play reverse"
+              overwrite: "auto"
+            });
+          };
+
+          gsap.set(module, { autoAlpha: 0, y: 28 });
+          ScrollTrigger.create({
+            trigger: module,
+            start: "top 85%",
+            end: "bottom top+=8",
+            invalidateOnRefresh: true,
+            onEnter: () => setModuleMotion(true, 0),
+            onLeave: () => setModuleMotion(false, -20),
+            onEnterBack: () => setModuleMotion(true, 0),
+            onLeaveBack: () => setModuleMotion(false, 28),
+            onRefresh: (trigger) => {
+              if (trigger.isActive) {
+                gsap.set(module, { autoAlpha: 1, y: 0 });
+              } else {
+                const isBelowViewport = trigger.scroll() < trigger.start;
+                gsap.set(module, { autoAlpha: 0, y: isBelowViewport ? 28 : -20 });
               }
             }
-          );
+          });
         });
 
         return () => {
