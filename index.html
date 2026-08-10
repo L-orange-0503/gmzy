@@ -2178,13 +2178,13 @@
       gsap.registerPlugin(ScrollTrigger);
 
       const moduleSelectors = [
+        "#screen",
         "#about",
         "#major",
         "#course",
         "#simulation",
         "#resource",
         "#news",
-        "#screen",
         ".footer"
       ];
 
@@ -2259,29 +2259,86 @@
           module.classList.add("home-motion-target");
           // 仅变换模块外层，卡片仍可独立响应各自的 :hover transform。
           gsap.set(module, { autoAlpha: 0, y: 56 });
-          const moduleMotion = gsap.timeline({
-            scrollTrigger: {
-              trigger: module,
-              start: "top 85%",
-              end: "bottom top+=8",
-              scrub: 0.36,
-              invalidateOnRefresh: true
-            }
-          });
-
-          moduleMotion
-            .to(module, {
+          const entranceMotion = gsap.fromTo(module,
+            { autoAlpha: 0, y: 56 },
+            {
               autoAlpha: 1,
               y: 0,
-              duration: 0.22,
-              ease: "power3.out"
-            }, 0)
-            .to(module, {
+              duration: 0.72,
+              ease: "power3.out",
+              paused: true,
+              immediateRender: false,
+              overwrite: "auto"
+            }
+          );
+          const exitMotion = gsap.fromTo(module,
+            { autoAlpha: 1, y: 0 },
+            {
               autoAlpha: 0,
               y: -36,
-              duration: 0.10,
-              ease: "power2.in"
-            }, 0.90);
+              duration: 0.42,
+              ease: "power2.in",
+              paused: true,
+              immediateRender: false,
+              overwrite: "auto"
+            }
+          );
+          const hideBelow = () => {
+            entranceMotion.pause(0);
+            exitMotion.pause(0);
+            gsap.set(module, { autoAlpha: 0, y: 56 });
+          };
+          const showModule = () => {
+            exitMotion.pause(0);
+            entranceMotion.restart();
+          };
+          const hideAbove = () => {
+            entranceMotion.pause(entranceMotion.duration());
+            exitMotion.restart();
+          };
+          const restoreModule = () => {
+            entranceMotion.pause(entranceMotion.duration());
+            exitMotion.reverse();
+          };
+
+          let entranceTrigger;
+          let exitTrigger;
+          const syncModuleState = () => {
+            if (!entranceTrigger || !exitTrigger) return;
+
+            const scrollPosition = window.scrollY;
+            if (scrollPosition < entranceTrigger.start) {
+              hideBelow();
+            } else if (scrollPosition >= exitTrigger.start) {
+              entranceMotion.pause(entranceMotion.duration());
+              exitMotion.pause(exitMotion.duration());
+              gsap.set(module, { autoAlpha: 0, y: -36 });
+            } else {
+              entranceMotion.pause(entranceMotion.duration());
+              exitMotion.pause(0);
+              gsap.set(module, { autoAlpha: 1, y: 0 });
+            }
+          };
+
+          entranceTrigger = ScrollTrigger.create({
+            trigger: module,
+            start: "clamp(top 85%)",
+            end: "clamp(bottom top+=8)",
+            invalidateOnRefresh: true,
+            onEnter: showModule,
+            onLeaveBack: hideBelow,
+            onRefresh: syncModuleState
+          });
+          exitTrigger = ScrollTrigger.create({
+            trigger: module,
+            start: "clamp(bottom top+=8)",
+            end: "max",
+            invalidateOnRefresh: true,
+            onEnter: hideAbove,
+            onLeaveBack: restoreModule,
+            onRefresh: syncModuleState
+          });
+          syncModuleState();
         });
 
         return () => {
