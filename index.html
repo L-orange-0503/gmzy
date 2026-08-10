@@ -2190,50 +2190,61 @@
 
       const heroContent = document.querySelector(".hero-inner");
       const quickPanel = document.querySelector("#quick");
+      const moduleElements = moduleSelectors.flatMap((selector) => [...document.querySelectorAll(selector)]);
+      const motionTargets = [
+        quickPanel,
+        heroContent,
+        ...(heroContent ? [...heroContent.children] : []),
+        ...moduleElements
+      ].filter(Boolean);
+      const clearMotionStyles = () => {
+        gsap.set(motionTargets, { clearProps: "transform,visibility,opacity" });
+      };
 
-      if (quickPanel) {
-        quickPanel.classList.add("home-motion-target");
-        gsap.fromTo(quickPanel,
-          { autoAlpha: 0, y: 28 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.62,
-            delay: 0.38,
+      const motionMedia = gsap.matchMedia();
+      motionMedia.add("(min-width: 761px)", () => {
+        if (quickPanel) {
+          quickPanel.classList.add("home-motion-target");
+          gsap.fromTo(quickPanel,
+            { autoAlpha: 0, y: 28 },
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.62,
+              delay: 0.38,
+              ease: "power2.out",
+              clearProps: "transform,visibility,opacity"
+            }
+          );
+        }
+
+        if (heroContent) {
+          heroContent.classList.add("home-motion-target");
+          gsap.from(heroContent.children, {
+            autoAlpha: 0,
+            y: 20,
+            duration: 0.72,
             ease: "power2.out",
+            stagger: 0.12,
             clearProps: "transform,visibility,opacity"
-          }
-        );
-      }
+          });
 
-      if (heroContent) {
-        heroContent.classList.add("home-motion-target");
-        gsap.from(heroContent.children, {
-          autoAlpha: 0,
-          y: 20,
-          duration: 0.72,
-          ease: "power2.out",
-          stagger: 0.12,
-          clearProps: "transform,visibility,opacity"
-        });
+          gsap.to(heroContent, {
+            autoAlpha: 0,
+            y: -18,
+            duration: 0.45,
+            ease: "power1.out",
+            immediateRender: false,
+            scrollTrigger: {
+              trigger: ".hero",
+              start: "bottom 62%",
+              end: "bottom top",
+              toggleActions: "play none none reverse"
+            }
+          });
+        }
 
-        gsap.to(heroContent, {
-          autoAlpha: 0,
-          y: -18,
-          duration: 0.45,
-          ease: "power1.out",
-          immediateRender: false,
-          scrollTrigger: {
-            trigger: ".hero",
-            start: "bottom 62%",
-            end: "bottom top",
-            toggleActions: "play none none reverse"
-          }
-        });
-      }
-
-      moduleSelectors.forEach((selector) => {
-        document.querySelectorAll(selector).forEach((module) => {
+        moduleElements.forEach((module) => {
           module.classList.add("home-motion-target");
           gsap.fromTo(module,
             { autoAlpha: 0, y: 28 },
@@ -2246,17 +2257,23 @@
               scrollTrigger: {
                 trigger: module,
                 start: "top 85%",
-                end: () => {
-                  const navBottom = nav?.getBoundingClientRect().bottom || 80;
-                  return `bottom top+=${Math.round(navBottom + 12)}`;
-                },
+                end: "bottom top+=8",
                 invalidateOnRefresh: true,
                 toggleActions: "play reverse play reverse"
               }
             }
           );
         });
+
+        return () => {
+          clearMotionStyles();
+          motionTargets.forEach((target) => target.classList.remove("home-motion-target"));
+        };
       });
+
+      if (!window.matchMedia("(min-width: 761px)").matches) {
+        clearMotionStyles();
+      }
     })();
   </script>
 </body>
