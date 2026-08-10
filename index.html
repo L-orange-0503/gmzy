@@ -2202,7 +2202,15 @@
       };
 
       const motionMedia = gsap.matchMedia();
-      motionMedia.add("(min-width: 761px)", () => {
+      motionMedia.add({
+        desktopMotion: "(min-width: 761px) and (prefers-reduced-motion: no-preference)",
+        noMotion: "(max-width: 760px), (prefers-reduced-motion: reduce)"
+      }, (context) => {
+        if (!context.conditions.desktopMotion) {
+          clearMotionStyles();
+          return;
+        }
+
         if (quickPanel) {
           quickPanel.classList.add("home-motion-target");
           gsap.fromTo(quickPanel,
@@ -2229,52 +2237,50 @@
             clearProps: "transform,visibility,opacity"
           });
 
-          gsap.to(heroContent, {
-            autoAlpha: 0,
-            y: -18,
-            duration: 0.45,
-            ease: "power1.out",
-            immediateRender: false,
+          const heroMotion = gsap.timeline({
             scrollTrigger: {
               trigger: ".hero",
               start: "bottom 62%",
-              end: "bottom top",
-              toggleActions: "play none none reverse"
+              end: "bottom top+=8",
+              scrub: 0.28,
+              invalidateOnRefresh: true
             }
+          });
+
+          heroMotion.to(heroContent, {
+            autoAlpha: 0,
+            y: -18,
+            duration: 1,
+            ease: "none"
           });
         }
 
         moduleElements.forEach((module) => {
           module.classList.add("home-motion-target");
-          const setModuleMotion = (visible, y) => {
-            gsap.to(module, {
-              autoAlpha: visible ? 1 : 0,
-              y: visible ? 0 : y,
-              duration: 0.45,
-              ease: "power2.out",
-              overwrite: "auto"
-            });
-          };
-
           gsap.set(module, { autoAlpha: 0, y: 28 });
-          ScrollTrigger.create({
-            trigger: module,
-            start: "top 85%",
-            end: "bottom top+=8",
-            invalidateOnRefresh: true,
-            onEnter: () => setModuleMotion(true, 0),
-            onLeave: () => setModuleMotion(false, -20),
-            onEnterBack: () => setModuleMotion(true, 0),
-            onLeaveBack: () => setModuleMotion(false, 28),
-            onRefresh: (trigger) => {
-              if (trigger.isActive) {
-                gsap.set(module, { autoAlpha: 1, y: 0 });
-              } else {
-                const isBelowViewport = trigger.scroll() < trigger.start;
-                gsap.set(module, { autoAlpha: 0, y: isBelowViewport ? 28 : -20 });
-              }
+          const moduleMotion = gsap.timeline({
+            scrollTrigger: {
+              trigger: module,
+              start: "top 85%",
+              end: "bottom top+=8",
+              scrub: 0.28,
+              invalidateOnRefresh: true
             }
           });
+
+          moduleMotion
+            .to(module, {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.14,
+              ease: "power2.out"
+            }, 0)
+            .to(module, {
+              autoAlpha: 0,
+              y: -20,
+              duration: 0.14,
+              ease: "power2.in"
+            }, 0.86);
         });
 
         return () => {
@@ -2283,9 +2289,11 @@
         };
       });
 
-      if (!window.matchMedia("(min-width: 761px)").matches) {
+      if (!window.matchMedia("(min-width: 761px) and (prefers-reduced-motion: no-preference)").matches) {
         clearMotionStyles();
       }
+
+      window.addEventListener("load", () => ScrollTrigger.refresh(), { once: true });
     })();
   </script>
 </body>
