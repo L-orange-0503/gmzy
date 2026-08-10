@@ -656,7 +656,7 @@
       position: relative;
       isolation: isolate;
       overflow: hidden;
-      padding: 44px 32px;
+      padding: 80px 32px;
       border: 1px solid rgba(23, 107, 219, 0.08);
       border-radius: 24px;
       background:
@@ -2239,7 +2239,11 @@
               scrollTrigger: {
                 trigger: module,
                 start: "top 85%",
-                end: "bottom 15%",
+                end: () => {
+                  const navBottom = nav?.getBoundingClientRect().bottom || 80;
+                  return `bottom top+=${Math.round(navBottom + 12)}`;
+                },
+                invalidateOnRefresh: true,
                 toggleActions: "play reverse play reverse"
               }
             }
