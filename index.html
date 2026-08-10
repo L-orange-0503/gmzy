@@ -2214,13 +2214,13 @@
         if (quickPanel) {
           quickPanel.classList.add("home-motion-target");
           gsap.fromTo(quickPanel,
-            { autoAlpha: 0, y: 28 },
+            { autoAlpha: 0, y: 42 },
             {
               autoAlpha: 1,
               y: 0,
-              duration: 0.62,
+              duration: 0.72,
               delay: 0.38,
-              ease: "power2.out",
+              ease: "power3.out",
               clearProps: "transform,visibility,opacity"
             }
           );
@@ -2230,10 +2230,10 @@
           heroContent.classList.add("home-motion-target");
           gsap.from(heroContent.children, {
             autoAlpha: 0,
-            y: 20,
-            duration: 0.72,
-            ease: "power2.out",
-            stagger: 0.12,
+            y: 32,
+            duration: 0.82,
+            ease: "power3.out",
+            stagger: 0.14,
             clearProps: "transform,visibility,opacity"
           });
 
@@ -2257,13 +2257,14 @@
 
         moduleElements.forEach((module) => {
           module.classList.add("home-motion-target");
-          gsap.set(module, { autoAlpha: 0, y: 28 });
+          // 仅变换模块外层，卡片仍可独立响应各自的 :hover transform。
+          gsap.set(module, { autoAlpha: 0, y: 56 });
           const moduleMotion = gsap.timeline({
             scrollTrigger: {
               trigger: module,
               start: "top 85%",
               end: "bottom top+=8",
-              scrub: 0.28,
+              scrub: 0.36,
               invalidateOnRefresh: true
             }
           });
@@ -2272,15 +2273,15 @@
             .to(module, {
               autoAlpha: 1,
               y: 0,
-              duration: 0.14,
-              ease: "power2.out"
+              duration: 0.22,
+              ease: "power3.out"
             }, 0)
             .to(module, {
               autoAlpha: 0,
-              y: -20,
-              duration: 0.14,
+              y: -36,
+              duration: 0.10,
               ease: "power2.in"
-            }, 0.86);
+            }, 0.90);
         });
 
         return () => {
