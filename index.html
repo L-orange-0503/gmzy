@@ -172,6 +172,14 @@
       transform-origin: center;
     }
 
+    .quick-icon--library svg {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
     .brand-logo {
       flex: 0 0 auto;
       display: block;
@@ -468,7 +476,7 @@
       margin: -76px auto 0;
       padding: 16px;
       display: grid;
-      grid-template-columns: repeat(8, minmax(0, 1fr));
+      grid-template-columns: repeat(9, minmax(0, 1fr));
       gap: 12px;
       border-radius: 28px;
       background: rgba(255, 255, 255, 0.94);
@@ -637,18 +645,18 @@
 
     .soft-band .section { margin-bottom: 0; }
 
-    #resource {
+    #simulation {
       background:
         radial-gradient(circle at 9% 18%, rgba(25, 167, 232, 0.15), transparent 31rem),
         radial-gradient(circle at 88% 34%, rgba(255, 215, 102, 0.18), transparent 28rem),
         linear-gradient(135deg, #fbfdff 0%, #f1f8ff 52%, #f9fcff 100%);
     }
 
-    #major {
+    #about {
       position: relative;
       isolation: isolate;
       overflow: hidden;
-      padding: 44px 32px;
+      padding: 80px 32px;
       border: 1px solid rgba(23, 107, 219, 0.08);
       border-radius: 24px;
       background:
@@ -657,12 +665,14 @@
         linear-gradient(135deg, #fcfeff 0%, #f4f9ff 50%, #fbfdff 100%);
     }
 
-    #major > * { position: relative; z-index: 1; }
+    #about > * { position: relative; z-index: 1; }
 
     .virtual-exhibition-card {
       margin: 0;
+      aspect-ratio: 1440 / 678;
       overflow: hidden;
       max-width: 1440px;
+      padding: 30px;
       border-radius: 30px;
       background: #fff;
       border: 1px solid var(--line);
@@ -675,14 +685,13 @@
       box-shadow: var(--shadow-float);
     }
 
-    .virtual-exhibition-cover {
+    .virtual-exhibition-frame {
       width: 100%;
-      max-width: 1440px;
-      aspect-ratio: 1440 / 678;
+      height: 100%;
       display: block;
-      object-fit: contain;
-      object-position: center;
-      border-radius: 30px;
+      border: 0;
+      border-radius: 12px;
+      background: var(--surface);
     }
 
     .exhibition-image {
@@ -1195,6 +1204,14 @@
       margin-bottom: 0;
     }
 
+    .data-screen-intro { margin-bottom: 78px; }
+
+    #news > .news-section {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 0;
+    }
+
     .data-screen-card {
       margin: 0;
       overflow: hidden;
@@ -1537,6 +1554,7 @@
       }
 
       .data-screen-section { margin-bottom: 0; }
+      .data-screen-intro { margin-bottom: 58px; }
 
       .section-head {
         display: block;
@@ -1699,31 +1717,59 @@
   </header>
 
   <section class="quick-panel" id="quick" aria-label="快捷入口">
-    <a class="quick-card" href="#"><span class="quick-icon quick-icon--chaoxing" aria-hidden="true"><svg viewBox="0 0 66 62" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M37.642 42.804C38.1275 50.0615 43.1618 56.4502 51.1093 61.1011H65.1899C52.6936 57.2679 44.1073 49.7038 43.6217 40.6574C43.4965 36.4817 44.8953 32.4032 47.5572 29.1834L53.9458 20.367L64.5254 22.9225L58.0857 14.2339L63.8866 4.88093L53.5369 8.35636L46.535 0V10.8863L36.3131 14.975C15.1794 23.7914 0.536647 41.0918 0 61.1011H10.7074C10.4413 59.3503 10.3046 57.5822 10.2985 55.8113C10.2985 39.2519 21.9003 24.6347 39.5841 15.9972L41.884 16.7383C24.5836 25.4524 13.5951 40.0697 14.7706 55.7858C14.8978 57.5821 15.1973 59.3621 15.665 61.1011H26.8324C24.8864 57.704 23.7251 53.9145 23.4336 50.0104C22.4881 37.4631 30.87 25.6568 44.5417 17.6582L46.7905 18.3993C34.0132 26.7557 26.3468 37.872 27.5479 49.2693C28.0412 53.5685 29.6831 57.6555 32.301 61.1011H44.8484C42.1091 59.1859 39.7896 56.7316 38.0319 53.8886C36.2743 51.0456 35.1155 47.8738 34.6265 44.5673C33.7321 36.0576 38.5108 27.8034 47.0461 21.1337L47.2505 24.1747C40.8363 29.5412 37.2331 36.032 37.6931 42.804" fill="white"/></svg></span><span class="item-title">超星教务</span></a>
     <a class="quick-card" href="#major"><span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2 3 7l9 5 9-5-9-5Zm-7 8v6l7 4 7-4v-6l-7 4-7-4Z"/></svg></span><span class="item-title">专业建设</span></a>
-    <a class="quick-card" href="#"><span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v11H2V6a2 2 0 0 1 2-2Zm5 15h6l1 2H8l1-2Zm-3-9h5V8H6v2Zm0 4h8v-2H6v2Zm10 0h2V8h-2v6Z"/></svg></span><span class="item-title">智慧教学</span></a>
-    <a class="quick-card" href="#"><span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.6 6h-3.1a15.3 15.3 0 0 0-1.2-3 8 8 0 0 1 4.3 3ZM12 4.1c.6.9 1.1 2.2 1.4 3.9h-2.8c.3-1.7.8-3 1.4-3.9ZM4.3 14a8.4 8.4 0 0 1 0-4h3.5a17.4 17.4 0 0 0 0 4H4.3Zm1.1 2h3.1c.3 1.1.7 2.1 1.2 3a8 8 0 0 1-4.3-3Zm3.1-8H5.4a8 8 0 0 1 4.3-3c-.5.9-.9 1.9-1.2 3Zm3.5 11.9c-.6-.9-1.1-2.2-1.4-3.9h2.8c-.3 1.7-.8 3-1.4 3.9ZM13.8 14h-3.6a14.7 14.7 0 0 1 0-4h3.6a14.7 14.7 0 0 1 0 4Zm.5 5c.5-.9.9-1.9 1.2-3h3.1a8 8 0 0 1-4.3 3Zm1.9-5a17.4 17.4 0 0 0 0-4h3.5a8.4 8.4 0 0 1 0 4h-3.5Z"/></svg></span><span class="item-title">超星尔雅</span></a>
     <a class="quick-card" href="#"><span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.2-9.2-8A5.6 5.6 0 0 1 12 6.5 5.6 5.6 0 0 1 21.2 13C19 16.8 12 21 12 21Zm-1-9H8v2h3v3h2v-3h3v-2h-3V9h-2v3Z"/></svg></span><span class="item-title">课程思政</span></a>
-    <a class="quick-card" href="#"><span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.5 19a5.5 5.5 0 0 1-.7-10.96A7 7 0 0 1 20 11a4 4 0 0 1-1 7.87V17a2 2 0 0 0-1-3.73V11a5 5 0 0 0-9.7-1.65l-.33.96-1 .03A3.5 3.5 0 0 0 7.5 17H9v2H7.5Zm4.5 2 4-4h-3v-5h-2v5H8l4 4Z"/></svg></span><span class="item-title">习训云</span></a>
-    <a class="quick-card" href="#"><span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h10l6 6v10a2 2 0 0 1-2 2H4V4Zm9 1.5V11h5.5L13 5.5ZM7 14h8v-2H7v2Zm0 4h10v-2H7v2Z"/></svg></span><span class="item-title">教改项目</span></a>
+    <a class="quick-card" href="#"><span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v11H2V6a2 2 0 0 1 2-2Zm5 15h6l1 2H8l1-2Zm-3-9h5V8H6v2Zm0 4h8v-2H6v2Zm10 0h2V8h-2v6Z"/></svg></span><span class="item-title">智慧课堂</span></a>
+    <a class="quick-card" href="#"><span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h10l6 6v10a2 2 0 0 1-2 2H4V4Zm9 1.5V11h5.5L13 5.5ZM7 14h8v-2H7v2Zm0 4h10v-2H7v2Z"/></svg></span><span class="item-title">教学改革</span></a>
+    <a class="quick-card" href="#"><span class="quick-icon quick-icon--library" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg></span><span class="item-title">图书馆</span></a>
+    <a class="quick-card" href="#"><span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.6 6h-3.1a15.3 15.3 0 0 0-1.2-3 8 8 0 0 1 4.3 3ZM12 4.1c.6.9 1.1 2.2 1.4 3.9h-2.8c.3-1.7.8-3 1.4-3.9ZM4.3 14a8.4 8.4 0 0 1 0-4h3.5a17.4 17.4 0 0 0 0 4H4.3Zm1.1 2h3.1c.3 1.1.7 2.1 1.2 3a8 8 0 0 1-4.3-3Zm3.1-8H5.4a8 8 0 0 1 4.3-3c-.5.9-.9 1.9-1.2 3Zm3.5 11.9c-.6-.9-1.1-2.2-1.4-3.9h2.8c-.3 1.7-.8 3-1.4 3.9ZM13.8 14h-3.6a14.7 14.7 0 0 1 0-4h3.6a14.7 14.7 0 0 1 0 4Zm.5 5c.5-.9.9-1.9 1.2-3h3.1a8 8 0 0 1-4.3 3Zm1.9-5a17.4 17.4 0 0 0 0-4h3.5a8.4 8.4 0 0 1 0 4h-3.5Z"/></svg></span><span class="item-title">超星尔雅</span></a>
+    <a class="quick-card" href="#"><span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.5 19a5.5 5.5 0 0 1-.7-10.96A7 7 0 0 1 20 11a4 4 0 0 1-1 7.87V17a2 2 0 0 0-1-3.73V11a5 5 0 0 0-9.7-1.65l-.33.96-1 .03A3.5 3.5 0 0 0 7.5 17H9v2H7.5Zm4.5 2 4-4h-3v-5h-2v5H8l4 4Z"/></svg></span><span class="item-title">习讯云</span></a>
+    <a class="quick-card" href="#"><span class="quick-icon quick-icon--chaoxing" aria-hidden="true"><svg viewBox="0 0 66 62" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M37.642 42.804C38.1275 50.0615 43.1618 56.4502 51.1093 61.1011H65.1899C52.6936 57.2679 44.1073 49.7038 43.6217 40.6574C43.4965 36.4817 44.8953 32.4032 47.5572 29.1834L53.9458 20.367L64.5254 22.9225L58.0857 14.2339L63.8866 4.88093L53.5369 8.35636L46.535 0V10.8863L36.3131 14.975C15.1794 23.7914 0.536647 41.0918 0 61.1011H10.7074C10.4413 59.3503 10.3046 57.5822 10.2985 55.8113C10.2985 39.2519 21.9003 24.6347 39.5841 15.9972L41.884 16.7383C24.5836 25.4524 13.5951 40.0697 14.7706 55.7858C14.8978 57.5821 15.1973 59.3621 15.665 61.1011H26.8324C24.8864 57.704 23.7251 53.9145 23.4336 50.0104C22.4881 37.4631 30.87 25.6568 44.5417 17.6582L46.7905 18.3993C34.0132 26.7557 26.3468 37.872 27.5479 49.2693C28.0412 53.5685 29.6831 57.6555 32.301 61.1011H44.8484C42.1091 59.1859 39.7896 56.7316 38.0319 53.8886C36.2743 51.0456 35.1155 47.8738 34.6265 44.5673C33.7321 36.0576 38.5108 27.8034 47.0461 21.1337L47.2505 24.1747C40.8363 29.5412 37.2331 36.032 37.6931 42.804" fill="white"/></svg></span><span class="item-title">超星教务</span></a>
     <a class="quick-card" href="#"><span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 11a4 4 0 1 1 8 0 4 4 0 0 1-8 0Zm4 6c-4.4 0-8 2-8 4v1h16v-1c0-2-3.6-4-8-4ZM4 8a3 3 0 1 0 0 6c.7 0 1.3-.2 1.8-.6A6 6 0 0 1 6 8.6C5.5 8.2 4.8 8 4 8Zm16 0c-.8 0-1.5.2-2 .6a6 6 0 0 1 .2 4.8A3 3 0 1 0 20 8Z"/></svg></span><span class="item-title">虚拟教研室</span></a>
   </section>
 
   <main id="main">
-    <section class="section" id="about">
+    <section class="section data-screen-section data-screen-intro" id="screen">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">今日动态数据大屏</h2>
+            <div class="section-kicker">Today Data Screen</div>
+          </div>
+        </div>
+        <div class="data-screen-card" aria-label="今日动态数据大屏 Figma 预览">
+          <div class="data-screen-viewport">
+            <iframe
+              class="data-screen-frame"
+              title="成都工贸职业技术学院未来学习中心 Figma 预览"
+              src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2F25bKsIYhvyljTi4fTpXhDj%2F%25E6%2588%2590%25E9%2583%25BD%25E5%25B7%25A5%25E8%25B4%25B8%25E8%2581%258C%25E4%25B8%259A%25E6%258A%2580%25E6%259C%25AF%25E5%25AD%25A6%25E9%2599%25A2%25E6%259C%25AA%25E6%259D%25A5%25E5%25AD%25A6%25E4%25B9%25A0%25E4%25B8%25AD%25E5%25BF%2583%3Fnode-id%3D26027-2357%26viewport%3D-1428%252C-1375%252C0.4%26t%3DZSdV6UQOoQKhKQmj-1%26scaling%3Dscale-down-width%26content-scaling%3Dfixed%26page-id%3D0%253A1%26hide-ui%3D1"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+    </section>
+
+    <section class="soft-band" id="about">
+      <div class="section">
       <div class="section-head">
         <div>
           <h2 class="section-title">虚拟展厅</h2>
           <div class="section-kicker">Virtual Exhibition</div>
         </div>
       </div>
-      <figure class="virtual-exhibition-card" role="img" aria-label="未来学习中心虚拟展厅展示图">
-        <img class="virtual-exhibition-cover" src="./assets/inline-covers/virtual-exhibition.jpg" alt="未来学习中心虚拟展厅展示图">
-      </figure>
+      <div class="virtual-exhibition-card">
+        <iframe
+          class="virtual-exhibition-frame"
+          title="成都工贸职业技术学院虚拟展厅"
+          src="https://vr.chaoxing.com/#/showCustomerSpace?id=NzI4MjI"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+      </div>
     </section>
 
-    <section class="soft-band" id="major">
-      <div class="section">
+    <section class="section" id="major">
         <div class="section-head">
           <div>
             <h2 class="section-title">专业建设</h2>
@@ -1757,7 +1803,6 @@
             <div class="tag-row"><span class="tag">工业互联</span><span class="tag gold">创意技术</span></div>
           </article>
         </div>
-      </div>
     </section>
 
     <section class="section" id="course">
@@ -1844,7 +1889,8 @@
       </div>
     </section>
 
-    <section class="section" id="simulation">
+    <section class="soft-band" id="simulation">
+      <div class="section">
       <div class="section-head">
         <div>
           <h2 class="section-title">虚拟仿真</h2>
@@ -1918,10 +1964,10 @@
           </div>
         </article>
       </div>
+      </div>
     </section>
 
-    <section class="soft-band" id="resource">
-      <div class="section">
+    <section class="section" id="resource">
         <div class="section-head">
           <div>
             <h2 class="section-title">资源库</h2>
@@ -1975,10 +2021,10 @@
             </div>
           </div>
         </div>
-      </div>
     </section>
 
-    <section class="section" id="news">
+    <section class="data-screen-band" id="news">
+      <div class="section news-section">
       <div class="news-layout">
         <div>
           <div class="section-head">
@@ -2035,27 +2081,6 @@
           </ul>
         </div>
       </div>
-    </section>
-
-    <section class="data-screen-band" id="screen">
-      <div class="section data-screen-section">
-        <div class="section-head">
-          <div>
-            <h2 class="section-title">今日动态数据大屏</h2>
-            <div class="section-kicker">Today Data Screen</div>
-          </div>
-        </div>
-        <div class="data-screen-card" aria-label="今日动态数据大屏 Figma 预览">
-          <div class="data-screen-viewport">
-            <iframe
-              class="data-screen-frame"
-              title="成都工贸职业技术学院未来学习中心 Figma 预览"
-              src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2F25bKsIYhvyljTi4fTpXhDj%2F%25E6%2588%2590%25E9%2583%25BD%25E5%25B7%25A5%25E8%25B4%25B8%25E8%2581%258C%25E4%25B8%259A%25E6%258A%2580%25E6%259C%25AF%25E5%25AD%25A6%25E9%2599%25A2%25E6%259C%25AA%25E6%259D%25A5%25E5%25AD%25A6%25E4%25B9%25A0%25E4%25B8%25AD%25E5%25BF%2583%3Fnode-id%3D26027-2357%26viewport%3D-1428%252C-1375%252C0.4%26t%3DZSdV6UQOoQKhKQmj-1%26scaling%3Dscale-down-width%26content-scaling%3Dfixed%26page-id%3D0%253A1%26hide-ui%3D1"
-              allowfullscreen
-              loading="lazy">
-            </iframe>
-          </div>
-        </div>
       </div>
     </section>
   </main>
@@ -2153,81 +2178,160 @@
       gsap.registerPlugin(ScrollTrigger);
 
       const moduleSelectors = [
+        "#screen",
         "#about",
         "#major",
         "#course",
         "#simulation",
         "#resource",
         "#news",
-        "#screen",
         ".footer"
       ];
 
       const heroContent = document.querySelector(".hero-inner");
       const quickPanel = document.querySelector("#quick");
+      const moduleElements = moduleSelectors.flatMap((selector) => [...document.querySelectorAll(selector)]);
+      const motionTargets = [
+        quickPanel,
+        heroContent,
+        ...(heroContent ? [...heroContent.children] : []),
+        ...moduleElements
+      ].filter(Boolean);
+      const clearMotionStyles = () => {
+        gsap.set(motionTargets, { clearProps: "transform,visibility,opacity" });
+      };
 
-      if (quickPanel) {
-        quickPanel.classList.add("home-motion-target");
-        gsap.fromTo(quickPanel,
-          { autoAlpha: 0, y: 28 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.62,
-            delay: 0.38,
-            ease: "power2.out",
-            clearProps: "transform,visibility,opacity"
-          }
-        );
-      }
+      const motionMedia = gsap.matchMedia();
+      motionMedia.add({
+        desktopMotion: "(min-width: 761px) and (prefers-reduced-motion: no-preference)",
+        noMotion: "(max-width: 760px), (prefers-reduced-motion: reduce)"
+      }, (context) => {
+        if (!context.conditions.desktopMotion) {
+          clearMotionStyles();
+          return;
+        }
 
-      if (heroContent) {
-        heroContent.classList.add("home-motion-target");
-        gsap.from(heroContent.children, {
-          autoAlpha: 0,
-          y: 20,
-          duration: 0.72,
-          ease: "power2.out",
-          stagger: 0.12,
-          clearProps: "transform,visibility,opacity"
-        });
-
-        gsap.to(heroContent, {
-          autoAlpha: 0,
-          y: -18,
-          duration: 0.45,
-          ease: "power1.out",
-          immediateRender: false,
-          scrollTrigger: {
-            trigger: ".hero",
-            start: "bottom 62%",
-            end: "bottom top",
-            toggleActions: "play none none reverse"
-          }
-        });
-      }
-
-      moduleSelectors.forEach((selector) => {
-        document.querySelectorAll(selector).forEach((module) => {
-          module.classList.add("home-motion-target");
-          gsap.fromTo(module,
-            { autoAlpha: 0, y: 28 },
+        if (quickPanel) {
+          quickPanel.classList.add("home-motion-target");
+          gsap.fromTo(quickPanel,
+            { autoAlpha: 0, y: 42 },
             {
               autoAlpha: 1,
               y: 0,
-              duration: 0.62,
-              ease: "power2.out",
-              overwrite: "auto",
-              scrollTrigger: {
-                trigger: module,
-                start: "top 85%",
-                end: "bottom 15%",
-                toggleActions: "play reverse play reverse"
-              }
+              duration: 0.72,
+              delay: 0.38,
+              ease: "power3.out",
+              clearProps: "transform,visibility,opacity"
             }
           );
+        }
+
+        if (heroContent) {
+          heroContent.classList.add("home-motion-target");
+          gsap.from(heroContent.children, {
+            autoAlpha: 0,
+            y: 32,
+            duration: 0.82,
+            ease: "power3.out",
+            stagger: 0.14,
+            clearProps: "transform,visibility,opacity"
+          });
+
+          const heroMotion = gsap.timeline({
+            scrollTrigger: {
+              trigger: ".hero",
+              start: "bottom 62%",
+              end: "bottom top+=8",
+              scrub: 0.28,
+              invalidateOnRefresh: true
+            }
+          });
+
+          heroMotion.to(heroContent, {
+            autoAlpha: 0,
+            y: -18,
+            duration: 1,
+            ease: "none"
+          });
+        }
+
+        moduleElements.forEach((module) => {
+          module.classList.add("home-motion-target");
+          // 仅变换模块外层，卡片仍可独立响应各自的 :hover transform。
+          gsap.set(module, { autoAlpha: 0, y: 56 });
+          const hideBelow = () => {
+            gsap.killTweensOf(module);
+            gsap.set(module, { autoAlpha: 0, y: 56 });
+          };
+          const revealModule = () => {
+            gsap.to(module, {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.72,
+              ease: "power3.out",
+              overwrite: true
+            });
+          };
+          const hideAbove = () => {
+            gsap.to(module, {
+              autoAlpha: 0,
+              y: -36,
+              duration: 0.42,
+              ease: "power2.in",
+              overwrite: true
+            });
+          };
+
+          let entranceTrigger;
+          let exitTrigger;
+          const syncModuleState = () => {
+            if (!entranceTrigger || !exitTrigger) return;
+
+            const scrollPosition = window.scrollY;
+            if (scrollPosition < entranceTrigger.start) {
+              hideBelow();
+            } else if (scrollPosition >= exitTrigger.start) {
+              gsap.killTweensOf(module);
+              gsap.set(module, { autoAlpha: 0, y: -36 });
+            } else {
+              gsap.killTweensOf(module);
+              gsap.set(module, { autoAlpha: 1, y: 0 });
+            }
+          };
+
+          entranceTrigger = ScrollTrigger.create({
+            trigger: module,
+            start: "clamp(top 85%)",
+            end: "clamp(bottom top+=8)",
+            invalidateOnRefresh: true,
+            onEnter: revealModule,
+            onEnterBack: revealModule,
+            onLeaveBack: hideBelow,
+            onRefresh: syncModuleState
+          });
+          exitTrigger = ScrollTrigger.create({
+            trigger: module,
+            start: "clamp(bottom top+=8)",
+            end: "max",
+            invalidateOnRefresh: true,
+            onEnter: hideAbove,
+            onLeaveBack: revealModule,
+            onRefresh: syncModuleState
+          });
+          syncModuleState();
         });
+
+        return () => {
+          clearMotionStyles();
+          motionTargets.forEach((target) => target.classList.remove("home-motion-target"));
+        };
       });
+
+      if (!window.matchMedia("(min-width: 761px) and (prefers-reduced-motion: no-preference)").matches) {
+        clearMotionStyles();
+      }
+
+      window.addEventListener("load", () => ScrollTrigger.refresh(), { once: true });
     })();
   </script>
 </body>
