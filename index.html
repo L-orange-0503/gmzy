@@ -453,6 +453,36 @@
       text-shadow: 0 14px 32px rgba(2, 22, 56, 0.28);
     }
 
+    .hero-motto {
+      position: relative;
+      width: min(470px, 100%);
+      height: 60px;
+      margin: 0 0 24px;
+      display: flex;
+      align-items: center;
+      padding: 0 30px;
+    }
+
+    .hero-motto img {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .hero-motto span {
+      position: relative;
+      z-index: 1;
+      color: #fff;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0.04em;
+      text-shadow: 0 2px 8px rgba(4, 54, 132, 0.24);
+    }
+
     .hero-subtitle {
       margin: 0 0 18px;
       font-size: clamp(22px, 2vw, 32px);
@@ -1516,6 +1546,17 @@
         font-size: clamp(38px, 13vw, 50px);
       }
 
+      .hero-motto {
+        height: 52px;
+        margin-bottom: 20px;
+        padding: 0 20px;
+      }
+
+      .hero-motto span {
+        font-size: clamp(20px, 7vw, 25px);
+        letter-spacing: 0.02em;
+      }
+
       .hero-subtitle { font-size: clamp(20px, 7vw, 27px); }
       .hero-copy { font-size: 16px; }
 
@@ -1706,7 +1747,11 @@
     <div class="hero-inner">
       <span class="eyebrow">Future Learning Center</span>
       <h1>未来学习中心</h1>
-      <p class="hero-copy">面向智能制造、现代交通、数字服务与工匠人才培养，汇聚专业建设、智慧教学、虚拟仿真和资源共享能力，打造数字化、智能化、技能型学习新空间。</p>
+      <div class="hero-motto">
+        <img src="./assets/hero/hero-motto-gradient.svg" alt="" aria-hidden="true">
+        <span>厚德致远、精技兴业</span>
+      </div>
+      <p class="hero-copy">扎根公园城市，以数字化赋能教学、以虚拟仿真链接产业，打造“教、学、做、创”一体化的智慧学习新空间，为成都产业“建圈强链”培养新时代工匠人才。</p>
     </div>
     <aside class="panda-assistant" aria-label="技能熊猫提示">
       <div class="panda-message">你好，我是技能熊猫<br>有任何问题都可以点我提问哦</div>
