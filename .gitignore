@@ -9,4 +9,4 @@ node_modules/
 # Generated build folders when experimenting locally
 dist/
 build/
-
+.preflight-backups/
