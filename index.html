@@ -2305,6 +2305,7 @@
           module.classList.add("home-motion-target");
           // 仅变换模块外层，卡片仍可独立响应各自的 :hover transform。
           gsap.set(module, { autoAlpha: 0, y: 56 });
+          const shouldFadeOut = module.id !== "news";
           const hideBelow = () => {
             gsap.killTweensOf(module);
             gsap.set(module, { autoAlpha: 0, y: 56 });
@@ -2331,12 +2332,12 @@
           let entranceTrigger;
           let exitTrigger;
           const syncModuleState = () => {
-            if (!entranceTrigger || !exitTrigger) return;
+            if (!entranceTrigger || (shouldFadeOut && !exitTrigger)) return;
 
             const scrollPosition = window.scrollY;
             if (scrollPosition < entranceTrigger.start) {
               hideBelow();
-            } else if (scrollPosition >= exitTrigger.start) {
+            } else if (shouldFadeOut && scrollPosition >= exitTrigger.start) {
               gsap.killTweensOf(module);
               gsap.set(module, { autoAlpha: 0, y: -36 });
             } else {
@@ -2355,15 +2356,17 @@
             onLeaveBack: hideBelow,
             onRefresh: syncModuleState
           });
-          exitTrigger = ScrollTrigger.create({
-            trigger: module,
-            start: "clamp(bottom top+=8)",
-            end: "max",
-            invalidateOnRefresh: true,
-            onEnter: hideAbove,
-            onLeaveBack: revealModule,
-            onRefresh: syncModuleState
-          });
+          if (shouldFadeOut) {
+            exitTrigger = ScrollTrigger.create({
+              trigger: module,
+              start: "clamp(bottom top+=8)",
+              end: "max",
+              invalidateOnRefresh: true,
+              onEnter: hideAbove,
+              onLeaveBack: revealModule,
+              onRefresh: syncModuleState
+            });
+          }
           syncModuleState();
         });
 
