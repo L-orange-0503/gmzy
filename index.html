@@ -1126,14 +1126,6 @@
       line-height: 1;
     }
 
-    .news-layout {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      column-gap: 40px;
-      row-gap: 32px;
-      align-items: start;
-    }
-
     .text-list {
       margin: 0;
       padding: 0;
@@ -1174,22 +1166,20 @@
       line-height: 1.2;
     }
 
+    #notice .text-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 54px;
+    }
+
+    .notice-section {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 0;
+    }
+
     #notice .text-list li > div:nth-child(2) {
-      transform: translateX(-24px);
-    }
-
-    #news .text-date {
-      font-size: 18px;
-      line-height: 1.15;
-    }
-
-    #news .text-date span {
-      font-size: 16px;
-      line-height: 1.2;
-    }
-
-    #news .text-list li > div:nth-child(2) {
-      transform: translateX(-24px);
+      transform: none;
     }
 
     .text-title {
@@ -1237,12 +1227,6 @@
     }
 
     .data-screen-intro { margin-bottom: 78px; }
-
-    #news > .news-section {
-      position: relative;
-      z-index: 1;
-      margin-bottom: 0;
-    }
 
     .data-screen-card {
       margin: 0;
@@ -1631,8 +1615,11 @@
 
       .grid-4,
       .grid-8,
-      .resource-grid,
-      .news-layout {
+      .resource-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #notice .text-list {
         grid-template-columns: 1fr;
       }
 
@@ -1646,14 +1633,6 @@
         grid-template-columns: 1fr;
         gap: 8px;
         min-height: 0;
-      }
-
-      #notice .text-list li > div:nth-child(2) {
-        transform: none;
-      }
-
-      #news .text-list li > div:nth-child(2) {
-        transform: none;
       }
 
       .footer-inner {
@@ -2070,64 +2049,49 @@
         </div>
     </section>
 
-    <section class="data-screen-band" id="news">
-      <div class="section news-section">
-      <div class="news-layout">
-        <div>
-          <div class="section-head">
-            <div>
-              <h2 class="section-title">教务新闻</h2>
-              <div class="section-kicker">Academic News</div>
-            </div>
-            <a class="section-more" href="#">查看更多</a>
+    <section class="data-screen-band" id="notice">
+      <div class="section notice-section">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">教务通知</h2>
+            <div class="section-kicker">Academic Notice</div>
           </div>
-          <ul class="text-list">
-            <li>
-              <div class="text-date">07-16<span>2026</span></div>
-              <div><a class="text-title item-title" href="#">学校召开未来学习中心建设推进会</a><p class="text-summary">围绕智慧教学、资源共享和实训场景升级，部署下一阶段重点任务。</p></div>
-            </li>
-            <li>
-              <div class="text-date">07-12<span>2026</span></div>
-              <div><a class="text-title item-title" href="#">专业群课程资源建设专题培训顺利举行</a><p class="text-summary">教师团队围绕在线精品课程、虚拟仿真资源和学习数据应用开展研修。</p></div>
-            </li>
-            <li>
-              <div class="text-date">07-08<span>2026</span></div>
-              <div><a class="text-title item-title" href="#">智能制造虚拟仿真实训项目完成阶段验收</a><p class="text-summary">项目覆盖典型岗位任务，有效支撑学生课前预习和课堂实训。</p></div>
-            </li>
-            <li>
-              <div class="text-date">07-03<span>2026</span></div>
-              <div><a class="text-title item-title" href="#">课程思政资源共建活动启动</a><p class="text-summary">多学院联合沉淀工匠精神案例，推动课程育人与技能培养同向同行。</p></div>
-            </li>
-          </ul>
+          <a class="section-more" href="#">查看更多</a>
         </div>
-        <div id="notice">
-          <div class="section-head">
-            <div>
-              <h2 class="section-title">教务通知</h2>
-              <div class="section-kicker">Academic Notice</div>
-            </div>
-            <a class="section-more" href="#">查看更多</a>
-          </div>
-          <ul class="text-list">
-            <li>
-              <div class="text-date">07-18<span>2026</span></div>
-              <div><a class="text-title item-title" href="#">关于开展校级专业资源库数据更新的通知</a><p class="text-summary">请各建设团队按要求完善资源条目、课程映射和使用数据。</p></div>
-            </li>
-            <li>
-              <div class="text-date">07-15<span>2026</span></div>
-              <div><a class="text-title item-title" href="#">关于提交虚拟仿真项目运行报告的通知</a><p class="text-summary">各项目负责人需提交运行情况、学生使用反馈和优化清单。</p></div>
-            </li>
-            <li>
-              <div class="text-date">07-10<span>2026</span></div>
-              <div><a class="text-title item-title" href="#">关于开展课程建设阶段性检查的通知</a><p class="text-summary">检查内容包括课程结构、教学资源、互动活动和考核评价设计。</p></div>
-            </li>
-            <li>
-              <div class="text-date">07-06<span>2026</span></div>
-              <div><a class="text-title item-title" href="#">关于智慧教学平台账号维护的通知</a><p class="text-summary">请各二级学院核对教师账号、课程权限和资源库管理权限。</p></div>
-            </li>
-          </ul>
-        </div>
-      </div>
+        <ul class="text-list">
+          <li>
+            <div class="text-date">07-16<span>2026</span></div>
+            <div><a class="text-title item-title" href="#">学校召开未来学习中心建设推进会</a><p class="text-summary">围绕智慧教学、资源共享和实训场景升级，部署下一阶段重点任务。</p></div>
+          </li>
+          <li>
+            <div class="text-date">07-18<span>2026</span></div>
+            <div><a class="text-title item-title" href="#">关于开展校级专业资源库数据更新的通知</a><p class="text-summary">请各建设团队按要求完善资源条目、课程映射和使用数据。</p></div>
+          </li>
+          <li>
+            <div class="text-date">07-12<span>2026</span></div>
+            <div><a class="text-title item-title" href="#">专业群课程资源建设专题培训顺利举行</a><p class="text-summary">教师团队围绕在线精品课程、虚拟仿真资源和学习数据应用开展研修。</p></div>
+          </li>
+          <li>
+            <div class="text-date">07-15<span>2026</span></div>
+            <div><a class="text-title item-title" href="#">关于提交虚拟仿真项目运行报告的通知</a><p class="text-summary">各项目负责人需提交运行情况、学生使用反馈和优化清单。</p></div>
+          </li>
+          <li>
+            <div class="text-date">07-08<span>2026</span></div>
+            <div><a class="text-title item-title" href="#">智能制造虚拟仿真实训项目完成阶段验收</a><p class="text-summary">项目覆盖典型岗位任务，有效支撑学生课前预习和课堂实训。</p></div>
+          </li>
+          <li>
+            <div class="text-date">07-10<span>2026</span></div>
+            <div><a class="text-title item-title" href="#">关于开展课程建设阶段性检查的通知</a><p class="text-summary">检查内容包括课程结构、教学资源、互动活动和考核评价设计。</p></div>
+          </li>
+          <li>
+            <div class="text-date">07-03<span>2026</span></div>
+            <div><a class="text-title item-title" href="#">课程思政资源共建活动启动</a><p class="text-summary">多学院联合沉淀工匠精神案例，推动课程育人与技能培养同向同行。</p></div>
+          </li>
+          <li>
+            <div class="text-date">07-06<span>2026</span></div>
+            <div><a class="text-title item-title" href="#">关于智慧教学平台账号维护的通知</a><p class="text-summary">请各二级学院核对教师账号、课程权限和资源库管理权限。</p></div>
+          </li>
+        </ul>
       </div>
     </section>
   </main>
@@ -2231,7 +2195,7 @@
         "#course",
         "#simulation",
         "#resource",
-        "#news"
+        "#notice"
       ];
 
       const heroContent = document.querySelector(".hero-inner");
@@ -2305,7 +2269,7 @@
           module.classList.add("home-motion-target");
           // 仅变换模块外层，卡片仍可独立响应各自的 :hover transform。
           gsap.set(module, { autoAlpha: 0, y: 56 });
-          const shouldFadeOut = module.id !== "news";
+          const shouldFadeOut = module.id !== "notice";
           const hideBelow = () => {
             gsap.killTweensOf(module);
             gsap.set(module, { autoAlpha: 0, y: 56 });

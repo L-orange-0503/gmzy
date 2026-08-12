@@ -1,42 +1,54 @@
-# Hero 区域设计 QA
+# Design QA
 
-## Source visual truth
+- source visual truth: `/var/folders/91/w42ntpnd4m14pls3c8gnxtfh0000gn/T/codex-clipboard-059a3231-dc15-404b-affc-511698383843.png`
+- implementation URL: `http://127.0.0.1:4174/#notice`
+- implementation screenshot: `/tmp/gmzy-notice-desktop-updated.png`
+- viewport: 1280 × 720 CSS px; screenshot captured at the same desktop state
+- mobile verification viewport: 390 × 844 CSS px
+- state: homepage, notification section visible, normal light theme
+- density normalization: none required; browser screenshot and CSS viewport use 1× density
 
-- Source: `/Users/lishijiedemac/Desktop/1.jpg`
-- Source dimensions: 1920 × 920 px
-- State: 首页首屏，桌面端，页面顶部
+## Comparison evidence
 
-## Implementation evidence
+- The implementation removes the `教务新闻` module and retains one `教务通知` module, as explicitly requested.
+- The notification list now contains eight items arranged into two equal desktop columns with date blocks, separators, title/summary hierarchy, and a right-aligned `查看更多` control consistent with the reference composition.
+- Mobile verification confirms all eight notifications collapse to one column without horizontal overflow.
+- No `#news` element remains; one `#notice` module remains with eight notification items.
+- The background pseudo-element remains at `opacity: 0.5`, but the notification content wrapper now has `position: relative; z-index: 1`, so the background image no longer washes out the text.
 
-- Desktop capture: `/tmp/成都工贸-hero-implementation-desktop.png`
-- Mobile capture: `/tmp/成都工贸-hero-implementation-mobile.png`
-- Requested desktop viewport: 1920 × 920 CSS px
-- Effective desktop capture: 1651 × 913 px（浏览器可用视口限制）
-- Effective mobile capture: 375 × 812 px
-- Density normalization: screenshots are 1× captures; no scaling applied
+## Required fidelity surfaces
 
-## Comparison
-
-- Full-view evidence: hero background、导航、首屏标题、渐变标语色块和快捷入口的整体层级与参考图一致。
-- Focused hero evidence: `厚德致远、精技兴业` 使用提供的 SVG 色块，桌面端为 28px/700；说明文案已替换为用户指定内容并保持左对齐换行。
-- Responsive evidence: 移动端色块宽度随容器收缩，标语和说明文案无横向溢出，快捷入口仍正常显示。
-- Interaction evidence: 控制台无 error/warning；已有导航和快捷入口交互未改变。
+- Fonts and typography: existing site typography and hierarchy are retained; notification title, summary, date, and year styles remain distinct and readable.
+- Spacing and layout rhythm: desktop list is two columns with a 54px column gap and consistent row separators; mobile list is one column.
+- Colors and visual tokens: existing light-blue data-screen background, blue date accents, muted summaries, and white section surface are retained.
+- Image quality and asset fidelity: existing background asset is reused unchanged; no new image asset or CSS-art substitute was introduced.
+- Copy and content: the news module is removed, while four additional related entries were added so the notification module contains eight items.
+- Accessibility: semantic section heading, list structure, links, and existing navigation remain intact.
 
 ## Findings
 
-无 P0/P1/P2 问题。桌面截图实际像素受浏览器视口上限影响，但首屏结构和目标区域可正常对照；该差异不属于页面布局问题。
+No actionable P0/P1/P2 findings.
+
+The reference contains eight entries in two columns. The current implementation also contains eight entries; the four entries that previously belonged to the news module were retained as related notification content after the news module itself was removed.
+
+## Comparison history
+
+- Initial implementation: removed the news column and changed the remaining notice list to a desktop two-column grid.
+- Follow-up fix: added four related entries and raised the notice content above the background pseudo-element to remove the washed-out text effect.
+- Post-fix evidence: `/tmp/gmzy-notice-desktop-updated.png`; desktop metrics reported two grid columns and eight items.
+- Responsive evidence: mobile metrics reported one grid column, eight items, and no horizontal overflow at 390 × 844 CSS px.
 
 ## Implementation checklist
 
-- [x] 更新 hero 说明文案
-- [x] 使用提供的 SVG 渐变色块
-- [x] 叠加 28px/700 标语
-- [x] 校验桌面端首屏
-- [x] 校验移动端响应式布局
-- [x] 校验控制台日志
+- [x] Remove the academic news module.
+- [x] Display eight academic notices in two columns on desktop.
+- [x] Collapse notices to one column on mobile.
+- [x] Update GSAP module selector from `#news` to `#notice`.
+- [x] Preserve the final notification module from fading out at the page bottom.
+- [x] Run `git diff --check`.
 
-## Follow-up polish
+## Follow-up Polish
 
-无必要的 P3 调整。
+- P3: If more notification entries are added later, the same grid will place them row by row automatically.
 
 final result: passed
